@@ -1,0 +1,14 @@
+.colorWrapper {
+  position: relative;
+
+  &::before {
+    content: attr(data-title);
+    position: absolute;
+    left: calc(50% - 750px);
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+
+    font-size: 62px;
+    color: white;
+  }
+}
