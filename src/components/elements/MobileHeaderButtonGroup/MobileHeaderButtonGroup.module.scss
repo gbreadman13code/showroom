@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    margin-top: 10px;
+
+    .links {
+        display: flex;
+        align-items: center;
+    }
+
+    a {
+        margin-right: 27px;
+        color: #ffffff;
+        text-decoration: none;
+
+        font-size: 10px;
+
+        position: relative;
+        .counter {
+            position: absolute;
+            padding: 1px 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2px;
+            background-color: #D6338A;
+
+            bottom: -2px;
+            right: -4px;
+        }
+    }
+}

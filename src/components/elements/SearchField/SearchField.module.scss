@@ -1,0 +1,36 @@
+.SearchField {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    input {
+        padding: 10px 0px 8px 50px;
+
+        border: 1px solid #50535A;
+        border-radius: 0;
+
+        color: #50535A;
+        font-size: 20px;
+
+        outline: none;
+
+        transition: 0.3s;
+
+        &::placeholder {
+            font-size: 20px;
+            color: #D4D8DA;
+        }
+    }
+
+    input.hideField {
+        transition: 0.3s;
+        width: 0px;
+        border: none;
+    }
+
+    img {
+        cursor: pointer;
+        position: absolute;
+        left: 18px;
+    }
+}

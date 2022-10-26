@@ -1,0 +1,42 @@
+.slick-dots {
+    li {
+        button {
+            &:before {
+                width: 10px;
+                height: 10px;
+
+                border-radius: 50%;
+
+                color: #fff;
+                background-color: #fff;
+
+                font-size: 0px;
+                line-height: 0px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                content: '•';
+                text-align: center;
+                opacity: 1;
+            }
+        }
+        &.slick-active {
+            button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                &:before {
+                    width: 14px;
+                    height: 14px;
+                    opacity: 1;
+                    color: #2AA89A;
+
+                    position: absolute;
+                    top: -2px;
+
+                    background-color: #2AA89A;
+                }
+            }
+        }
+    }
+}
