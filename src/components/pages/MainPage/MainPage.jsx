@@ -10,6 +10,7 @@ import MasonryBlock from "../../elements/MasonryBlock/MasonryBlock";
 import ExhibitionImage from "../../elements/ExhibitionImage/ExhibitionImage";
 import MobileMainPageContent from "./MainPaigeComponents/MobileMainPageContent";
 import useMobileDetect from "use-mobile-detect-hook";
+import background from "../../../assets/img/promo_background.jpg";
 
 const MainPage = () => {
   const [exhibitions, setExhibitions] = useState(false);
@@ -32,20 +33,24 @@ const MainPage = () => {
       <Container>
         {exhibitions &&
           (isMobile ? (
-            <MobileMainPageContent data={exhibitions[0]} />
+            <MobileMainPageContent data={exhibitions[0]} test="123" />
           ) : (
             <MainPageContent data={exhibitions[0]} />
           ))}
       </Container>
+
       {isMobile ? (
         <div className={styles.mobile_paletteWrapper}>
           <div className={styles.palette_bg}></div>
         </div>
       ) : (
         <div className={styles.paletteWrapper}>
-          <div className={styles.palette_bg}></div>
+          <div className={styles.palette_bg}>
+            <img src={background} alt="" />
+          </div>
         </div>
       )}
+
       {/* Меньше 9 работ - 1 экран */}
       {exhibitions &&
         exhibitions[0].pictures.length > 0 &&
@@ -449,7 +454,7 @@ const MainPage = () => {
           </>
         )}
 
-{exhibitions &&
+      {exhibitions &&
         exhibitions[0].pictures.length > 53 &&
         exhibitions[0].pictures.length <= 62 && (
           <>

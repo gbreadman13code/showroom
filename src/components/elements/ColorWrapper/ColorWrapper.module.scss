@@ -1,6 +1,8 @@
 .colorWrapper {
   position: relative;
 
+  // outline: 8px solid red;
+
   &::before {
     content: attr(data-title);
     position: absolute;
@@ -10,5 +12,23 @@
 
     font-size: 62px;
     color: white;
+  }
+
+  &:nth-of-type(3) {
+    // outline: 8px solid red;
+    // outline-offset: -20px;
+
+    // &::before {
+    //   display: none;
+    // }
+  }
+
+  &:nth-of-type(4n) {
+    // outline: 8px solid red;
+    // outline-offset: -20px;
+
+    &::before {
+      color: #50535a;
+    }
   }
 }
