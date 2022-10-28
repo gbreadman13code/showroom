@@ -1,4 +1,6 @@
 import React from "react";
+import ButtonsBlot from "../../../elements/ButtonsBlot/ButtonsBlot";
+import PalletSwitch from "../../../elements/PalletSwitch/PalletSwitch";
 
 import styles from "../MainPage.module.scss";
 import DescriptionSlider from "./Slider/DescriptionSlider";
@@ -15,6 +17,10 @@ const MainPageContent = ({ data }) => {
       <div>
         <h1>{title}</h1>
         <h2>{sub_title}</h2>
+        <div>
+          <ButtonsBlot />
+          <PalletSwitch title={title} />
+        </div>
         <div className={styles.slider_wrapper}>
           <DescriptionSlider description={description} />
         </div>

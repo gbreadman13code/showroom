@@ -33,7 +33,7 @@ const MainPage = () => {
       <Container>
         {exhibitions &&
           (isMobile ? (
-            <MobileMainPageContent data={exhibitions[0]} test="123" />
+            <MobileMainPageContent data={exhibitions[0]} />
           ) : (
             <MainPageContent data={exhibitions[0]} />
           ))}
