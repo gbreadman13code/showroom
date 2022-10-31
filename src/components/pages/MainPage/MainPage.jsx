@@ -22,7 +22,7 @@ const MainPage = () => {
 
   const colors = ["#4F4B98", "#F0E400", "#2CA99B", "#D6358C"];
 
-  useEffect(() => {
+  const offsetObject = useEffect(() => {
     if (data.length > 0) {
       setExhibitions(data);
     }
@@ -38,7 +38,6 @@ const MainPage = () => {
             <MainPageContent data={exhibitions[0]} />
           ))}
       </Container>
-
       {isMobile ? (
         <div className={styles.mobile_paletteWrapper}>
           <div className={styles.palette_bg}></div>
@@ -50,7 +49,6 @@ const MainPage = () => {
           </div>
         </div>
       )}
-
       {/* Меньше 9 работ - 1 экран */}
       {exhibitions &&
         exhibitions[0].pictures.length > 0 &&
@@ -109,7 +107,6 @@ const MainPage = () => {
           </>
         )}
       {/* Меньше 27 работ - 3 экрана */}
-
       {exhibitions &&
         exhibitions[0].pictures.length > 17 &&
         exhibitions[0].pictures.length <= 26 && (
@@ -170,14 +167,14 @@ const MainPage = () => {
         )}
       {/* Меньше 36 работ - 4 экрана */}
       {exhibitions &&
-        exhibitions[0].pictures.length > 26 &&
-        exhibitions[0].pictures.length <= 35 && (
+        exhibitions[0].pictures.length > 36 &&
+        exhibitions[0].pictures.length <= 48 && (
           <>
             <ColorWrapper color={"#4F4B98"}>
               <MasonryBlock>
                 {exhibitions[0].pictures.map(
                   (item, index) =>
-                    index <= 8 && (
+                    index <= 11 && (
                       <ExhibitionImage
                         key={index}
                         url={item.thumbnail}
@@ -194,8 +191,8 @@ const MainPage = () => {
               <MasonryBlock>
                 {exhibitions[0].pictures.map(
                   (item, index) =>
-                    index > 8 &&
-                    index <= 17 && (
+                    index > 11 &&
+                    index <= 23 && (
                       <ExhibitionImage
                         key={index}
                         url={item.thumbnail}
@@ -212,102 +209,7 @@ const MainPage = () => {
               <MasonryBlock>
                 {exhibitions[0].pictures.map(
                   (item, index) =>
-                    index > 17 &&
-                    index <= 26 && (
-                      <ExhibitionImage
-                        key={index}
-                        url={item.thumbnail}
-                        author={item.author}
-                        name={item.title}
-                        id={item.id}
-                      />
-                    )
-                )}
-              </MasonryBlock>
-            </ColorWrapper>
-
-            <ColorWrapper color={"#D6358C"}>
-              <MasonryBlock>
-                {exhibitions[0].pictures.map(
-                  (item, index) =>
-                    index > 26 &&
-                    index <= 35 && (
-                      <ExhibitionImage
-                        key={index}
-                        url={item.thumbnail}
-                        author={item.author}
-                        name={item.title}
-                        id={item.id}
-                      />
-                    )
-                )}
-              </MasonryBlock>
-            </ColorWrapper>
-          </>
-        )}
-
-      {exhibitions &&
-        exhibitions[0].pictures.length > 35 &&
-        exhibitions[0].pictures.length <= 44 && (
-          <>
-            <ColorWrapper color={"#4F4B98"}>
-              <MasonryBlock>
-                {exhibitions[0].pictures.map(
-                  (item, index) =>
-                    index <= 8 && (
-                      <ExhibitionImage
-                        key={index}
-                        url={item.thumbnail}
-                        author={item.author}
-                        name={item.title}
-                        id={item.id}
-                      />
-                    )
-                )}
-              </MasonryBlock>
-            </ColorWrapper>
-
-            <ColorWrapper color={"#F0E400"}>
-              <MasonryBlock>
-                {exhibitions[0].pictures.map(
-                  (item, index) =>
-                    index > 8 &&
-                    index <= 17 && (
-                      <ExhibitionImage
-                        key={index}
-                        url={item.thumbnail}
-                        author={item.author}
-                        name={item.title}
-                        id={item.id}
-                      />
-                    )
-                )}
-              </MasonryBlock>
-            </ColorWrapper>
-
-            <ColorWrapper color={"#2CA99B"}>
-              <MasonryBlock>
-                {exhibitions[0].pictures.map(
-                  (item, index) =>
-                    index > 17 &&
-                    index <= 26 && (
-                      <ExhibitionImage
-                        key={index}
-                        url={item.thumbnail}
-                        author={item.author}
-                        name={item.title}
-                        id={item.id}
-                      />
-                    )
-                )}
-              </MasonryBlock>
-            </ColorWrapper>
-
-            <ColorWrapper color={"#D6358C"}>
-              <MasonryBlock>
-                {exhibitions[0].pictures.map(
-                  (item, index) =>
-                    index > 26 &&
+                    index > 23 &&
                     index <= 35 && (
                       <ExhibitionImage
                         key={index}
@@ -321,12 +223,12 @@ const MainPage = () => {
               </MasonryBlock>
             </ColorWrapper>
 
-            <ColorWrapper color={"#4F4B98"}>
+            <ColorWrapper color={"#D6358C"}>
               <MasonryBlock>
                 {exhibitions[0].pictures.map(
                   (item, index) =>
                     index > 35 &&
-                    index <= 44 && (
+                    index <= 47 && (
                       <ExhibitionImage
                         key={index}
                         url={item.thumbnail}
@@ -341,6 +243,101 @@ const MainPage = () => {
           </>
         )}
 
+      {/* 5 экранов */}
+      {exhibitions &&
+        exhibitions[0].pictures.length > 48 &&
+        exhibitions[0].pictures.length <= 60 && (
+          <>
+            <ColorWrapper color={"#4F4B98"}>
+              <MasonryBlock>
+                {exhibitions[0].pictures.map(
+                  (item, index) =>
+                    index <= 11 && (
+                      <ExhibitionImage
+                        key={index}
+                        url={item.thumbnail}
+                        author={item.author}
+                        name={item.title}
+                        id={item.id}
+                      />
+                    )
+                )}
+              </MasonryBlock>
+            </ColorWrapper>
+
+            <ColorWrapper color={"#F0E400"}>
+              <MasonryBlock>
+                {exhibitions[0].pictures.map(
+                  (item, index) =>
+                    index > 11 &&
+                    index <= 23 && (
+                      <ExhibitionImage
+                        key={index}
+                        url={item.thumbnail}
+                        author={item.author}
+                        name={item.title}
+                        id={item.id}
+                      />
+                    )
+                )}
+              </MasonryBlock>
+            </ColorWrapper>
+
+            <ColorWrapper color={"#2CA99B"}>
+              <MasonryBlock>
+                {exhibitions[0].pictures.map(
+                  (item, index) =>
+                    index > 23 &&
+                    index <= 35 && (
+                      <ExhibitionImage
+                        key={index}
+                        url={item.thumbnail}
+                        author={item.author}
+                        name={item.title}
+                        id={item.id}
+                      />
+                    )
+                )}
+              </MasonryBlock>
+            </ColorWrapper>
+
+            <ColorWrapper color={"#D6358C"}>
+              <MasonryBlock>
+                {exhibitions[0].pictures.map(
+                  (item, index) =>
+                    index > 35 &&
+                    index <= 47 && (
+                      <ExhibitionImage
+                        key={index}
+                        url={item.thumbnail}
+                        author={item.author}
+                        name={item.title}
+                        id={item.id}
+                      />
+                    )
+                )}
+              </MasonryBlock>
+            </ColorWrapper>
+
+            <ColorWrapper color={"#4F4B98"}>
+              <MasonryBlock>
+                {exhibitions[0].pictures.map(
+                  (item, index) =>
+                    index > 47 &&
+                    index <= 52 && (
+                      <ExhibitionImage
+                        key={index}
+                        url={item.thumbnail}
+                        author={item.author}
+                        name={item.title}
+                        id={item.id}
+                      />
+                    )
+                )}
+              </MasonryBlock>
+            </ColorWrapper>
+          </>
+        )}
       {exhibitions &&
         exhibitions[0].pictures.length > 44 &&
         exhibitions[0].pictures.length <= 53 && (
@@ -453,7 +450,6 @@ const MainPage = () => {
             </ColorWrapper>
           </>
         )}
-
       {exhibitions &&
         exhibitions[0].pictures.length > 53 &&
         exhibitions[0].pictures.length <= 62 && (

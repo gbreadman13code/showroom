@@ -1,8 +1,6 @@
 .colorWrapper {
   position: relative;
 
-  // outline: 8px solid red;
-
   &::before {
     content: attr(data-title);
     position: absolute;
@@ -14,21 +12,70 @@
     color: white;
   }
 
-  &:nth-of-type(3) {
-    // outline: 8px solid red;
-    // outline-offset: -20px;
-
-    // &::before {
-    //   display: none;
-    // }
-  }
-
   &:nth-of-type(4n) {
-    // outline: 8px solid red;
-    // outline-offset: -20px;
-
     &::before {
       color: #50535a;
     }
+
+    &::after {
+      background-color: #2ca99b;
+    }
+  }
+
+  &:nth-of-type(4n + 1) {
+    &::after {
+      background-color: #f0e400;
+    }
+  }
+
+  &:last-of-type {
+    &::after {
+      display: none;
+    }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 20px;
+    left: 49.5%;
+
+    width: 15px;
+    height: 42px;
+
+    -webkit-mask: url("data:image/svg+xml,%3Csvg width='15' height='42' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 6V0L7.5 4.5 0 0v6l7.5 4.5L15 6Zm0 15.5v-6L7.5 20 0 15.5v6L7.5 26l7.5-4.5ZM15 37v-6l-7.5 4.5L0 31v6l7.5 4.5L15 37Z' fill='black'/%3E%3C/svg%3E")
+      no-repeat 50% 50%;
+    mask: url("data:image/svg+xml,%3Csvg width='15' height='42' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 6V0L7.5 4.5 0 0v6l7.5 4.5L15 6Zm0 15.5v-6L7.5 20 0 15.5v6L7.5 26l7.5-4.5ZM15 37v-6l-7.5 4.5L0 31v6l7.5 4.5L15 37Z' fill='black'/%3E%3C/svg%3E")
+      no-repeat 50% 50%;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    background-color: #2ca99b;
+
+    animation: up-down 2s ease-in-out infinite, opacity 2s ease-in-out infinite;
+
+    @media (max-width: 1000px) {
+      display: none;
+    }
+  }
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(10px);
+  }
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }

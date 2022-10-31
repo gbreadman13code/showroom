@@ -17,8 +17,6 @@ const ColorWrapper = ({ name, color, children }) => {
     }
   }, [exhibitions]);
 
-  // console.log(title);
-
   return (
     <div
       style={

@@ -92,9 +92,9 @@
 
       mask-image: url("../../../assets/img/smear.svg");
       mask-repeat: no-repeat;
-      mask-size: 2500px 300px;
+      mask-size: 120% 300px;
       //   mask-size: cover;
-      mask-position: center;
+      mask-position: left 50% top 0;
     }
   }
 }
