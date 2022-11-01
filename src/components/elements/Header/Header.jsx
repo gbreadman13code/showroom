@@ -23,7 +23,7 @@ const Header = () => {
         </div>
       </div>
       <HeaderButtonGroup />
-      <Burger />
+      {/* <Burger /> */}
     </div>
   );
 };
