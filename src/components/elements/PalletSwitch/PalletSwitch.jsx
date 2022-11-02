@@ -2,10 +2,18 @@ import React from "react";
 import styles from "./PalletSwitch.module.scss";
 
 import pallet from "../../../assets/img/pallet-switch.svg";
+import useMobileDetect from "use-mobile-detect-hook";
 
 const PalletSwitch = (props) => {
+  const detectMobile = useMobileDetect();
+  const isMobile = detectMobile.isMobile();
+
   return (
-    <div className={styles.switch}>
+    <div
+      className={
+        isMobile ? `${styles.switch__mobile} ${styles.switch}` : styles.switch
+      }
+    >
       <p>{props.title}</p>
 
       <button

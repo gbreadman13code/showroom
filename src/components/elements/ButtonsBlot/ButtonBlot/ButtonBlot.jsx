@@ -4,16 +4,18 @@ import styles from "./ButtonBlot.module.scss";
 
 const ButtonBlot = (props) => {
   return (
-    <NavLink
-      to={"/exhibition_" + props.id}
-      className={styles.blot}
+    <li>
+      <NavLink
+        to={"/exhibition_" + props.id}
+        className={styles.blot}
 
-      // className={(isActive) => styles.blot + (!isActive ? " active" : "")}
+        // className={(isActive) => styles.blot + (!isActive ? " active" : "")}
 
-      // activeClassName="selected"
-    >
-      {props.image}
-    </NavLink>
+        // activeClassName="selected"
+      >
+        {props.image}
+      </NavLink>
+    </li>
   );
 };
 

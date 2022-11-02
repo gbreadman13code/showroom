@@ -8,7 +8,12 @@ import Blot_2 from "./Blots/Blot_2";
 import Blot_3 from "./Blots/Blot_3";
 import Blot_4 from "./Blots/Blot_4";
 
+import useMobileDetect from "use-mobile-detect-hook";
+
 const ButtonsBlot = () => {
+  const detectMobile = useMobileDetect();
+  const isMobile = detectMobile.isMobile();
+
   const ButtonsArray = [
     {
       id: 1,
@@ -33,7 +38,11 @@ const ButtonsBlot = () => {
   ];
 
   return (
-    <ul className={styles.buttons}>
+    <ul
+      className={
+        isMobile ? `${styles.buttons} ${styles.buttons_mobile}` : styles.buttons
+      }
+    >
       {ButtonsArray.map((item) => {
         return <ButtonBlot key={item.id} id={item.id} image={item.image} />;
       })}

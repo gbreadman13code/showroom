@@ -1,5 +1,7 @@
 .colorWrapper {
   position: relative;
+  padding-top: 80px;
+  padding-bottom: 80px;
 
   &::before {
     content: attr(data-title);
@@ -10,6 +12,10 @@
 
     font-size: 62px;
     color: white;
+  }
+
+  &:nth-of-type(3) {
+    padding-top: 180px;
   }
 
   &:nth-of-type(4n) {
@@ -54,7 +60,24 @@
     animation: up-down 2s ease-in-out infinite, opacity 2s ease-in-out infinite;
 
     @media (max-width: 1000px) {
-      display: none;
+      // display: none;
+    }
+  }
+
+  &__mobile {
+    &::before {
+      left: calc(11vw - 105px);
+      // left: -5%;
+      top: 50%;
+      transform: translateY(-50%) rotate(-90deg);
+      font-size: 44px;
+
+      // outline: 20px solid red;
+    }
+
+    &:nth-of-type(3) {
+      padding-top: 150px !important;
+      // outline: 20px solid red;
     }
   }
 }

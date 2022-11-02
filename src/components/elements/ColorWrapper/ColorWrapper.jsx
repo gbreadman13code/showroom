@@ -19,12 +19,13 @@ const ColorWrapper = ({ name, color, children }) => {
 
   return (
     <div
-      style={
+      style={isMobile ? { backgroundColor: color } : { backgroundColor: color }}
+      // className={styles.colorWrapper}
+      className={
         isMobile
-          ? { backgroundColor: color, paddingTop: 60, paddingBottom: 30 }
-          : { backgroundColor: color, paddingTop: 150, paddingBottom: 30 }
+          ? `${styles.colorWrapper} ${styles.colorWrapper__mobile}`
+          : styles.colorWrapper
       }
-      className={styles.colorWrapper}
       data-title={title}
     >
       <Container>{children}</Container>

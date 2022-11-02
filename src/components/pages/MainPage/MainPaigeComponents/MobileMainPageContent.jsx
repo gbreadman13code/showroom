@@ -1,4 +1,6 @@
 import React from "react";
+import ButtonsBlot from "../../../elements/ButtonsBlot/ButtonsBlot";
+import PalletSwitch from "../../../elements/PalletSwitch/PalletSwitch";
 
 import styles from "../MainPage.module.scss";
 import DescriptionSlider from "./Slider/DescriptionSlider";
@@ -15,9 +17,13 @@ const MobileMainPageContent = ({ data }) => {
           <h2>{sub_title}</h2>
         </div>
       </div>
+
       <div className={styles.mobile_slider_wrapper}>
         <DescriptionSlider description={description} />
       </div>
+
+      <ButtonsBlot />
+      <PalletSwitch title={title} />
     </div>
   );
 };

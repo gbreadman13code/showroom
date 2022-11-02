@@ -5,6 +5,8 @@
 
   border: 8px solid #d4d8da;
 
+  transition: all 0.3s ease;
+
   .picture_info {
     position: absolute;
     left: 0;
@@ -32,6 +34,11 @@
       align-self: flex-end;
     }
   }
+
+  // &.hide_image {
+  //   opacity: 0;
+  //   transform: scale(1.1);
+  // }
 }
 
 .mobile_picture_wrapper {
@@ -39,6 +46,7 @@
   margin-bottom: 20px;
 
   border: 8px solid #d4d8da;
+  filter: drop-shadow(4px 3px 4px rgba(0, 0, 0, 0.25));
 
   .picture_info {
     position: absolute;

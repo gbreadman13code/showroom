@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import { ReactComponent as DisLike } from "../../../assets/img/like-nonfill.svg";
-import { ReactComponent as Like } from "../../../assets/img/like-active.svg";
+// import { ReactComponent as DisLike } from "../../../assets/img/like-nonfill.svg";
+// import { ReactComponent as Like } from "../../../assets/img/like-active.svg";
 import loader from "../../../assets/img/loader.gif";
 
 import styles from "./ExhibitionImage.module.scss";
 import { Link } from "react-router-dom";
 import useMobileDetect from "use-mobile-detect-hook";
+import Like from "../../elements/Like/Like";
 
 const ExhibitionImage = ({ isLiked = false, url, author, name, id }) => {
   const detectMobile = useMobileDetect();
@@ -30,7 +31,9 @@ const ExhibitionImage = ({ isLiked = false, url, author, name, id }) => {
   return (
     <div
       className={
-        isMobile ? styles.mobile_picture_wrapper : styles.picture_wrapper
+        isMobile
+          ? styles.mobile_picture_wrapper
+          : [`${styles.picture_wrapper} ${styles.hide_image}`]
       }
     >
       <Link to={"/profile/" + id}>
@@ -52,6 +55,7 @@ const ExhibitionImage = ({ isLiked = false, url, author, name, id }) => {
             <p>{author}</p>
             <p>{name}</p>
           </div>
+          {/* <Like /> */}
           {/* {isLiked ? (
             <Like onClick={() => setLike(id)} />
           ) : (
