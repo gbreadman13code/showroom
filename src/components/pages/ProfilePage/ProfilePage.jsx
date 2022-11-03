@@ -89,9 +89,10 @@ const ProfilePage = () => {
                   {currentProfile.additional_photos.length > 0 ? (
                     <ProfileSlider
                       additional_photos={currentProfile.additional_photos}
+                      main_photo={currentProfile.thumbnail}
                     />
                   ) : (
-                    <div className={styles.slide}>
+                    <div className={`${styles.slide} ${styles.slide_single}`}>
                       <img
                         src={MEDIA_URL + currentProfile.thumbnail}
                         alt={currentProfile.title}
@@ -119,9 +120,16 @@ const ProfilePage = () => {
                       {currentProfile.size ? currentProfile.size : "Не указано"}
                     </span>
                   </div>
+
                   <div className={styles.buy_block}>
                     <span className={styles.price}>
-                      {currentProfile.price} ₽
+                      {currentProfile.price
+                        .slice(0, -3)
+                        .replace(
+                          /(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g,
+                          "$1" + " "
+                        )}{" "}
+                      ₽
                     </span>
                     <button
                       className={

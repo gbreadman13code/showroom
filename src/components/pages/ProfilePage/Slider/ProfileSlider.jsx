@@ -8,7 +8,7 @@ import styles from "../ProfilePage.module.scss";
 import sliderStyles from "./ProfileSlider.scss";
 import { MEDIA_URL } from "../../../../redux/API/BASE_URL";
 
-const ProfileSlider = ({ additional_photos }) => {
+const ProfileSlider = ({ additional_photos, main_photo }) => {
   let settings = {
     dots: false,
     arrows: true,
@@ -17,11 +17,12 @@ const ProfileSlider = ({ additional_photos }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+
   return (
     <Slider {...settings}>
-      {additional_photos.map((item, index) => (
-        <div className={styles.slide}>
-        <img key={index} src={MEDIA_URL + item.thumbnail} alt="работа" />
+      {[{ thumbnail: main_photo }, ...additional_photos].map((item, index) => (
+        <div key={index} className={styles.slide}>
+          <img src={MEDIA_URL + item.thumbnail} alt="работа" />
         </div>
       ))}
     </Slider>

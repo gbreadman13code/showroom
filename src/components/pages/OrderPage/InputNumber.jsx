@@ -21,11 +21,23 @@ const InputNumber = ({ defaultValue, funcChange, quantity }) => {
   return (
     <div className={styles.input_number}>
       <div className={styles.value_filed}>
-        <button className={styles.minus} onClick={decrement}>
+        <button
+          onClick={decrement}
+          className={
+            value <= 1 ? `${styles.minus} ${styles.disabled}` : styles.minus
+          }
+        >
           -
         </button>
         {value}
-        <button className={styles.plus} onClick={increment}>
+        <button
+          onClick={increment}
+          className={
+            value >= quantity
+              ? `${styles.plus} ${styles.disabled}`
+              : styles.plus
+          }
+        >
           +
         </button>
       </div>

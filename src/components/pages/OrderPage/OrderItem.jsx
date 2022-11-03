@@ -4,8 +4,11 @@ import { ReactComponent as CloseIcon } from "../../../assets/img/close.svg";
 import InputNumber from "./InputNumber";
 
 import styles from "./OrderPage.module.scss";
-import { useDispatch } from 'react-redux';
-import { deleteItemFromOrderAction, incrementAction } from '../../../redux/reducers/orderReducer';
+import { useDispatch } from "react-redux";
+import {
+  deleteItemFromOrderAction,
+  incrementAction,
+} from "../../../redux/reducers/orderReducer";
 
 const OrderItem = ({
   id,
@@ -25,12 +28,13 @@ const OrderItem = ({
   const dispatch = useDispatch();
   const onChangeCounter = (value) => {
     setLocalValue(value);
-    dispatch(incrementAction({id: id, value: value}))
+    dispatch(incrementAction({ id: id, value: value }));
   };
 
   const onCloseHandler = () => {
-    dispatch(deleteItemFromOrderAction(id))
+    dispatch(deleteItemFromOrderAction(id));
   };
+
   return (
     <div className={styles.order_item}>
       <div className={styles.img_wrapper}>
@@ -58,8 +62,18 @@ const OrderItem = ({
       </div>
       <div className={styles.price_info}>
         <div className={styles.wrap}>
-          <span>{localValue * price} ₽</span>
-          <InputNumber defaultValue={value} quantity={quantity} funcChange={onChangeCounter} />
+          <span>
+            {String(localValue * price).replace(
+              /(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g,
+              "$1" + " "
+            )}{" "}
+            ₽
+          </span>
+          <InputNumber
+            defaultValue={value}
+            quantity={quantity}
+            funcChange={onChangeCounter}
+          />
         </div>
         <CloseIcon onClick={onCloseHandler} />
       </div>
