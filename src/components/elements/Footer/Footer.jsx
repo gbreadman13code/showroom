@@ -12,24 +12,18 @@ import tg from "../../../assets/img/tg.png";
 import PinkSlash from "../../../assets/img/pink-slash.svg";
 
 import AgreementLink from "../../../assets/docs/Agreement.pdf";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <footer className={styles.footer}>
       <FooterLogo />
+
+      <p className={styles.head_of_footer}>
+        АНО «Сибирский институт развития креативных индустрий»
+      </p>
+
       <div className={styles.footer_info}>
-        <div className={styles.head_of_footer}>
-          <p>АНО «СИРКИ»</p>
-          <div className={styles.socials}>
-          <a href="https://t.me/industry_art" _blank='target' className={styles.social}>
-            <img src={tg} alt="vk.com" />
-          </a>
-          <a href="https://vk.com/industry_art" _blank='target' className={styles.social}>
-            <img src={VkFix} alt="Telegram" />
-          </a>
-          </div>
-        </div>
         <div className={styles.middle_of_header}>
           <ul className={styles.contacts}>
             <li>
@@ -42,9 +36,15 @@ const Footer = () => {
             </li>
             <li>
               <img src={Mail} alt="mail" />{" "}
-              <a href="mailto:info@industry.art">
-                info@industry.art
-              </a>
+              <a href="mailto:info@industry.art">info@industry.art</a>
+            </li>
+            <li className={styles.bottom_of_footer}>
+              <p>
+                <span>ОГРН: </span>1222400007500
+              </p>
+              <p>
+                <span>ИНН: </span>2466291084
+              </p>
             </li>
           </ul>
           <ul className={styles.docs}>
@@ -55,23 +55,33 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-            <img src={PinkSlash} alt="." />
-
+                <img src={PinkSlash} alt="." />
                 Пользовательское соглашение
               </a>
             </li>
             <li>
-            
-              <Link to={'/payment_and_delivery'}>
-              <img src={PinkSlash} alt="." />
+              <Link to={"/payment_and_delivery"}>
+                <img src={PinkSlash} alt="." />
                 Доставка и оплата
               </Link>
             </li>
+            <li className={styles.socials}>
+              <a
+                href="https://t.me/industry_art"
+                _blank="target"
+                className={styles.social}
+              >
+                <img src={tg} alt="vk.com" />
+              </a>
+              <a
+                href="https://vk.com/industry_art"
+                _blank="target"
+                className={styles.social}
+              >
+                <img src={VkFix} alt="Telegram" />
+              </a>
+            </li>
           </ul>
-        </div>
-        <div className={styles.bottom_of_footer}>
-          <p><span>ОГРН: </span>1222400007500</p>
-          <p><span>ИНН: </span>2466291084</p>
         </div>
       </div>
     </footer>
