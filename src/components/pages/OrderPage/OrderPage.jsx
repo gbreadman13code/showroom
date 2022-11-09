@@ -104,7 +104,7 @@ const OrderPage = () => {
             >
               <div className={styles.summury}>
                 <p>
-                  Итого:{" "}
+                  {/* Итого:{" "} */}
                   {String(summury).replace(
                     /(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g,
                     "$1" + " "

@@ -122,6 +122,8 @@
           color: #50535a;
         }
         button {
+          position: relative;
+
           font-family: "Geometria", sans-serif;
           font-size: 24px;
           font-weight: 500;
@@ -134,15 +136,24 @@
 
           cursor: pointer;
 
-          df &::before {
+          overflow: hidden;
+
+          transition: all 0.3s ease;
+
+          &::before {
             content: "";
             display: block;
-            position: relative;
+            position: absolute;
 
-            height: 18px;
+            left: -30px;
+            top: 31%;
+
+            height: 20px;
             width: 5px;
+            background-color: #f0e400;
 
-            transform: skew(10px);
+            transform: skew(-25deg);
+            transition: left 0.3s ease;
           }
 
           &.saled {
@@ -151,6 +162,19 @@
           }
 
           &:hover {
+            &::before {
+              left: 17px;
+            }
+          }
+
+          &:disabled {
+            outline: 1px solid #d6358c;
+            background-color: white;
+            color: #d6358c;
+
+            &::before {
+              display: none;
+            }
           }
         }
       }
@@ -289,6 +313,16 @@
           background-color: #d6358c;
 
           cursor: pointer;
+
+          &:disabled {
+            outline: 1px solid #d6358c;
+            background-color: white;
+            color: #d6358c;
+
+            &::before {
+              display: none;
+            }
+          }
         }
       }
     }
