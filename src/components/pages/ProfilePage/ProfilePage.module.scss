@@ -1,20 +1,24 @@
 .main_info {
   margin-bottom: 55px;
+
   .profileTitle {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 
     margin-bottom: 20px;
+
     & > div {
       display: flex;
       flex-direction: column;
+
       .title {
         font-size: 34px;
         font-weight: 500;
         color: #50535a;
         margin-bottom: 8px;
       }
+
       .author {
         font-size: 22px;
         font-weight: 300;
@@ -57,30 +61,24 @@
 
       .slide {
         height: 373px;
-        // max-height: 358px;
         max-width: 536px;
         width: 100%;
-        border: 8px solid #d4d8da;
         box-sizing: border-box;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
 
         &:focus {
           outline: none;
         }
 
         img {
-          //   display: block;
           max-width: 536px;
-
-          height: 358px;
-          width: 100%;
-
+          max-height: 358px;
           object-fit: contain;
+          border: 8px solid #d4d8da;
+          box-sizing: border-box;
         }
-
-        // &_single {
-        //   max-height: unset;
-        //   height: 358px;
-        // }
       }
     }
     .profileInfo {
@@ -89,11 +87,9 @@
       justify-content: space-between;
       margin-left: 50px;
 
-      & > div {
+      & > dl {
         display: flex;
         flex-direction: column;
-
-        // padding-top: 50px;
 
         .info_title {
           font-size: 24px;
@@ -116,11 +112,13 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+
         .price {
           font-size: 36px;
           font-weight: 500;
           color: #50535a;
         }
+
         button {
           position: relative;
 
@@ -233,44 +231,34 @@
       }
     }
   }
+
   .grid_container {
     .profileImg {
       grid-area: 1 / 1 / 2 / 2;
-
-      // display: flex;
-      // justify-content: center;
-      // align-items: center;
-
-      // margin-bottom: 80px;
       display: block;
-      max-width: 552px;
-      // height: 358px;
-      // max-width: 536px;
 
       .slide {
         max-width: 100%;
         max-height: 100%;
-
         display: flex;
         justify-content: center;
+
         img {
           width: 100%;
-          // max-width: 298px;
-          // max-height: 358px;
           border: 8px solid #d4d8da;
           box-sizing: border-box;
         }
       }
     }
+
     .profileInfo {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
 
-      & > div {
+      & > dl {
         display: flex;
         flex-direction: column;
-
         padding-top: 50px;
 
         .info_title {

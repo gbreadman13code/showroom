@@ -7,8 +7,12 @@ import "slick-carousel/slick/slick-theme.css";
 import styles from "../ProfilePage.module.scss";
 import sliderStyles from "./ProfileSlider.scss";
 import { MEDIA_URL } from "../../../../redux/API/BASE_URL";
+import useMobileDetect from "use-mobile-detect-hook";
 
 const ProfileSlider = ({ additional_photos, main_photo }) => {
+  const detectMobile = useMobileDetect();
+  const isMobile = detectMobile.isMobile();
+
   let settings = {
     dots: false,
     arrows: true,
@@ -16,6 +20,7 @@ const ProfileSlider = ({ additional_photos, main_photo }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    adaptiveHeight: isMobile ? true : false,
   };
 
   return (
