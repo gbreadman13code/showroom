@@ -5,7 +5,7 @@ import PalletSwitch from "../../../elements/PalletSwitch/PalletSwitch";
 import styles from "../MainPage.module.scss";
 import DescriptionSlider from "./Slider/DescriptionSlider";
 
-const MainPageContent = ({ data }) => {
+const MainPageContent = ({ data, sliderContent }) => {
   const { image, title, sub_title, description } = data;
   // const [test] = test;
   // console.log(test);
@@ -22,7 +22,10 @@ const MainPageContent = ({ data }) => {
           <PalletSwitch title={title} />
         </div>
         <div className={styles.slider_wrapper}>
-          <DescriptionSlider description={description} />
+          <DescriptionSlider
+            description={description}
+            sliderContent={sliderContent}
+          />
         </div>
       </div>
     </div>

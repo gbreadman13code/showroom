@@ -43,8 +43,11 @@ const MainPage = () => {
   };
 
   let pages = [];
+  let sliderText;
   if (exhibitions) {
     let firstExhibition = exhibitions[0];
+    sliderText = firstExhibition.description;
+
     let exhibition_pictures = firstExhibition.pictures;
     let pagesQuantity = Math.ceil(exhibition_pictures.length / IMAGES_PER_PAGE);
     pages = parsePicturesArray(
@@ -53,6 +56,7 @@ const MainPage = () => {
       IMAGES_PER_PAGE
     );
   }
+
   const offsetObject = useEffect(() => {
     if (data.length > 0) {
       setExhibitions(data);
@@ -88,7 +92,7 @@ const MainPage = () => {
           (isMobile ? (
             <MobileMainPageContent data={exhibitions[0]} />
           ) : (
-            <MainPageContent data={exhibitions[0]} />
+            <MainPageContent data={exhibitions[0]} sliderContent={sliderText} />
           ))}
       </Container>
       {isMobile ? (
