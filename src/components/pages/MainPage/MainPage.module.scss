@@ -25,7 +25,8 @@
     max-height: 443px;
     margin-right: 50px;
 
-    filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 0.3));
+    // filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 0.3));
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
 
     // box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.55);
     // -webkit-box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.55);

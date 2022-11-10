@@ -90,7 +90,10 @@ const MainPage = () => {
       <Container>
         {exhibitions &&
           (isMobile ? (
-            <MobileMainPageContent data={exhibitions[0]} />
+            <MobileMainPageContent
+              data={exhibitions[0]}
+              sliderContent={sliderText}
+            />
           ) : (
             <MainPageContent data={exhibitions[0]} sliderContent={sliderText} />
           ))}

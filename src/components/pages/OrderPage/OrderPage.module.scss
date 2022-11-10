@@ -343,7 +343,9 @@
       display: block;
       width: 25px;
       height: 25px;
-      filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.2));
+      // filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.2));
+
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
 
       circle {
         fill: white;

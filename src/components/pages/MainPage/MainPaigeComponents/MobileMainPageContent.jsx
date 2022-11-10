@@ -5,7 +5,7 @@ import PalletSwitch from "../../../elements/PalletSwitch/PalletSwitch";
 import styles from "../MainPage.module.scss";
 import DescriptionSlider from "./Slider/DescriptionSlider";
 
-const MobileMainPageContent = ({ data }) => {
+const MobileMainPageContent = ({ data, sliderContent }) => {
   const { image, title, sub_title, description } = data;
 
   return (
@@ -19,7 +19,10 @@ const MobileMainPageContent = ({ data }) => {
       </div>
 
       <div className={styles.mobile_slider_wrapper}>
-        <DescriptionSlider description={description} />
+        <DescriptionSlider
+          description={description}
+          sliderContent={sliderContent}
+        />
       </div>
 
       {/* <ButtonsBlot /> */}
