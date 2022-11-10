@@ -1,3 +1,17 @@
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+dl,
+dt,
+dd {
+  margin: 0;
+  padding: 0;
+  font-style: normal;
+}
+
 .App {
   text-align: center;
 }

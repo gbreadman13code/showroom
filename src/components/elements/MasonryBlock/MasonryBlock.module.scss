@@ -1,12 +1,30 @@
 .my_masonry_grid {
-    display: -webkit-box; /* Not needed if autoprefixing */
-    display: -ms-flexbox; /* Not needed if autoprefixing */
-    display: flex;
-    margin-left: -30px; /* gutter size offset */
-    width: auto;
+  // display: -webkit-box; /* Not needed if autoprefixing */
+  // display: -ms-flexbox; /* Not needed if autoprefixing */
+  // display: flex;
+  // margin-left: -30px; /* gutter size offset */
+  // width: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 30px;
+  // width: auto;
+
+  &_mobile {
+    // outline: 5px solid red;
+    grid-template-columns: 1fr;
+    column-gap: none;
+  }
 }
 
 .my_masonry_grid_column {
-    padding-left: 30px; /* gutter size */
-    background-clip: padding-box;
+  // padding-left: 30px; /* gutter size */
+  // background-clip: padding-box;
+  width: 100% !important;
+
+  &_mobile {
+    img {
+      margin-right: 0;
+      max-width: 100% !important;
+    }
+  }
 }

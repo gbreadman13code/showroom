@@ -1,0 +1,37 @@
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 38%;
+  right: 0;
+
+  li {
+    list-style: none;
+  }
+
+  // мобильная версия
+  &_mobile {
+    position: relative;
+    top: unset;
+    left: 50%;
+    bottom: 0;
+    z-index: 100;
+
+    transform: translateX(-50%);
+
+    width: min-content;
+    height: 55px;
+    padding: 0 35px;
+    margin-top: 15px;
+
+    background-image: url("../../../assets/img/pallet-blot.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 55px;
+
+    a {
+      margin: 0 7px;
+    }
+  }
+}

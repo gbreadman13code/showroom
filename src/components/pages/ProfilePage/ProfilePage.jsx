@@ -89,9 +89,10 @@ const ProfilePage = () => {
                   {currentProfile.additional_photos.length > 0 ? (
                     <ProfileSlider
                       additional_photos={currentProfile.additional_photos}
+                      main_photo={currentProfile.thumbnail}
                     />
                   ) : (
-                    <div className={styles.slide}>
+                    <div className={`${styles.slide} ${styles.slide_single}`}>
                       <img
                         src={MEDIA_URL + currentProfile.thumbnail}
                         alt={currentProfile.title}
@@ -101,27 +102,35 @@ const ProfilePage = () => {
                 </div>
 
                 <div className={styles.profileInfo}>
-                  <div>
-                    <span className={styles.info_title}>Материал</span>
-                    <span className={styles.info_param}>
+                  <dl>
+                    <dt className={styles.info_title}>Материал</dt>
+                    <dd className={styles.info_param}>
                       {currentProfile.material
                         ? currentProfile.material
                         : "Не указано"}
-                    </span>
-                    <span className={styles.info_title}>Техника</span>
-                    <span className={styles.info_param}>
+                    </dd>
+
+                    <dt className={styles.info_title}>Техника</dt>
+                    <dd className={styles.info_param}>
                       {currentProfile.technique
                         ? currentProfile.technique
                         : "Не указано"}
-                    </span>
-                    <span className={styles.info_title}>Размер</span>
-                    <span className={styles.info_param}>
+                    </dd>
+                    <dt className={styles.info_title}>Размер</dt>
+                    <dd className={styles.info_param}>
                       {currentProfile.size ? currentProfile.size : "Не указано"}
-                    </span>
-                  </div>
+                    </dd>
+                  </dl>
+
                   <div className={styles.buy_block}>
                     <span className={styles.price}>
-                      {currentProfile.price} ₽
+                      {currentProfile.price
+                        .slice(0, -3)
+                        .replace(
+                          /(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g,
+                          "$1" + " "
+                        )}{" "}
+                      ₽
                     </span>
                     <button
                       className={
@@ -131,7 +140,7 @@ const ProfilePage = () => {
                       disabled={currentProfile.is_bought || !canIBuy}
                     >
                       {currentProfile.is_bought
-                        ? "Продано"
+                        ? "В частной коллекции"
                         : !canIBuy
                         ? "В корзине"
                         : "В корзину"}
