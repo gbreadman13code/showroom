@@ -59,8 +59,30 @@ const MainPage = () => {
     }
   }, [data]);
 
+  // Подгрузка фото
+
+  // let observer = new IntersectionObserver(
+  //   (entries, observer) => {
+  //     entries.forEach((entry) => {
+  //       if (entry.isIntersecting) {
+  //         entry.target.classList.remove(".hide_image");
+  //       }
+  //     });
+  //   },
+  //   {
+  //     threshold: 0.5,
+  //   }
+  // );
+
+  // for (let item of document.querySelectorAll("div .ExhibitionImage*")) {
+  //   observer.observe(item);
+  // }
+
+  // console.log(document.querySelectorAll("div .ExhibitionImage*"));
+
   return (
     <PageTemplate>
+      <canvas id="noisy-canvas" className={styles.noisy_canvas}></canvas>
       <Container>
         {exhibitions &&
           (isMobile ? (

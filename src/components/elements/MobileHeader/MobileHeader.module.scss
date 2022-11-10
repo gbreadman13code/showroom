@@ -42,6 +42,17 @@
         height: 25px;
         background-color: #d6338a;
       }
+
+      &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: block;
+        width: 1px;
+        height: 25px;
+        background-color: #d6338a;
+      }
     }
   }
 }

@@ -179,3 +179,18 @@
     }
   }
 }
+
+.noisy_canvas {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 500px;
+  background-image: url("../../../assets/img/white_noise_6.gif");
+
+  @media (max-width: 1000px) {
+    height: 1200px;
+  }
+}
