@@ -16,7 +16,7 @@ const PalletSwitch = (props) => {
     >
       <p>{props.title}</p>
 
-      <button
+      {/* <button
         className={`${styles.button__left} ${styles.button}`}
         type="button"
       >
@@ -28,7 +28,7 @@ const PalletSwitch = (props) => {
         type="button"
       >
         <span></span>
-      </button>
+      </button> */}
 
       <img src={pallet} alt="" />
     </div>
