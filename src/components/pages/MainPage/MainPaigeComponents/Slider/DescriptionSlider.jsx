@@ -21,7 +21,7 @@ const DescriptionSlider = ({ sliderContent }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    adaptiveHeight: true,
+    // adaptiveHeight: true,
   };
 
   let description = sliderContent.split("\n");

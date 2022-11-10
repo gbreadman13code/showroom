@@ -1,7 +1,8 @@
 .picture_wrapper {
   position: relative;
   margin-bottom: 20px;
-  filter: drop-shadow(4px 3px 4px rgba(0, 0, 0, 0.25));
+  // filter: drop-shadow(4px 3px 4px rgba(0, 0, 0, 0.25));
+  box-shadow: 4px 3px 4px rgba(0, 0, 0, 0.25);
 
   border: 8px solid #d4d8da;
 
@@ -46,7 +47,8 @@
   margin-bottom: 20px;
 
   border: 8px solid #d4d8da;
-  filter: drop-shadow(4px 3px 4px rgba(0, 0, 0, 0.25));
+  // filter: drop-shadow(4px 3px 4px rgba(0, 0, 0, 0.25));
+  box-shadow: 4px 3px 4px rgba(0, 0, 0, 0.25);
 
   .picture_info {
     position: absolute;

@@ -1,6 +1,6 @@
 .switch {
   position: absolute;
-  bottom: -170px;
+  bottom: -154px;
   left: 50%;
 
   transform: translateX(-44%);
@@ -24,6 +24,7 @@
 
     height: 100%;
     // object-fit: contain;
+    box-shadow: none;
   }
 
   &__mobile {
