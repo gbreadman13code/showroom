@@ -18,7 +18,7 @@ const MainPageContent = ({ data }) => {
         <h1>{title}</h1>
         <h2>{sub_title}</h2>
         <div>
-          <ButtonsBlot />
+          {/* <ButtonsBlot /> */}
           <PalletSwitch title={title} />
         </div>
         <div className={styles.slider_wrapper}>

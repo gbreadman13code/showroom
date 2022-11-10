@@ -22,7 +22,7 @@ const MobileMainPageContent = ({ data }) => {
         <DescriptionSlider description={description} />
       </div>
 
-      <ButtonsBlot />
+      {/* <ButtonsBlot /> */}
       <PalletSwitch title={title} />
     </div>
   );
