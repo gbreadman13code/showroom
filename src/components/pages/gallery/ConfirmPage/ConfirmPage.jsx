@@ -32,7 +32,7 @@ const ConfirmPage = () => {
         setAnswer(res);
       });
     }
-  }, []);
+  }, [navigate]);
 
   return (
     <PageTemplate>

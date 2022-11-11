@@ -54,7 +54,7 @@ const OrderPage = () => {
               }}>
               Корзина
             </span>
-            <Link to={'/'}>
+            <Link to={'/gallery/'}>
               {' '}
               <MobileGoBackArrow />
             </Link>
@@ -102,7 +102,7 @@ const OrderPage = () => {
               </div>
               <div className={styles.button_group}>
                 {!isMobile && (
-                  <Link to={'/'}>
+                  <Link to={'/gallery/'}>
                     {' '}
                     <GoBackArrow /> Назад
                   </Link>

@@ -72,7 +72,7 @@ const ProfilePage = () => {
                   <span className={styles.title}>{currentProfile.title}</span>
                   <span className={styles.author}>{currentProfile.author}</span>
                 </div>
-                <Link to='/'>
+                <Link to='/gallery/'>
                   {isMobile ? (
                     <MobileGoBackArrow />
                   ) : (

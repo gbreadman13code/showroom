@@ -21,12 +21,12 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element={<MainPage />} />
-        <Route path='/wishlist' element={<WishListPage />} />
-        <Route path='/order' element={<OrderPage />} />
-        <Route path='/confirm' element={<ConfirmPage />} />
-        <Route path='/payment_and_delivery' element={<ContactsPage />} />
-        <Route path='/profile/:id' element={<ProfilePage />} />
+        <Route path='/gallery' element={<MainPage />} />
+        <Route path='/gallery/wishlist' element={<WishListPage />} />
+        <Route path='/gallery/order' element={<OrderPage />} />
+        <Route path='/gallery/confirm' element={<ConfirmPage />} />
+        <Route path='/gallery/payment_and_delivery' element={<ContactsPage />} />
+        <Route path='/gallery/profile/:id' element={<ProfilePage />} />
       </Routes>
     </>
   );
