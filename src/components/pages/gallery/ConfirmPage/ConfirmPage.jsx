@@ -26,7 +26,7 @@ const ConfirmPage = () => {
     if (window.localStorage.paymentsIndustry) {
       getPaymentInfo().then((res) => {
         if (!res) {
-          navigate('/');
+          navigate('/gallery');
           return;
         }
         setAnswer(res);
