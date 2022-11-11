@@ -2,15 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import HeaderButtonGroup from '../HeaderButtonGroup/HeaderButtonGroup';
 import Logo from '../Logo/Logo';
-import useMobileDetect from 'use-mobile-detect-hook';
-import Burger from '../Burger/Burger';
 
 import styles from './Header.module.scss';
 
 const Header = () => {
-  const detectMobile = useMobileDetect();
-  const isMobile = detectMobile.isMobile();
-
   return (
     <div className={styles.header}>
       <div style={{ display: 'flex', alignItems: 'center' }}>

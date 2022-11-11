@@ -53,14 +53,13 @@ const MainPage = () => {
     pages = parsePicturesArray(exhibition_pictures, pagesQuantity, IMAGES_PER_PAGE);
   }
 
-  const offsetObject = useEffect(() => {
+  useEffect(() => {
     if (data.length > 0) {
       setExhibitions(data);
     }
   }, [data]);
 
   // Подгрузка фото
-
   // let observer = new IntersectionObserver(
   //   (entries, observer) => {
   //     entries.forEach((entry) => {

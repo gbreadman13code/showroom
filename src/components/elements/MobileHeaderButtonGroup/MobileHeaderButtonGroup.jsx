@@ -1,25 +1,18 @@
 import React from 'react';
-import SearchField from '../SearchField/SearchField';
-import LikeDisActive from '../../../assets/img/like-disactive.svg';
-import LikeActive from '../../../assets/img/like-active.svg';
 import Garbadge from '../../../assets/img/garbadge.svg';
-import Colors from '../../../assets/img/colorsIcon.svg';
 
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import styles from './MobileHeaderButtonGroup.module.scss';
 import { useSelector } from 'react-redux';
 
 const MobileHeaderButtonGroup = () => {
-  const location = useLocation();
-  const pathname = location.pathname === '/wishlist' ? true : false;
-
   const order = useSelector((state) => state.order.orderList);
 
   let orderCount = 0;
 
   if (order.length > 0) {
-    order.map((item) => {
+    order.forEach((item) => {
       orderCount += item.count;
     });
   }

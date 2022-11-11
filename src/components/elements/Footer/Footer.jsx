@@ -5,7 +5,6 @@ import FooterLogo from './FooterLogo';
 import Location from '../../../assets/img/gps.svg';
 import Phone from '../../../assets/img/phone.svg';
 import Mail from '../../../assets/img/mail.svg';
-import Vk from '../../../assets/img/vk.svg';
 import VkFix from '../../../assets/img/vk.png';
 import tg from '../../../assets/img/tg.png';
 

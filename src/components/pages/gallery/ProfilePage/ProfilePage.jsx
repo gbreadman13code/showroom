@@ -30,12 +30,12 @@ const ProfilePage = () => {
 
   useEffect(() => {
     if (!item) return;
-    setCurrentProfile(item.pictures.find((point) => point.id == params.id));
-  }, [item]);
+    setCurrentProfile(item.pictures.find((point) => point.id === params.id));
+  }, [item, params.id]);
 
   useEffect(() => {
-    setCurrentOrder(orderList.find((point) => point.id == params.id));
-  }, [orderList]);
+    setCurrentOrder(orderList.find((point) => point.id === params.id));
+  }, [orderList, params.id]);
 
   const addToOrder = () => {
     let newObj = { count: 1 };
@@ -59,7 +59,7 @@ const ProfilePage = () => {
   useEffect(() => {
     if (!orderList || !currentProfile) return;
     if (orderList.count === currentProfile.quantity) setQuantity(false);
-  }, [orderList]);
+  }, [currentProfile, orderList]);
 
   return (
     <PageTemplate>
@@ -113,7 +113,7 @@ const ProfilePage = () => {
 
                   <div className={styles.buy_block}>
                     <span className={styles.price}>
-                      {currentProfile.price.slice(0, -3).replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, '$1' + ' ')} ₽
+                      {currentProfile.price.slice(0, -3).replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, '$1 ')} ₽
                     </span>
                     <button
                       className={currentProfile.is_bought ? styles.saled : undefined}

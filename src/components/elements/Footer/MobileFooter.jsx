@@ -7,7 +7,6 @@ import Phone from '../../../assets/img/mobile-phone.svg';
 import Mail from '../../../assets/img/mobile-mail.svg';
 import PinkSlash from '../../../assets/img/pink-slash.svg';
 
-import Vk from '../../../assets/img/mob-vk.svg';
 import VkFix from '../../../assets/img/vk.png';
 import Tg from '../../../assets/img/tg.png';
 

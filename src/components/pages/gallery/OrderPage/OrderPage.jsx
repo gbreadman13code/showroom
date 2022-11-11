@@ -28,7 +28,7 @@ const OrderPage = () => {
   useEffect(() => {
     if (order) {
       let summuryCounter = 0;
-      order.map((item) => {
+      order.forEach((item) => {
         summuryCounter += item.price * item.count;
       });
       setSummury(summuryCounter);
@@ -97,7 +97,7 @@ const OrderPage = () => {
               <div className={styles.summury}>
                 <p>
                   {/* Итого:{" "} */}
-                  {String(summury).replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, '$1' + ' ')} ₽
+                  {String(summury).replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, '$1 ')} ₽
                 </p>
               </div>
               <div className={styles.button_group}>
