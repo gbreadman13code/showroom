@@ -10,6 +10,7 @@ import getExhibitions from './redux/requests/getExhibitions';
 
 import ContactsPage from './components/pages/gallery/ContactsPage/ContactsPage';
 import ConfirmPage from './components/pages/gallery/ConfirmPage/ConfirmPage';
+import PrimaryPage from './components/pages/events/PrimaryPage/PrimaryPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ function App() {
   return (
     <>
       <Routes>
+        <Route path='/' element={<PrimaryPage />} />
         <Route path='/gallery' element={<MainPage />} />
         <Route path='/gallery/wishlist' element={<WishListPage />} />
         <Route path='/gallery/order' element={<OrderPage />} />
