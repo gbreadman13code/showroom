@@ -6,7 +6,7 @@ import styles from './ConfirmPage.module.scss';
 import { getPaymentInfo } from '../../../../redux/requests/getPaymentInfo';
 
 import { ReactComponent as SuccessIcon } from '../../../../assets/img/success.svg';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import useMobileDetect from 'use-mobile-detect-hook';
 
