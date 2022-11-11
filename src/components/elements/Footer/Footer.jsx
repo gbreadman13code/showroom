@@ -36,7 +36,7 @@ const Footer = () => {
             </li>
             <li>
               <img src={Mail} alt="mail" />{" "}
-              <a href="mailto:info@industry.art">info@industry.art</a>
+              <a href="mailto:place@industry.art">place@industry.art</a>
             </li>
             <li className={styles.bottom_of_footer}>
               <p>
