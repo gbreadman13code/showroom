@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import Container from "../../templates/Container";
-import PageTemplate from "../../templates/PageTemplate";
+import React, { useEffect, useState } from 'react';
+import Container from '../../../templates/Container';
+import PageTemplate from '../../../templates/PageTemplate';
 
-import styles from "./MainPage.module.scss";
-import { useSelector } from "react-redux";
-import MainPageContent from "./MainPaigeComponents/MainPageContent";
-import ColorWrapper from "../../elements/ColorWrapper/ColorWrapper";
-import MasonryBlock from "../../elements/MasonryBlock/MasonryBlock";
-import ExhibitionImage from "../../elements/ExhibitionImage/ExhibitionImage";
-import MobileMainPageContent from "./MainPaigeComponents/MobileMainPageContent";
-import useMobileDetect from "use-mobile-detect-hook";
-import background from "../../../assets/img/promo_background.jpg";
+import styles from './MainPage.module.scss';
+import { useSelector } from 'react-redux';
+import MainPageContent from './MainPaigeComponents/MainPageContent';
+import ColorWrapper from '../../../elements/ColorWrapper/ColorWrapper';
+import MasonryBlock from '../../../elements/MasonryBlock/MasonryBlock';
+import ExhibitionImage from '../../../elements/ExhibitionImage/ExhibitionImage';
+import MobileMainPageContent from './MainPaigeComponents/MobileMainPageContent';
+import useMobileDetect from 'use-mobile-detect-hook';
+import background from '../../../../assets/img/promo_background.jpg';
 
 const MainPage = () => {
   const [exhibitions, setExhibitions] = useState(false);
@@ -20,7 +20,7 @@ const MainPage = () => {
 
   const data = useSelector((state) => state.exhibitions.exhibitions);
 
-  const COLORS = ["#4F4B98", "#F0E400", "#2CA99B", "#D6358C"];
+  const COLORS = ['#4F4B98', '#F0E400', '#2CA99B', '#D6358C'];
 
   const IMAGES_PER_PAGE = 12;
 
@@ -50,11 +50,7 @@ const MainPage = () => {
 
     let exhibition_pictures = firstExhibition.pictures;
     let pagesQuantity = Math.ceil(exhibition_pictures.length / IMAGES_PER_PAGE);
-    pages = parsePicturesArray(
-      exhibition_pictures,
-      pagesQuantity,
-      IMAGES_PER_PAGE
-    );
+    pages = parsePicturesArray(exhibition_pictures, pagesQuantity, IMAGES_PER_PAGE);
   }
 
   const offsetObject = useEffect(() => {
@@ -86,14 +82,11 @@ const MainPage = () => {
 
   return (
     <PageTemplate>
-      <canvas id="noisy-canvas" className={styles.noisy_canvas}></canvas>
+      <canvas id='noisy-canvas' className={styles.noisy_canvas}></canvas>
       <Container>
         {exhibitions &&
           (isMobile ? (
-            <MobileMainPageContent
-              data={exhibitions[0]}
-              sliderContent={sliderText}
-            />
+            <MobileMainPageContent data={exhibitions[0]} sliderContent={sliderText} />
           ) : (
             <MainPageContent data={exhibitions[0]} sliderContent={sliderText} />
           ))}
@@ -105,7 +98,7 @@ const MainPage = () => {
       ) : (
         <div className={styles.paletteWrapper}>
           <div className={styles.palette_bg}>
-            <img src={background} alt="" />
+            <img src={background} alt='' />
           </div>
         </div>
       )}

@@ -9,7 +9,6 @@
     "babel-plugin-transform-react-statements": "^0.7.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-image-palette": "^0.2.4",
     "react-input-mask": "^3.0.0-alpha.2",
     "react-masonry-css": "^1.0.16",
     "react-redux": "^8.0.4",

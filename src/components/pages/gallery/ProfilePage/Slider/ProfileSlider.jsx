@@ -1,13 +1,12 @@
-import React from "react";
-import Slider from "react-slick";
+import React from 'react';
+import Slider from 'react-slick';
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
-import styles from "../ProfilePage.module.scss";
-import sliderStyles from "./ProfileSlider.scss";
-import { MEDIA_URL } from "../../../../redux/API/BASE_URL";
-import useMobileDetect from "use-mobile-detect-hook";
+import styles from '../ProfilePage.module.scss';
+import { MEDIA_URL } from '../../../../../redux/API/BASE_URL';
+import useMobileDetect from 'use-mobile-detect-hook';
 
 const ProfileSlider = ({ additional_photos, main_photo }) => {
   const detectMobile = useMobileDetect();
@@ -27,7 +26,7 @@ const ProfileSlider = ({ additional_photos, main_photo }) => {
     <Slider {...settings}>
       {[{ thumbnail: main_photo }, ...additional_photos].map((item, index) => (
         <div key={index} className={styles.slide}>
-          <img src={MEDIA_URL + item.thumbnail} alt="работа" />
+          <img src={MEDIA_URL + item.thumbnail} alt='работа' />
         </div>
       ))}
     </Slider>

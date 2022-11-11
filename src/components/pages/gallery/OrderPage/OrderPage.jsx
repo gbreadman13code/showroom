@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
-import Container from "../../templates/Container";
-import PageTemplate from "../../templates/PageTemplate";
+import React, { useEffect, useState } from 'react';
+import Container from '../../../templates/Container';
+import PageTemplate from '../../../templates/PageTemplate';
 
-import styles from "./OrderPage.module.scss";
-import { useSelector } from "react-redux";
-import OrderItem from "./OrderItem";
-import { Link, useNavigate } from "react-router-dom";
-import { MEDIA_URL } from "../../../redux/API/BASE_URL";
+import styles from './OrderPage.module.scss';
+import { useSelector } from 'react-redux';
+import OrderItem from './OrderItem';
+import { Link, useNavigate } from 'react-router-dom';
+import { MEDIA_URL } from '../../../../redux/API/BASE_URL';
 
-import { ReactComponent as GoBackArrow } from "../../../assets/img/arrow-left.svg";
-import { ReactComponent as MobileGoBackArrow } from "../../../assets/img/mobile-left-arrow.svg";
-import OrderModal from "../../elements/OrderModal/OrderModal";
-import MobileOrderItem from "./MobileOrderItem";
+import { ReactComponent as GoBackArrow } from '../../../../assets/img/arrow-left.svg';
+import { ReactComponent as MobileGoBackArrow } from '../../../../assets/img/mobile-left-arrow.svg';
+import OrderModal from '../../../elements/OrderModal/OrderModal';
+import MobileOrderItem from './MobileOrderItem';
 
-import useMobileDetect from "use-mobile-detect-hook";
+import useMobileDetect from 'use-mobile-detect-hook';
 
 const OrderPage = () => {
   const detectMobile = useMobileDetect();
@@ -42,22 +42,20 @@ const OrderPage = () => {
         {isMobile && (
           <div
             style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
               marginTop: 30,
-            }}
-          >
+            }}>
             <span
               style={{
                 fontSize: 30,
                 fontWeight: 500,
-              }}
-            >
+              }}>
               Корзина
             </span>
-            <Link to={"/"}>
-              {" "}
+            <Link to={'/'}>
+              {' '}
               <MobileGoBackArrow />
             </Link>
           </div>
@@ -95,38 +93,23 @@ const OrderPage = () => {
                     quantity={item.quantity}
                   />
                 ))}
-            <div
-              className={
-                isMobile
-                  ? styles.mobile_order_page_footer
-                  : styles.order_page_footer
-              }
-            >
+            <div className={isMobile ? styles.mobile_order_page_footer : styles.order_page_footer}>
               <div className={styles.summury}>
                 <p>
                   {/* Итого:{" "} */}
-                  {String(summury).replace(
-                    /(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g,
-                    "$1" + " "
-                  )}{" "}
-                  ₽
+                  {String(summury).replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, '$1' + ' ')} ₽
                 </p>
               </div>
               <div className={styles.button_group}>
                 {!isMobile && (
-                  <Link to={"/"}>
-                    {" "}
+                  <Link to={'/'}>
+                    {' '}
                     <GoBackArrow /> Назад
                   </Link>
                 )}
-                <button onClick={() => setIsShowModal(true)}>
-                  Оформить заказ
-                </button>
+                <button onClick={() => setIsShowModal(true)}>Оформить заказ</button>
                 {isMobile && (
-                  <button
-                    style={{ backgroundColor: "#D4D8DA", color: "#50535A" }}
-                    onClick={() => navigate("/")}
-                  >
+                  <button style={{ backgroundColor: '#D4D8DA', color: '#50535A' }} onClick={() => navigate('/')}>
                     Продолжить покупки
                   </button>
                 )}
@@ -136,19 +119,17 @@ const OrderPage = () => {
         ) : (
           <div
             style={{
-              width: "100%",
+              width: '100%',
               height: 250,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
             <p
               style={{
                 fontSize: 40,
                 fontWeight: 500,
-              }}
-            >
+              }}>
               В корзине пусто
             </p>
           </div>

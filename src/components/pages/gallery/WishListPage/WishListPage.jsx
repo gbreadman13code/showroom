@@ -1,8 +1,6 @@
-import React from "react";
-import Container from "../../templates/Container";
-import PageTemplate from "../../templates/PageTemplate";
-
-import styles from "./WishListPage.module.scss";
+import React from 'react';
+import Container from '../../../templates/Container';
+import PageTemplate from '../../../templates/PageTemplate';
 
 const WishListPage = () => {
   return (

@@ -1,9 +1,8 @@
-import React from "react";
-import ButtonsBlot from "../../../elements/ButtonsBlot/ButtonsBlot";
-import PalletSwitch from "../../../elements/PalletSwitch/PalletSwitch";
+import React from 'react';
+import PalletSwitch from '../../../../elements/PalletSwitch/PalletSwitch';
 
-import styles from "../MainPage.module.scss";
-import DescriptionSlider from "./Slider/DescriptionSlider";
+import styles from '../MainPage.module.scss';
+import DescriptionSlider from './Slider/DescriptionSlider';
 
 const MainPageContent = ({ data, sliderContent }) => {
   const { image, title, sub_title, description } = data;
@@ -22,10 +21,7 @@ const MainPageContent = ({ data, sliderContent }) => {
           <PalletSwitch title={title} />
         </div>
         <div className={styles.slider_wrapper}>
-          <DescriptionSlider
-            description={description}
-            sliderContent={sliderContent}
-          />
+          <DescriptionSlider description={description} sliderContent={sliderContent} />
         </div>
       </div>
     </div>
