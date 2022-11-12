@@ -6,6 +6,7 @@ import logo_2 from '../../../../assets/img/white_logos/white-logo_02.svg';
 import logo_3 from '../../../../assets/img/white_logos/white-logo_03.svg';
 import logo_4 from '../../../../assets/img/white_logos/white-logo_04.svg';
 import Container from '../../../templates/Container';
+import PromoSlider from './Slider/PromoSlider';
 
 const PromoSection = () => {
   const logos = [logo_1, logo_2, logo_3, logo_4];
@@ -27,10 +28,13 @@ const PromoSection = () => {
 
             <button className={styles.regisrtation}>Регистрация</button>
 
-            <div className={styles.slider}>
+            {/* <div className={styles.slider}>
               {logos.map((item) => {
-                return <img src={item} alt='logo' />;
+                return <img src={item} alt="logo" />;
               })}
+            </div> */}
+            <div className={styles.slider}>
+              <PromoSlider slides={logos} />
             </div>
           </div>
         </div>
