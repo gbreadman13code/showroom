@@ -3,6 +3,7 @@ import PageTemplate from '../../../templates/PageTemplate';
 
 import useMobileDetect from 'use-mobile-detect-hook';
 import PromoSection from '../PromoSection/PromoSection';
+import PromoPaths from '../PromoPaths/PromoPaths';
 
 const PrimaryPage = () => {
   const detectMobile = useMobileDetect();
@@ -11,6 +12,7 @@ const PrimaryPage = () => {
   return (
     <PageTemplate header='absolute'>
       <PromoSection />
+      <PromoPaths />
     </PageTemplate>
   );
 };

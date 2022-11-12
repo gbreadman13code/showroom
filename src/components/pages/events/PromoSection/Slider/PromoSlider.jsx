@@ -7,7 +7,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import styles from '../PromoSection.module.scss';
 import useMobileDetect from 'use-mobile-detect-hook';
 
-const PromoSlider = (props) => {
+const PromoSlider = ({ slides }) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
@@ -23,13 +23,19 @@ const PromoSlider = (props) => {
   };
 
   return (
-    <Slider {...settings}>
-      {props.slides.map((item, index) => (
-        <div key={index} className={styles.slide}>
-          <img src={item} alt='logo' />
+    // <Slider {...settings}>
+    slides.map((item) => {
+      return item.link ? (
+        <a href={item.link} key={item.id} className={styles.slide}>
+          <img src={item.image} alt='logo' />
+        </a>
+      ) : (
+        <div key={item.id} className={styles.slide}>
+          <img src={item.image} alt='logo' />
         </div>
-      ))}
-    </Slider>
+      );
+    })
+    // </Slider>
   );
 };
 
