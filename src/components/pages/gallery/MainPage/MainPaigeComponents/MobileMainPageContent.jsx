@@ -1,10 +1,11 @@
 import React from 'react';
 import PalletSwitch from '../../../../elements/PalletSwitch/PalletSwitch';
+import ButtonsBlot from '../../../../elements/ButtonsBlot/ButtonsBlot';
 
 import styles from '../MainPage.module.scss';
 import DescriptionSlider from './Slider/DescriptionSlider';
 
-const MobileMainPageContent = ({ data, sliderContent }) => {
+const MobileMainPageContent = ({ data, sliderContent, activeExhibition, setActiveExhibition, exhibitionsCount }) => {
   const { image, title, sub_title, description } = data;
 
   return (
@@ -21,8 +22,17 @@ const MobileMainPageContent = ({ data, sliderContent }) => {
         <DescriptionSlider description={description} sliderContent={sliderContent} />
       </div>
 
-      {/* <ButtonsBlot /> */}
-      <PalletSwitch title={title} />
+      <ButtonsBlot
+        activeExhibition={activeExhibition}
+        setActiveExhibition={setActiveExhibition}
+        exhibitionsCount={exhibitionsCount}
+      />
+      <PalletSwitch
+        title={title}
+        activeExhibition={activeExhibition}
+        setActiveExhibition={setActiveExhibition}
+        isActivateButtons={exhibitionsCount > 2}
+      />
     </div>
   );
 };

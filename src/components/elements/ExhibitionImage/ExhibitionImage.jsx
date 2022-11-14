@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { InView } from 'react-intersection-observer';
 
 // import { ReactComponent as DisLike } from "../../../assets/img/like-nonfill.svg";
 // import { ReactComponent as Like } from "../../../assets/img/like-active.svg";
@@ -29,35 +30,41 @@ const ExhibitionImage = ({ isLiked = false, url, author, name, id }) => {
   }, [imageWidthRef, isLoadImage]);
 
   return (
-    <div className={isMobile ? styles.mobile_picture_wrapper : [`${styles.picture_wrapper} ${styles.hide_image}`]}>
-      <Link to={'/gallery/profile/' + id}>
-        <div>
-          <img
-            src={isLoadImage ? 'https://place.industry.art' + url : loader}
-            alt={author}
-            style={isMobile ? { maxWidth: '94%' } : { maxWidth: '100%' }}
-            ref={imageWidthRef}
-            onLoad={() => setIsLoad(true)}
-            className={styles.image}
-          />
-        </div>
-      </Link>
+    <InView threshold={0} triggerOnce={true}>
+      {({ inView, ref, entry }) => (
+        <div ref={ref}>
+          <div data-status={inView ? 'show' : 'hide'} className={styles.picture_wrapper}>
+            <Link to={'/gallery/profile/' + id}>
+              <div>
+                <img
+                  src={isLoadImage ? 'https://place.industry.art' + url : loader}
+                  alt={author}
+                  style={isMobile ? { maxWidth: '94%' } : { maxWidth: '100%' }}
+                  ref={imageWidthRef}
+                  onLoad={() => setIsLoad(true)}
+                  className={styles.image}
+                />
+              </div>
+            </Link>
 
-      {isLoadImage && (
-        <div className={styles.picture_info}>
-          <div>
-            <p>{author}</p>
-            <p>{name}</p>
+            {isLoadImage && (
+              <div className={styles.picture_info}>
+                <div>
+                  <p>{author}</p>
+                  <p>{name}</p>
+                </div>
+                {/* <Like /> */}
+                {/* {isLiked ? (
+                                <Like onClick={() => setLike(id)} />
+                              ) : (
+                                <DisLike onClick={() => setLike(id)} />
+                              )} */}
+              </div>
+            )}
           </div>
-          {/* <Like /> */}
-          {/* {isLiked ? (
-            <Like onClick={() => setLike(id)} />
-          ) : (
-            <DisLike onClick={() => setLike(id)} />
-          )} */}
         </div>
       )}
-    </div>
+    </InView>
   );
 };
 

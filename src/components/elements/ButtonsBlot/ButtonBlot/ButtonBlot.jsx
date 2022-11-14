@@ -1,20 +1,21 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import styles from "./ButtonBlot.module.scss";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import styles from './ButtonBlot.module.scss';
 
-const ButtonBlot = (props) => {
+const ButtonBlot = ({ id, image, isActive, setActiveExhibition }) => {
   return (
     <li>
-      <NavLink
-        to={"/exhibition_" + props.id}
-        className={styles.blot}
-
+      <button
+        className={isActive ? `${styles.blot} ${styles.active}` : styles.blot}
+        onClick={() => {
+          setActiveExhibition(id);
+        }}
         // className={(isActive) => styles.blot + (!isActive ? " active" : "")}
 
         // activeClassName="selected"
       >
-        {props.image}
-      </NavLink>
+        {image}
+      </button>
     </li>
   );
 };

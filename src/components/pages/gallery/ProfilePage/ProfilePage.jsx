@@ -30,11 +30,13 @@ const ProfilePage = () => {
 
   useEffect(() => {
     if (!item) return;
-    setCurrentProfile(item.pictures.find((point) => point.id === params.id));
+    console.log(item.pictures.find((point) => point.id === +params.id));
+    console.log(params.id);
+    setCurrentProfile(item.pictures.find((point) => point.id === +params.id));
   }, [item, params.id]);
 
   useEffect(() => {
-    setCurrentOrder(orderList.find((point) => point.id === params.id));
+    setCurrentOrder(orderList.find((point) => point.id === +params.id));
   }, [orderList, params.id]);
 
   const addToOrder = () => {
