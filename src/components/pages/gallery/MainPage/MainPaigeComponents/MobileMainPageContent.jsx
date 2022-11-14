@@ -27,7 +27,12 @@ const MobileMainPageContent = ({ data, sliderContent, activeExhibition, setActiv
         setActiveExhibition={setActiveExhibition}
         exhibitionsCount={exhibitionsCount}
       />
-      <PalletSwitch title={title} activeExhibition={activeExhibition} setActiveExhibition={setActiveExhibition} />
+      <PalletSwitch
+        title={title}
+        activeExhibition={activeExhibition}
+        setActiveExhibition={setActiveExhibition}
+        isActivateButtons={exhibitionsCount > 2}
+      />
     </div>
   );
 };

@@ -21,7 +21,12 @@ const MainPageContent = ({ data, sliderContent, activeExhibition, setActiveExhib
             setActiveExhibition={setActiveExhibition}
             exhibitionsCount={exhibitionsCount}
           />
-          <PalletSwitch title={title} activeExhibition={activeExhibition} setActiveExhibition={setActiveExhibition} />
+          <PalletSwitch
+            title={title}
+            activeExhibition={activeExhibition}
+            setActiveExhibition={setActiveExhibition}
+            isActivateButtons={exhibitionsCount > 1}
+          />
         </div>
         <div className={styles.slider_wrapper}>
           <DescriptionSlider description={description} sliderContent={sliderContent} />

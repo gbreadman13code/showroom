@@ -15,6 +15,9 @@ const ButtonsBlot = ({ activeExhibition, setActiveExhibition, exhibitionsCount }
   const isMobile = detectMobile.isMobile();
   let range = (n) => Array.from(Array(n).keys());
   const buttonsImagesArray = [<Blot_1 />, <Blot_2 />, <Blot_3 />, <Blot_4 />];
+  if (exhibitionsCount === 1) {
+    return;
+  }
 
   return (
     <ul className={isMobile ? `${styles.buttons} ${styles.buttons_mobile}` : styles.buttons}>
