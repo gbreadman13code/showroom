@@ -7,12 +7,16 @@ import useMobileDetect from "use-mobile-detect-hook";
 import styles from "./MobileHeader.module.scss";
 import MobileHeaderButtonGroup from "../MobileHeaderButtonGroup/MobileHeaderButtonGroup";
 
-const MobileHeader = () => {
+const MobileHeader = (props) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
   return (
-    <div className={styles.header}>
+    <div
+      className={
+        props.header ? `${styles.header} ${styles.absolute}` : styles.header
+      }
+    >
       <MobileHeaderButtonGroup />
       <div className={styles.footer_of_header}>
         <Link to={"/"}>
