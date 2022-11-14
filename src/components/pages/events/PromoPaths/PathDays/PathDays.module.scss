@@ -1,0 +1,66 @@
+.days {
+  // display: inline-block;
+  // vertical-align: baseline;
+  grid-area: 1/2/2/3;
+  display: flex;
+  align-items: flex-start;
+  height: 100%;
+  // outline: 2px solid red;
+
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    margin-right: 50px;
+    padding: 0;
+
+    position: relative;
+    height: 100%;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &.active {
+      background-color: red;
+    }
+
+    span {
+      position: absolute;
+
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 33px;
+      color: white;
+
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      span {
+        transform: translateY(-50%) scale(1.4);
+        font-weight: 600;
+
+        background: linear-gradient(
+          0deg,
+          rgba(79, 72, 152, 0.7) 30%,
+          rgba(214, 53, 140, 0.7) 90%
+        );
+
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+
+        background-blend-mode: screen;
+        mix-blend-mode: screen;
+
+        // filter: blur(4.45487px);
+      }
+    }
+  }
+}
