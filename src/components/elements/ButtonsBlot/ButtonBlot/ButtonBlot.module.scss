@@ -25,6 +25,13 @@
       }
     }
   }
+  &.active {
+    svg {
+      path {
+        fill: #38c3b4;
+      }
+    }
+  }
 }
 
 //

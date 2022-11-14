@@ -14,6 +14,7 @@ import background from '../../../../assets/img/promo_background.jpg';
 
 const MainPage = () => {
   const [exhibitions, setExhibitions] = useState(false);
+  let [activeExhibition, _setActiveExhibition] = useState(0);
 
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
@@ -45,39 +46,27 @@ const MainPage = () => {
   let pages = [];
   let sliderText;
   if (exhibitions) {
-    let firstExhibition = exhibitions[0];
+    let firstExhibition = exhibitions[activeExhibition];
     sliderText = firstExhibition.description;
 
     let exhibition_pictures = firstExhibition.pictures;
     let pagesQuantity = Math.ceil(exhibition_pictures.length / IMAGES_PER_PAGE);
     pages = parsePicturesArray(exhibition_pictures, pagesQuantity, IMAGES_PER_PAGE);
   }
-
+  let setActiveExhibition = (exhibitionNumber) => {
+    if (exhibitionNumber >= exhibitions.length) {
+      _setActiveExhibition(exhibitionNumber % exhibitions.length);
+    } else if (exhibitionNumber < 0) {
+      setActiveExhibition(-exhibitionNumber);
+    } else {
+      _setActiveExhibition(exhibitionNumber);
+    }
+  };
   useEffect(() => {
     if (data.length > 0) {
       setExhibitions(data);
     }
   }, [data]);
-
-  // Подгрузка фото
-  // let observer = new IntersectionObserver(
-  //   (entries, observer) => {
-  //     entries.forEach((entry) => {
-  //       if (entry.isIntersecting) {
-  //         entry.target.classList.remove(".hide_image");
-  //       }
-  //     });
-  //   },
-  //   {
-  //     threshold: 0.5,
-  //   }
-  // );
-
-  // for (let item of document.querySelectorAll("div .ExhibitionImage*")) {
-  //   observer.observe(item);
-  // }
-
-  // console.log(document.querySelectorAll("div .ExhibitionImage*"));
 
   return (
     <PageTemplate>
@@ -85,9 +74,21 @@ const MainPage = () => {
       <Container>
         {exhibitions &&
           (isMobile ? (
-            <MobileMainPageContent data={exhibitions[0]} sliderContent={sliderText} />
+            <MobileMainPageContent
+              activeExhibition={activeExhibition}
+              setActiveExhibition={setActiveExhibition}
+              exhibitionsCount={exhibitions.length}
+              data={exhibitions[activeExhibition]}
+              sliderContent={sliderText}
+            />
           ) : (
-            <MainPageContent data={exhibitions[0]} sliderContent={sliderText} />
+            <MainPageContent
+              activeExhibition={activeExhibition}
+              setActiveExhibition={setActiveExhibition}
+              exhibitionsCount={exhibitions.length}
+              data={exhibitions[activeExhibition]}
+              sliderContent={sliderText}
+            />
           ))}
       </Container>
       {isMobile ? (
@@ -97,7 +98,7 @@ const MainPage = () => {
       ) : (
         <div className={styles.paletteWrapper}>
           <div className={styles.palette_bg}>
-            <img src={background} alt='' />
+            {exhibitions && <img src={exhibitions[activeExhibition].background_image} alt='' />}
           </div>
         </div>
       )}
@@ -105,7 +106,7 @@ const MainPage = () => {
         <>
           {pages.map((page, index) => {
             return (
-              <ColorWrapper color={getNextColor(index)} key={index}>
+              <ColorWrapper color={getNextColor(index)} key={index} activeExhibition={activeExhibition}>
                 <MasonryBlock>
                   {page.map(
                     (item, index) =>

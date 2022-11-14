@@ -6,7 +6,7 @@
 
   border: 8px solid #d4d8da;
 
-  transition: all 0.3s ease;
+  transition: all 1s ease;
 
   .picture_info {
     position: absolute;
@@ -36,10 +36,12 @@
     }
   }
 
-  // &.hide_image {
-  //   opacity: 0;
-  //   transform: scale(1.1);
-  // }
+  &[data-status='hide'] {
+    opacity: 0;
+  }
+  &[data-status='show'] {
+    opacity: 1;
+  }
 }
 
 .mobile_picture_wrapper {
