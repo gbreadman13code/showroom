@@ -1,0 +1,36 @@
+.promo_path {
+  background-color: gray;
+  overflow: hidden;
+
+  h2 {
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 44px;
+    color: white;
+
+    padding-top: 36px;
+    margin-bottom: 56px;
+
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+
+      bottom: -15px;
+      left: 0;
+
+      width: 100vw;
+      height: 1px;
+      background-color: white;
+    }
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  align-items: center;
+  column-gap: 50px;
+  row-gap: 70px;
+}

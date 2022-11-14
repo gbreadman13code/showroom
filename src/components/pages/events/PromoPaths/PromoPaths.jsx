@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { getPaths } from '../../../../redux/requests/getPaths';
-import PathsInfo from '../PathsInfo/PathsInfo';
-import PathDays, { getDaysFromPathsArray } from './PathDays/PathDays';
-import PathMonths, { getMonthsFromPathsArray } from './PathMonths/PathMonths';
+import React, { useEffect, useState } from "react";
+import { getPaths } from "../../../../redux/requests/getPaths";
+import Container from "../../../templates/Container";
+import PathsInfo from "../PathsInfo/PathsInfo";
+import PathDays, { getDaysFromPathsArray } from "./PathDays/PathDays";
+import PathMonths, { getMonthsFromPathsArray } from "./PathMonths/PathMonths";
+import styles from "./PromoPath.module.scss";
 
 const PromoPaths = () => {
   let [pathsData, setPathsData] = useState([]);
-  let [activeMonth, _setActiveMonth] = useState('');
+  let [activeMonth, _setActiveMonth] = useState("");
   let [paths, setPaths] = useState([]);
 
   useEffect(() => {
@@ -31,13 +33,19 @@ const PromoPaths = () => {
   }
 
   return (
-    <div>
-      <h2>Куда сходить</h2>
-      <div>
-        <PathMonths pathsData={pathsData} setActiveMonth={setActiveMonth} />
-        <PathDays pathsData={pathsData} setActiveDay={setActiveDay} activeMonth={activeMonth} />
-        <PathsInfo paths={paths} />
-      </div>
+    <div className={styles.promo_path}>
+      <Container>
+        <h2>Куда сходить</h2>
+        <div className={styles.grid}>
+          <PathMonths pathsData={pathsData} setActiveMonth={setActiveMonth} />
+          <PathDays
+            pathsData={pathsData}
+            setActiveDay={setActiveDay}
+            activeMonth={activeMonth}
+          />
+          <PathsInfo paths={paths} />
+        </div>
+      </Container>
     </div>
   );
 };
@@ -47,8 +55,8 @@ export default PromoPaths;
 function getPathToDisplay(pathsData, month, day) {
   return pathsData.filter((path) => {
     let date = new Date(path.start_datetime);
-    const options = { month: 'long' };
-    let monthFromPath = new Intl.DateTimeFormat('ru-ru', options).format(date);
+    const options = { month: "long" };
+    let monthFromPath = new Intl.DateTimeFormat("ru-ru", options).format(date);
     return (monthFromPath === month) & (date.getDate() === day);
   });
 }
