@@ -1,0 +1,27 @@
+.path {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 50% 40%;
+  justify-content: space-between;
+}
+.info {
+  background-color: green;
+}
+
+.recomend {
+  background-color: gold;
+  border: 1px solid #13ac9b;
+  padding: 60px 30px;
+
+  position: relative;
+
+  &::before {
+    content: attr(data-recomend);
+    position: absolute;
+    left: 33px;
+    top: -10px;
+
+    padding: 0 12px;
+  }
+}
