@@ -6,7 +6,12 @@ import PathDays, { getDaysFromPathsArray } from "./PathDays/PathDays";
 import PathMonths, { getMonthsFromPathsArray } from "./PathMonths/PathMonths";
 import styles from "./PromoPath.module.scss";
 
+import useMobileDetect from "use-mobile-detect-hook";
+
 const PromoPaths = () => {
+  const detectMobile = useMobileDetect();
+  const isMobile = detectMobile.isMobile();
+
   let [pathsData, setPathsData] = useState([]);
   let [activeMonth, _setActiveMonth] = useState("");
   let [paths, setPaths] = useState([]);
@@ -33,10 +38,20 @@ const PromoPaths = () => {
   }
 
   return (
-    <div className={styles.promo_path}>
+    <div
+      className={
+        isMobile
+          ? `${styles.promo_path_mobile} ${styles.promo_path}`
+          : styles.promo_path
+      }
+    >
       <Container>
         <h2>Куда сходить</h2>
-        <div className={styles.grid}>
+        <div
+          className={
+            isMobile ? `${styles.grid} ${styles.grid__mobile}` : styles.grid
+          }
+        >
           <PathMonths pathsData={pathsData} setActiveMonth={setActiveMonth} />
           <PathDays
             pathsData={pathsData}

@@ -22,7 +22,7 @@
       position: relative;
 
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         left: 0;
         top: 3px;
@@ -32,21 +32,24 @@
         background-color: #d6338a;
       }
 
-      &::after {
-        content: '';
-        position: absolute;
-        right: 0;
-        top: 3px;
-        display: block;
-        width: 1px;
-        height: 25px;
-        background-color: #d6338a;
+      &:last-child {
+        &::after {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 3px;
+          display: block;
+          width: 1px;
+          height: 25px;
+          background-color: #d6338a;
+        }
       }
     }
   }
 
-  &.absolute {
+  &__absolute {
     position: absolute;
+    width: 100%;
     z-index: 500;
 
     a {

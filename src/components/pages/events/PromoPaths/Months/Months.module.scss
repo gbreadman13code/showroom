@@ -1,7 +1,4 @@
 .months {
-  // display: inline-block;
-  // padding: 0;
-
   grid-area: 1/1/2/2;
 
   position: relative;
@@ -29,5 +26,20 @@
     text-transform: capitalize;
 
     padding: 0;
+  }
+
+  &__mobile {
+    grid-area: 1/1/2/2;
+
+    &::after {
+      display: none;
+    }
+
+    button {
+      font-size: 20px;
+      line-height: 25px;
+
+      // margin-bottom: 25px;
+    }
   }
 }

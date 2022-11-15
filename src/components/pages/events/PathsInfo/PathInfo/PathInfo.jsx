@@ -3,28 +3,86 @@ import React, { useEffect, useState } from "react";
 import RecommendationPlace from "./RecommendationPlace/RecommendationPlace";
 import styles from "./PathInfo.module.scss";
 
+import useMobileDetect from "use-mobile-detect-hook";
+
 const PathInfo = ({ path }) => {
+  const detectMobile = useMobileDetect();
+  const isMobile = detectMobile.isMobile();
+
   let [time, setTime] = useState("00:00");
   useEffect(() => {
     setTime(getPathTime(path));
   }, [path]);
   return (
-    <div className={styles.path}>
-      <div className={styles.info}>
-        <div>{time}</div>
-        <div>{path.event_title}</div>
-        <div>
+    <div
+      className={
+        isMobile ? `${styles.path} ${styles.path__mobile}` : styles.path
+      }
+    >
+      <div
+        className={
+          isMobile ? `${styles.info} ${styles.info__mobile}` : styles.info
+        }
+      >
+        <div
+          className={
+            isMobile ? `${styles.time} ${styles.time__mobile}` : styles.time
+          }
+        >
+          {time}
+        </div>
+        <div
+          className={
+            isMobile
+              ? `${styles.event_title} ${styles.event_title__mobile}`
+              : styles.event_title
+          }
+        >
+          {path.event_title}
+        </div>
+        <div
+          className={
+            isMobile
+              ? `${styles.location} ${styles.location__mobile}`
+              : styles.location
+          }
+        >
           {path.event_location_start} | {path.event_location_end}
         </div>
-        <div>{path.description && HTMLReactParser(path.description)}</div>
+        <div
+          className={
+            isMobile ? `${styles.desc} ${styles.desc__mobile}` : styles.desc
+          }
+        >
+          {path.description && HTMLReactParser(path.description)}
+        </div>
       </div>
-      <div className={styles.recomend} data-recomend="Рекомендуем посетить">
-        <div>{path.recommendation}</div>
-        <div>
+      <div
+        className={
+          isMobile
+            ? `${styles.recomend} ${styles.recomend__mobile}`
+            : styles.recomend
+        }
+        data-recomend="Рекомендуем посетить"
+      >
+        <div
+          className={
+            isMobile ? `${styles.grid} ${styles.grid__mobile}` : styles.grid
+          }
+        >
           {path.places &&
             path.places.map((place) => (
               <RecommendationPlace key={place.id} place={place} />
             ))}
+        </div>
+        <div
+          className={
+            isMobile
+              ? `${styles.recomend_text} ${styles.recomend_text__mobile}`
+              : styles.recomend_text
+          }
+        >
+          {path.recommendation}
         </div>
       </div>
     </div>

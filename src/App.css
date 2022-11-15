@@ -42,6 +42,10 @@ dd {
   color: #61dafb;
 }
 
+.slick-list {
+  width: 100%;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

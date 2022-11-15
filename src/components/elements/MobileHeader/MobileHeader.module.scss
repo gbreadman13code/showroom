@@ -55,4 +55,19 @@
       }
     }
   }
+
+  &__absolute {
+    position: absolute;
+    width: 100%;
+    z-index: 500;
+
+    a {
+      color: white;
+      svg {
+        path {
+          fill: white;
+        }
+      }
+    }
+  }
 }

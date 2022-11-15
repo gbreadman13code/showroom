@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import HeaderButtonGroup from "../HeaderButtonGroup/HeaderButtonGroup";
 import Logo from "../Logo/Logo";
+import Burger from "../Burger/Burger";
 
 import styles from "./Header.module.scss";
 
@@ -9,7 +10,9 @@ const Header = (props) => {
   return (
     <div
       className={
-        props.header ? `${styles.header} ${styles.absolute}` : styles.header
+        props.header
+          ? `${styles.header} ${styles.header__absolute}`
+          : styles.header
       }
     >
       <div style={{ display: "flex", alignItems: "center" }}>
@@ -23,6 +26,7 @@ const Header = (props) => {
         </div>
       </div>
       <HeaderButtonGroup />
+
       {/* <Burger /> */}
     </div>
   );

@@ -1,17 +1,30 @@
 import React, { useEffect, useState } from "react";
 import styles from "../PathDays/PathDays.module.scss";
+import useMobileDetect from "use-mobile-detect-hook";
 
 const Days = ({ days, setActiveDay }) => {
-  console.log(setActiveDay);
+  const detectMobile = useMobileDetect();
+  const isMobile = detectMobile.isMobile();
+  // const [isActive, setActive] = useState(true);
+
+  // const toggleClass = () => {
+  //   setActive(!isActive);
+  // };
+
   return (
-    <div className={styles.days}>
+    <div
+      className={
+        isMobile ? `${styles.days__mobile} ${styles.days}` : styles.days
+      }
+    >
       {days.map((day, index) => (
         <button
           key={index}
           onClick={() => setActiveDay(day)}
-          className={setActiveDay ? styles.active : ""}
+          // onClick={() => setActiveDay(day) && toggleClass}
+          // className={isActive ? styles.active : null}
         >
-          <span>{day}</span>
+          <span data-days={day}>{day}</span>
         </button>
       ))}
     </div>

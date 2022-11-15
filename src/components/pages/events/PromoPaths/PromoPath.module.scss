@@ -1,6 +1,9 @@
 .promo_path {
-  background-color: gray;
-  overflow: hidden;
+  background-color: black;
+  overflow-x: hidden;
+  overflow-y: visible;
+
+  padding-bottom: 100px;
 
   h2 {
     font-weight: 700;
@@ -25,6 +28,16 @@
       background-color: white;
     }
   }
+
+  &_mobile {
+    padding-bottom: 20px;
+
+    h2 {
+      font-size: 20px;
+      line-height: 25px;
+      margin-bottom: 20px;
+    }
+  }
 }
 
 .grid {
@@ -33,4 +46,11 @@
   align-items: center;
   column-gap: 50px;
   row-gap: 70px;
+
+  position: relative;
+
+  &__mobile {
+    grid-template-columns: 1fr;
+    row-gap: 0;
+  }
 }

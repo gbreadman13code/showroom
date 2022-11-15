@@ -14,7 +14,9 @@ const MobileHeader = (props) => {
   return (
     <div
       className={
-        props.header ? `${styles.header} ${styles.absolute}` : styles.header
+        props.header
+          ? `${styles.header} ${styles.header__absolute}`
+          : styles.header
       }
     >
       <MobileHeaderButtonGroup />
@@ -22,6 +24,7 @@ const MobileHeader = (props) => {
         <Link to={"/"}>
           <Logo />
         </Link>
+        <Link to="/gallery">Галерея</Link>
         <div className={styles.navLinks}>
           <Link to="/">Шоурум</Link>
         </div>
