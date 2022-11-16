@@ -4,6 +4,11 @@ button {
   user-select: none;
 }
 
+a:-webkit-any-link:focus-visible {
+  outline: none;
+  /* outline-offset: 1px; */
+}
+
 dl,
 dt,
 dd {
@@ -42,9 +47,17 @@ dd {
   color: #61dafb;
 }
 
-.slick-list {
+/* .slick-list {
   width: 100%;
 }
+
+.slick-track {
+  display: flex;
+}
+
+.slick-slide {
+  min-width: auto;
+} */
 
 @keyframes App-logo-spin {
   from {

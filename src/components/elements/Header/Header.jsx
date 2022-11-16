@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import HeaderButtonGroup from "../HeaderButtonGroup/HeaderButtonGroup";
 import Logo from "../Logo/Logo";
+
 import Burger from "../Burger/Burger";
 
 import styles from "./Header.module.scss";
