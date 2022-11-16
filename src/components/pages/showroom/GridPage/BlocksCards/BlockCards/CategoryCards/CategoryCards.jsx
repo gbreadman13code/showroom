@@ -24,7 +24,7 @@ class CardImage {
 
 let range = (n) => [...Array(n).keys()];
 
-const CategoryCards = ({ images, setActiveCard, activeCard }) => {
+const CategoryCards = ({ images, setActiveCard, activeCard, block }) => {
   let [cards, setCards] = useState([]);
   useEffect(() => {
     let temp = [];
@@ -43,7 +43,15 @@ const CategoryCards = ({ images, setActiveCard, activeCard }) => {
   }, [images]);
   return cards.map((card, index) => (
     <div className={styles.card} style={{ top: card.positionTop, left: card.positionLeft }} key={index}>
-      <CategoryCard image={card.image} setActiveCard={setActiveCard} isActive={activeCard === card.image.id} />
+      <CategoryCard
+        image={card.image}
+        setActiveCard={setActiveCard}
+        isActive={
+          activeCard.image === card.image.id &&
+          activeCard.block.rowNumber === block.rowNumber &&
+          activeCard.block.columnNumber === block.columnNumber
+        }
+      />
     </div>
   ));
 };

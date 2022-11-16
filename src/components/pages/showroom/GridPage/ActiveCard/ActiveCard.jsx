@@ -3,9 +3,8 @@ import styles from './ActiveCard.module.scss';
 
 const ActiveCard = ({ card, closeActiveCard }) => {
   return (
-    <div className={styles.background} onClick={closeActiveCard}>
-      <div className={styles.card}>{card.id}</div>
-    </div>
+    <div className={styles.card}>{card.id}</div>
+    // </div>
   );
 };
 

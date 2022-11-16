@@ -28,12 +28,12 @@ const cards = [
 const GridPage = () => {
   let [isBlockTransitive, setIsBlockTransitive] = useState(false);
 
-  let [activeCard, setActiveCard] = useState(0);
+  let [activeCard, setActiveCard] = useState({ block: 0, image: 0 });
   useEffect(() => {}, []);
 
   let closeActiveCard = () => {
     setIsBlockTransitive(false);
-    setActiveCard(0);
+    setActiveCard({ block: 0, image: 0 });
   };
 
   return (
@@ -46,9 +46,16 @@ const GridPage = () => {
         isBlockTransitive={isBlockTransitive}
         // isBlockTransitive={false}
       />
-      {activeCard > 0 && (
-        <ActiveCard card={cards.filter((card) => card.id === activeCard)[0]} closeActiveCard={closeActiveCard} />
-      )}
+      <div
+        className={activeCard.image > 0 ? `${styles.background} ${styles.active}` : styles.background}
+        onClick={closeActiveCard}>
+        {activeCard.image > 0 && (
+          <ActiveCard
+            card={cards.filter((card) => card.id === activeCard.image)[0]}
+            closeActiveCard={closeActiveCard}
+          />
+        )}
+      </div>
     </div>
   );
 };

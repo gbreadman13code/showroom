@@ -13,6 +13,7 @@ const CategoryCard = ({ image, setActiveCard, isActive }) => {
       setActiveCard(image.id, event);
     }
   }
+
   return (
     <div>
       <div

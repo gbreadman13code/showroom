@@ -241,10 +241,12 @@ const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setI
   };
 
   function _setActiveCard(activeCard, event, blockIndex) {
-    setActiveCard(activeCard);
     setIsBlockTransitive(true);
     let card = event.target.closest('[class*="CategoryCards_card_"]');
     let block = cardsBlocks[blockIndex];
+    setActiveCard((v) => {
+      return { block: block, image: activeCard };
+    });
     setGridXPosition((v) => {
       let blockCenterCoords = blockWidth / 2 - window.innerWidth / 2;
       //   -2 в конце чтобы получить числа от -2 до +2
@@ -289,6 +291,7 @@ const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setI
             <BlockCards
               key={index}
               blockIndex={index}
+              block={block}
               positionTop={block.positionTop}
               positionLeft={block.positionLeft}
               rowNumber={block.rowNumber}
