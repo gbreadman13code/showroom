@@ -1,0 +1,17 @@
+.block {
+  position: absolute;
+  width: 1846px;
+  height: 1416px;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  pointer-events: none;
+}
+
+.temp {
+  color: red;
+  font-size: 300px;
+  top: 45%;
+  left: 30%;
+  position: absolute;
+  z-index: 1;
+}

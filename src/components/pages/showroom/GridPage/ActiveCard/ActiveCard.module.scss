@@ -1,0 +1,22 @@
+.card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
+  width: 200px;
+  height: 200px;
+
+  transform: translate(-50%, -50%);
+
+  color: red;
+  font-size: 80px;
+}
+.background {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.35);
+}

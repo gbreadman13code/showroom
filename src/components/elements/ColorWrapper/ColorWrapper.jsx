@@ -13,7 +13,6 @@ const ColorWrapper = ({ name, color, children, activeExhibition }) => {
 
   useEffect(() => {
     if (exhibitions) {
-      console.log(exhibitions);
       setTitle(exhibitions.title);
     }
   }, [exhibitions]);
