@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styles from './CategoryCard.module.scss';
 
-let touchStartX;
-let touchStartY;
-const CategoryCard = ({ image, setActiveCard, isActive }) => {
+const CategoryCard = ({ image, setActiveCard, isActive, isClickEnabled }) => {
+  let [touchStartX, setTouchStartX] = useState(0);
+  let [touchStartY, setTouchStartY] = useState(0);
   function pointerDownHandler(event) {
-    touchStartX = event.clientX;
-    touchStartY = event.clientY;
+    setTouchStartX(event.clientX);
+    setTouchStartY(event.clientY);
   }
   function pointerUpHandler(event) {
     if (Math.abs(touchStartX - event.clientX) < 20 && Math.abs(touchStartY - event.clientY) < 20) {

@@ -51,6 +51,7 @@ const CategoryCards = ({ images, setActiveCard, activeCard, block }) => {
           activeCard.block.rowNumber === block.rowNumber &&
           activeCard.block.columnNumber === block.columnNumber
         }
+        isClickEnabled={activeCard.image === 0}
       />
     </div>
   ));

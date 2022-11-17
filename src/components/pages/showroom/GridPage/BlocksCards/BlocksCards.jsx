@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import BlockCards from './BlockCards/BlockCards';
 import styles from './BlocksCards.module.scss';
 
@@ -37,11 +38,13 @@ const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setI
   let [currentRow, setCurrentRow] = useState(0);
 
   let [isTouched, setIsTouched] = useState(false);
+  let location = useLocation();
 
   useEffect(() => {
+    maxColumn = 3;
     insertNewCardsBlock(0, 0);
     while (checkBorders());
-  }, []);
+  }, [location]);
 
   let checkBorders = () => {
     let windowWidth = window.innerWidth;
@@ -54,6 +57,7 @@ const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setI
       fillWindow();
       return true;
     }
+    return false;
   };
 
   function fillWindow() {
@@ -147,9 +151,8 @@ const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setI
   };
   let pointerMoveHandler = (event) => {
     if (isTouched) {
-      setCurrentColumn((gridXPosition / (blockWidth + blockMarginWidth)) * 2);
-      setCurrentRow((gridYPosition / (blockHeight + blockMarginHeight)) * 2);
-
+      setCurrentColumn(((gridXPosition + window.innerWidth / 2) / (blockWidth + blockMarginWidth)) * 2);
+      setCurrentRow(((gridYPosition + window.innerHeight / 2) / (blockHeight + blockMarginHeight)) * 2);
       if (currentColumn > maxColumn - offset) {
         updateWindow();
         removeFarCards();
@@ -263,8 +266,8 @@ const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setI
       let blockOffset = (block.rowNumber * (blockHeight + blockMarginHeight)) / 2;
       return blockCenterCoords + offsetInsideBlock + blockOffset + cardHeight + cardMargin;
     });
-    setCurrentColumn((gridXPosition / (blockWidth + blockMarginWidth)) * 2);
-    setCurrentRow((gridYPosition / (blockHeight + blockMarginHeight)) * 2);
+    setCurrentColumn(((gridXPosition + window.innerWidth / 2) / (blockWidth + blockMarginWidth)) * 2);
+    setCurrentRow(((gridYPosition + window.innerHeight / 2) / (blockHeight + blockMarginHeight)) * 2);
 
     updateWindow();
     removeFarCards();
@@ -284,7 +287,7 @@ const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setI
         className={styles.grid}
         style={{
           transform: `translate(${-gridXPosition}px, ${-gridYPosition}px)`,
-          transition: isBlockTransitive ? 'transform 0.8s ease' : 'transform 0.05s ease',
+          transition: isBlockTransitive ? 'transform 0.8s ease' : 'transform 0.1s ease',
         }}>
         {cardsBlocks &&
           cardsBlocks.map((block, index) => (
