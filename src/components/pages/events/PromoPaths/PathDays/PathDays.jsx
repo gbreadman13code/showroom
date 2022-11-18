@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Days from "../Days/Days";
 import styles from "./PathDays.module.scss";
 
-const PathDays = ({ pathsData, setActiveDay, activeMonth }) => {
+const PathDays = ({ pathsData, setActiveDay, activeMonth, activeDay }) => {
   let [days, setDays] = useState([]);
 
   useEffect(() => {
@@ -10,7 +10,7 @@ const PathDays = ({ pathsData, setActiveDay, activeMonth }) => {
     setDays(days);
   }, [activeMonth, pathsData]);
 
-  return <Days days={days} setActiveDay={setActiveDay} />;
+  return <Days days={days} setActiveDay={setActiveDay} activeDay={activeDay} />;
 };
 
 export default PathDays;

@@ -23,6 +23,7 @@
 
       transition: all 0.3s ease;
       white-space: nowrap;
+      margin-bottom: 15px;
 
       span {
         font-weight: 400;
@@ -51,7 +52,7 @@
 
     .buttons {
       width: 100%;
-      margin-bottom: 30px;
+      margin-bottom: 15px;
 
       flex-wrap: wrap;
     }

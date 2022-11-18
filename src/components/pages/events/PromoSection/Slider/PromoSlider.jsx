@@ -26,6 +26,7 @@ const PromoSlider = ({ slides }) => {
     slidesToShow: isMobile ? 1 : 3,
     slidesToScroll: 1,
     adaptiveHeight: isMobile ? true : false,
+    swipeToSlide: true,
   };
 
   return (

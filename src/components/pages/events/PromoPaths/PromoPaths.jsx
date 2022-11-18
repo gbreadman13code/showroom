@@ -15,6 +15,7 @@ const PromoPaths = () => {
   let [pathsData, setPathsData] = useState([]);
   let [activeMonth, _setActiveMonth] = useState("");
   let [paths, setPaths] = useState([]);
+  let [activeDay, _setActiveDay] = useState(0);
 
   useEffect(() => {
     getPaths().then((res) => {
@@ -35,6 +36,7 @@ const PromoPaths = () => {
 
   function setActiveDay(day) {
     setPaths(getPathToDisplay(pathsData, activeMonth, day));
+    _setActiveDay(day);
   }
 
   return (
@@ -57,6 +59,7 @@ const PromoPaths = () => {
             pathsData={pathsData}
             setActiveDay={setActiveDay}
             activeMonth={activeMonth}
+            activeDay={activeDay}
           />
           <PathsInfo paths={paths} />
         </div>
