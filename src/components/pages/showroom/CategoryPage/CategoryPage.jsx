@@ -5,6 +5,9 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import PageTemplate from '../../../templates/PageTemplate';
 import Container from '../../../templates/Container';
 import { getShops } from '../../../../redux/requests/getShops';
+import CategoryBlankPage from './CategoryBlankPage/CategoryBlankPage';
+import NavBar from './NavBar/NavBar';
+import CategoryCards from './CategoryCards/CategoryCards';
 
 const CategoryPage = () => {
   let params = useParams();
@@ -29,30 +32,8 @@ const CategoryPage = () => {
     <div className={styles.wrapper}>
       <PageTemplate>
         <Container>
-          <nav className={styles.nav}>
-            {categories.map((category) => (
-              <Link
-                className={activeCategory === category.id ? `${styles.category} ${styles.active}` : styles.category}
-                key={category.id}
-                to={`/showroom/categories/${category.id}`}>
-                {category.title}
-              </Link>
-            ))}
-          </nav>
-          <div className={styles.cards}>
-            {shops
-              .filter((shop) => shop.category === activeCategory)
-              .map((shop) => (
-                <div className={styles.card} key={shop.id}>
-                  <Link to={`/showroom/shops/${shop.id}`} className={styles.cardInfo}>
-                    <div className={styles.shopImage}>
-                      <img src={shop.image} alt={shop.title} />
-                    </div>
-                    <div className={styles.shopTitle}>{shop.title}</div>
-                  </Link>
-                </div>
-              ))}
-          </div>
+          <NavBar categories={categories} activeCategory={activeCategory} />
+          <CategoryCards activeCategory={activeCategory} shops={shops} />
         </Container>
       </PageTemplate>
     </div>

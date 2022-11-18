@@ -6,7 +6,7 @@ import Container from '../../../templates/Container';
 import { getShop } from '../../../../redux/requests/getShop';
 import useMobileDetect from 'use-mobile-detect-hook';
 import { ReactComponent as GoBackArrow } from '../../../../assets/img/arrow-left.svg';
-import { ReactComponent as MobileGoBackArrow } from '../../../../assets/img/mobile-left-arrow.svg';
+import { ReactComponent as MobileGoBackArrow } from '../../../../assets/img/showroom/goBackMobile.svg';
 
 const ShopPage = () => {
   const detectMobile = useMobileDetect();
@@ -18,7 +18,6 @@ const ShopPage = () => {
   useEffect(() => {
     getShop(params.id).then((res) => {
       setShop(res);
-      console.log(res);
     });
   }, [location]);
 
@@ -29,7 +28,7 @@ const ShopPage = () => {
           <div className={styles.shop}>
             <div className={styles.shopInfo}>
               <div className={styles.shopImage}>
-                <img src={shop.image} alt='' />
+                <img src={shop.cropped_image} alt='' />
               </div>
               <div className={styles.shopTitle}> {shop.title}</div>
               <div className={styles.shopDescription}>{shop.description}</div>
@@ -37,11 +36,8 @@ const ShopPage = () => {
             <div className={styles.products}>
               {shop.products &&
                 shop.products.map((product) => (
-                  <Link className={styles.productLink} to={`/showroom/products/${product.id}`}>
-                    <div
-                      className={styles.product}
-                      key={product.id}
-                      style={{ backgroundImage: `url(${product.image})` }}>
+                  <Link key={product.id} className={styles.productLink} to={`/showroom/products/${product.id}`}>
+                    <div className={styles.product} style={{ backgroundImage: `url(${product.cropped_image})` }}>
                       <div className={styles.productReadMore}>Подробнее</div>
                       <div className={styles.productInfo}>
                         <div className={styles.productTitle}>{product.title}</div>
@@ -55,16 +51,21 @@ const ShopPage = () => {
                     </div>
                   </Link>
                 ))}
-              <Link className={styles.backLink} to={`/showroom/categories/${shop.category}`}>
-                {isMobile ? (
-                  <MobileGoBackArrow />
-                ) : (
+              {!isMobile && (
+                <Link className={styles.backLink} to={`/showroom/categories/${shop.category}`}>
                   <>
                     <GoBackArrow /> Назад
                   </>
-                )}
-              </Link>
+                </Link>
+              )}
             </div>
+            {isMobile && (
+              <Link className={styles.backLink} to={`/showroom/categories/${shop.category}`}>
+                <>
+                  <MobileGoBackArrow />
+                </>
+              </Link>
+            )}
           </div>
         </Container>
       </PageTemplate>

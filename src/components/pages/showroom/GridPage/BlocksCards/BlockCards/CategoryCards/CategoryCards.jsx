@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import CategoryCard from './CategoryCard/CategoryCard';
 import styles from './CategoryCards.module.scss';
+import useMobileDetect from 'use-mobile-detect-hook';
 
-const cardWidth = 323;
-const cardHeight = 434;
-const cardMargin = 57;
+let cardWidth = 323;
+let cardHeight = 434;
+let cardMargin = 57;
 
 function getPositionTop(index, i, maxIndex) {
   let multiplier = maxIndex - 1;
@@ -25,6 +26,13 @@ class CardImage {
 let range = (n) => [...Array(n).keys()];
 
 const CategoryCards = ({ images, setActiveCard, activeCard, block }) => {
+  const detectMobile = useMobileDetect();
+  const isMobile = detectMobile.isMobile();
+  if (isMobile) {
+    cardWidth = 122;
+    cardHeight = 165;
+    cardMargin = 22;
+  }
   let [cards, setCards] = useState([]);
   useEffect(() => {
     let temp = [];

@@ -1,0 +1,35 @@
+.nav {
+  display: flex;
+  justify-content: flex-start;
+
+  margin-bottom: 56px;
+  @media (max-width: 900px) {
+    display: block;
+  }
+}
+.category {
+  margin-right: 18px;
+
+  font-family: 'Geometria';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 100.3%;
+
+  text-decoration: none;
+  color: #fff;
+  &.active {
+    font-family: 'Geometria';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100.3%;
+    /* identical to box height, or 20px */
+
+    background: linear-gradient(180deg, #d6358c 32.54%, #4f4b98 96.36%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+}

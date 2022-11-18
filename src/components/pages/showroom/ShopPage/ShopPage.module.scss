@@ -3,11 +3,20 @@
 }
 .shop {
   display: flex;
+  @media (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 .shopInfo {
   width: 228px;
   color: #fff;
   margin-right: 54px;
+  @media (max-width: 900px) {
+    margin-right: 0;
+    width: 252px;
+    margin-bottom: 25px;
+  }
 }
 .shopImage {
   width: 228px;
@@ -20,6 +29,11 @@
   & img {
     max-width: 100%;
   }
+  @media (max-width: 900px) {
+    width: 252px;
+    height: 252px;
+    margin-bottom: 20px;
+  }
 }
 .shopTitle {
   margin-bottom: 10px;
@@ -31,6 +45,11 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 100.3%;
+  @media (max-width: 900px) {
+    margin-bottom: 6px;
+
+    font-size: 17px;
+  }
 }
 .shopDescription {
   font-family: 'Geometria';
@@ -44,6 +63,10 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  @media (max-width: 900px) {
+    justify-content: center;
+    margin-bottom: 0;
+  }
 }
 .productLink {
   color: #fff;
@@ -59,6 +82,7 @@
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 10px;
+  background-size: contain;
 
   & .productReadMore {
     display: flex;
@@ -88,6 +112,13 @@
     & .productReadMore {
       opacity: 1;
     }
+  }
+
+  @media (max-width: 900px) {
+    width: 276px;
+    height: 276px;
+
+    margin-bottom: 11px;
   }
 }
 
@@ -133,7 +164,7 @@
   font-family: 'Geometria';
   font-style: normal;
   font-weight: 400;
-  font-size: 14.3341px;
+  font-size: 14px;
   line-height: 100.3%;
 }
 .backLink {
@@ -146,4 +177,7 @@
   line-height: 29px;
   color: #fff;
   text-decoration: none;
+  @media (max-width: 900px) {
+    margin-top: 10px;
+  }
 }

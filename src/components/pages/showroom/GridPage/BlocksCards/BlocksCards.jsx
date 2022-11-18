@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import BlockCards from './BlockCards/BlockCards';
 import styles from './BlocksCards.module.scss';
+import useMobileDetect from 'use-mobile-detect-hook';
 
 const offset = 3;
 
-const blockHeight = 1416;
-const blockWidth = 1846;
-const blockMarginWidth = 440;
-const blockMarginHeight = 57;
+let blockHeight = 1416;
+let blockWidth = 1846;
+let blockMarginWidth = 440;
+let blockMarginHeight = 57;
 
 let cardWidth = 323;
 let cardHeight = 434;
@@ -29,6 +30,18 @@ class CardsBlock {
 }
 
 const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setIsBlockTransitive }) => {
+  const detectMobile = useMobileDetect();
+  const isMobile = detectMobile.isMobile();
+  if (isMobile) {
+    blockHeight = 539;
+    blockWidth = 698;
+    blockMarginWidth = 166;
+    blockMarginHeight = 22;
+
+    cardWidth = 122;
+    cardHeight = 165;
+    cardMargin = 22;
+  }
   let [cardsBlocks, setCardsBlocks] = useState([]);
 
   let [gridXPosition, setGridXPosition] = useState(0);

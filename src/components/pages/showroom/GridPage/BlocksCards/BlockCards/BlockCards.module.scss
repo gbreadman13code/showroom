@@ -5,6 +5,10 @@
   user-select: none;
   -webkit-tap-highlight-color: transparent;
   pointer-events: none;
+  @media (max-width: 900px) {
+    width: 698px;
+    height: 539px;
+  }
 }
 
 .temp {

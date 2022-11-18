@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import styles from './ProductPage.module.scss';
-import { getShopsCategories } from '../../../../redux/requests/getShopsCategories';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import PageTemplate from '../../../templates/PageTemplate';
 import Container from '../../../templates/Container';
 import { getProduct } from '../../../../redux/requests/getProduct';
 import { ReactComponent as GoBackArrow } from '../../../../assets/img/arrow-left.svg';
+import ProductImages from './ProductImages/ProductImages';
 
 const ProductPage = () => {
   let params = useParams();
   let location = useLocation();
+  let [images, setImages] = useState([]);
   let [product, setProduct] = useState({});
   useEffect(() => {
     getProduct(params.id).then((res) => {
       setProduct(res);
-      console.log(res);
+      let images = [{ id: 0, image: res.image, cropped_image: res.cropped_image }, ...res.additional_photos];
+      setImages(images);
     });
   }, [location]);
 
@@ -33,16 +35,7 @@ const ProductPage = () => {
                 </Link>
               </div>
               <div className={styles.productImages}>
-                <div className={styles.productImage}>
-                  <img src={product.image} alt={product.title} />
-                </div>
-                <div className={styles.productAdditionalImages}>
-                  {product.additional_photos.map((photo) => (
-                    <div className={styles.productAdditionalImage}>
-                      <img src={photo.image} alt={product.title} />
-                    </div>
-                  ))}
-                </div>
+                <ProductImages images={images} title={product.title} />
               </div>
               <div className={styles.productDescription}>
                 <div className={styles.productDescriptionTitle}>Описание</div>
