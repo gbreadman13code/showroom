@@ -3,7 +3,12 @@
 }
 .shop {
   display: flex;
+
+  padding-top: 150px;
+
   @media (max-width: 900px) {
+    padding-top: 100px;
+
     flex-direction: column;
     align-items: center;
   }

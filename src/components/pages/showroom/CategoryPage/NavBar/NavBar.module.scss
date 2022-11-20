@@ -3,8 +3,11 @@
   justify-content: flex-start;
 
   margin-bottom: 56px;
+  padding-top: 150px;
+
   @media (max-width: 900px) {
     display: block;
+    padding-top: 100px;
   }
 }
 .category {

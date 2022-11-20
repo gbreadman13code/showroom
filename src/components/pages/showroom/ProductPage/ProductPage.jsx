@@ -27,7 +27,7 @@ const ProductPage = () => {
 
   return (
     <div className={styles.wrapper}>
-      <PageTemplate>
+      <PageTemplate header='absolute'>
         <Container>
           {product.shop && (
             <div className={styles.product}>

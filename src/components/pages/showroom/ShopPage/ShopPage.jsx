@@ -23,7 +23,7 @@ const ShopPage = () => {
 
   return (
     <div className={styles.wrapper}>
-      <PageTemplate>
+      <PageTemplate header='absolute'>
         <Container>
           <div className={styles.shop}>
             <div className={styles.shopInfo}>

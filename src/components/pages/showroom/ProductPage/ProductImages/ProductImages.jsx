@@ -54,6 +54,7 @@ const ProductImages = ({ images, title }) => {
       },
     };
   }
+
   return (
     <div className={styles.productImages} id='productImages'>
       <div className={styles.productImage}>

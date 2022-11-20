@@ -30,7 +30,7 @@ const CategoryPage = () => {
 
   return (
     <div className={styles.wrapper}>
-      <PageTemplate>
+      <PageTemplate header='absolute'>
         <Container>
           <NavBar categories={categories} activeCategory={activeCategory} />
           <CategoryCards activeCategory={activeCategory} shops={shops} />

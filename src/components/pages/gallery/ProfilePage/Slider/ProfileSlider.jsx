@@ -23,13 +23,15 @@ const ProfileSlider = ({ additional_photos, main_photo }) => {
   };
 
   return (
-    <Slider {...settings}>
-      {[{ thumbnail: main_photo }, ...additional_photos].map((item, index) => (
-        <div key={index} className={styles.slide}>
-          <img src={MEDIA_URL + item.thumbnail} alt='работа' />
-        </div>
-      ))}
-    </Slider>
+    <div id='promoSlider'>
+      <Slider {...settings}>
+        {[{ thumbnail: main_photo }, ...additional_photos].map((item, index) => (
+          <div key={index} className={styles.slide}>
+            <img src={MEDIA_URL + item.thumbnail} alt='работа' />
+          </div>
+        ))}
+      </Slider>
+    </div>
   );
 };
 

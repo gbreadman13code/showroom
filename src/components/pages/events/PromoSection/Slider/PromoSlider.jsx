@@ -1,13 +1,13 @@
-import React from "react";
-import Slider from "react-slick";
+import React from 'react';
+import Slider from 'react-slick';
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
-import styles from "../PromoSection.module.scss";
-import sliderStyles from "./PromoSlider.scss";
+import styles from '../PromoSection.module.scss';
+import sliderStyles from './PromoSlider.scss';
 
-import useMobileDetect from "use-mobile-detect-hook";
+import useMobileDetect from 'use-mobile-detect-hook';
 
 const PromoSlider = ({ slides }) => {
   const detectMobile = useMobileDetect();
@@ -30,19 +30,21 @@ const PromoSlider = ({ slides }) => {
   };
 
   return (
-    <Slider {...settings}>
-      {slides.map((item) => {
-        return item.link ? (
-          <a href={item.link} key={item.id} className={styles.slide}>
-            <img src={item.image} alt="logo" />
-          </a>
-        ) : (
-          <div key={item.id} className={styles.slide}>
-            <img src={item.image} alt="logo" />
-          </div>
-        );
-      })}
-    </Slider>
+    <div id='promoSlider'>
+      <Slider {...settings}>
+        {slides.map((item) => {
+          return item.link ? (
+            <a href={item.link} key={item.id} className={styles.slide}>
+              <img src={item.image} alt='logo' />
+            </a>
+          ) : (
+            <div key={item.id} className={styles.slide}>
+              <img src={item.image} alt='logo' />
+            </div>
+          );
+        })}
+      </Slider>
+    </div>
   );
 };
 
