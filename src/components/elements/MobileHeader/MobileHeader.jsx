@@ -42,7 +42,7 @@ const MobileHeader = (props) => {
             Шоурум
           </NavLink>
         </div>
-        <MobileHeaderButtonGroup header={props.header} />
+        <MobileHeaderButtonGroup header={props.header} order={props.order} />
       </div>
     </div>
   );
