@@ -22,26 +22,38 @@ const ProductImages = ({ images, title }) => {
   const isMobile = detectMobile.isMobile();
 
   const slider = useRef();
-
-  let settings = {
-    arrows: false,
-    // prevArrow: '',
-    infinite: false,
-    // speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    // // adaptiveHeight: isMobile ? true : false,
-    swipeToSlide: true,
-    vertical: true,
-    verticalSwiping: true,
-    beforeChange: (oldIndex, newIndex) => {
-      let list = slider.current.innerSlider.list;
-      let slides = list.querySelectorAll('.slick-slide');
-      setIsBeforeArrow(newIndex > 0);
-      setIsAfterArrow(slides.length > newIndex + 3);
-    },
-  };
-
+  let settings;
+  if (isMobile) {
+    settings = {
+      arrows: false,
+      infinite: false,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      swipeToSlide: true,
+      beforeChange: (oldIndex, newIndex) => {
+        let list = slider.current.innerSlider.list;
+        let slides = list.querySelectorAll('.slick-slide');
+        setIsBeforeArrow(newIndex > 0);
+        setIsAfterArrow(slides.length > newIndex + 3);
+      },
+    };
+  } else {
+    settings = {
+      arrows: false,
+      infinite: false,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      swipeToSlide: true,
+      vertical: true,
+      verticalSwiping: true,
+      beforeChange: (oldIndex, newIndex) => {
+        let list = slider.current.innerSlider.list;
+        let slides = list.querySelectorAll('.slick-slide');
+        setIsBeforeArrow(newIndex > 0);
+        setIsAfterArrow(slides.length > newIndex + 3);
+      },
+    };
+  }
   return (
     <div className={styles.productImages} id='productImages'>
       <div className={styles.productImage}>

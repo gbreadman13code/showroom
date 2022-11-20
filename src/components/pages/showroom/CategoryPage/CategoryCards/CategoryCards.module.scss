@@ -14,7 +14,7 @@
   margin-bottom: 20px;
   @media (max-width: 900px) {
     align-items: center;
-    flex: 0 0 50%;
+    flex: 0 0 48%;
     margin-bottom: 26px;
   }
 }
@@ -31,8 +31,9 @@
     max-width: 100%;
   }
   @media (max-width: 900px) {
-    width: 122px;
-    height: 122px;
+    width: 100%;
+    aspect-ratio: 1/1;
+    height: auto;
   }
 }
 .shopTitle {
@@ -54,6 +55,7 @@
   width: 228px;
   cursor: pointer;
   @media (max-width: 900px) {
-    width: 122px;
+    width: 100%;
+    min-height: 100%;
   }
 }

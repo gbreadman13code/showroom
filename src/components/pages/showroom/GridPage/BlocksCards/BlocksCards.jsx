@@ -54,9 +54,17 @@ const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setI
   let location = useLocation();
 
   useEffect(() => {
+    if (isMobile) {
+      document.body.style.overflow = 'hidden';
+      document.querySelector('#root').style.overflow = 'hidden';
+    }
     maxColumn = 3;
     insertNewCardsBlock(0, 0);
     while (checkBorders());
+    return () => {
+      document.body.style.overflow = '';
+      document.querySelector('#root').style.overflow = '';
+    };
   }, [location]);
 
   let checkBorders = () => {
@@ -154,13 +162,17 @@ const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setI
 
   let pointerUpHandler = (event) => {
     setIsTouched(false);
-    document.body.style.overflow = '';
+    if (!isMobile) {
+      document.body.style.overflow = '';
+      document.querySelector('#root').style.overflow = '';
+    }
   };
   let pointerDownHandler = (event) => {
     setIsTouched(true);
     moveStartX = event.touches[0].clientX + gridXPosition;
     moveStartY = event.touches[0].clientY + gridYPosition;
     document.body.style.overflow = 'hidden';
+    document.querySelector('#root').style.overflow = 'hidden';
   };
   let pointerMoveHandler = (event) => {
     if (isTouched) {

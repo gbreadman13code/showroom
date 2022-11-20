@@ -44,9 +44,9 @@ const ShopPage = () => {
                         <div className={styles.productCost}>
                           {String(product.cost).replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, '$1 ')}р.
                         </div>
-                        <button type='button' className={styles.productButton}>
+                        {/* <button type='button' className={styles.productButton}>
                           Купить
-                        </button>
+                        </button> */}
                       </div>
                     </div>
                   </Link>

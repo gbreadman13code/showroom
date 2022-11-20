@@ -4,10 +4,15 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import PageTemplate from '../../../templates/PageTemplate';
 import Container from '../../../templates/Container';
 import { getProduct } from '../../../../redux/requests/getProduct';
+import useMobileDetect from 'use-mobile-detect-hook';
 import { ReactComponent as GoBackArrow } from '../../../../assets/img/arrow-left.svg';
+import { ReactComponent as MobileGoBackArrow } from '../../../../assets/img/showroom/goBackMobile.svg';
 import ProductImages from './ProductImages/ProductImages';
 
 const ProductPage = () => {
+  const detectMobile = useMobileDetect();
+  const isMobile = detectMobile.isMobile();
+
   let params = useParams();
   let location = useLocation();
   let [images, setImages] = useState([]);
@@ -29,10 +34,17 @@ const ProductPage = () => {
               <div className={styles.productTitle}>{product.title}</div>
               <div className={styles.shop}>{product.shop.title}</div>
               <div className={styles.backArrow}>
-                <Link to={`/showroom/shops/${product.shop.id}`}>
-                  {' '}
-                  <GoBackArrow /> Назад
-                </Link>
+                {isMobile ? (
+                  <Link to={`/showroom/shops/${product.shop.id}`}>
+                    {' '}
+                    <MobileGoBackArrow />
+                  </Link>
+                ) : (
+                  <Link to={`/showroom/shops/${product.shop.id}`}>
+                    {' '}
+                    <GoBackArrow /> Назад
+                  </Link>
+                )}
               </div>
               <div className={styles.productImages}>
                 <ProductImages images={images} title={product.title} />
@@ -44,9 +56,9 @@ const ProductPage = () => {
               <div className={styles.productCost}>
                 {String(product.cost).replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, '$1 ')} ₽
               </div>
-              <button type='button' className={styles.productButton}>
+              {/* <button type='button' className={styles.productButton}>
                 Купить
-              </button>
+              </button> */}
             </div>
           )}
         </Container>

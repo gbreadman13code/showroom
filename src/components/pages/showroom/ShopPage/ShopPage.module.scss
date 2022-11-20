@@ -14,7 +14,7 @@
   margin-right: 54px;
   @media (max-width: 900px) {
     margin-right: 0;
-    width: 252px;
+    width: 100%;
     margin-bottom: 25px;
   }
 }
@@ -28,10 +28,13 @@
   margin-bottom: 16px;
   & img {
     max-width: 100%;
+    @media (max-width: 900px) {
+      width: 100%;
+    }
   }
   @media (max-width: 900px) {
-    width: 252px;
-    height: 252px;
+    width: 100%;
+    height: auto;
     margin-bottom: 20px;
   }
 }
@@ -74,6 +77,10 @@
   & a {
     text-decoration: none;
   }
+  @media (max-width: 900px) {
+    display: block;
+    width: 100%;
+  }
 }
 .product {
   width: 268px;
@@ -111,12 +118,16 @@
   &:hover {
     & .productReadMore {
       opacity: 1;
+      @media (max-width: 900px) {
+        opacity: 0;
+      }
     }
   }
 
   @media (max-width: 900px) {
-    width: 276px;
-    height: 276px;
+    width: 100%;
+    aspect-ratio: 1/1;
+    height: auto;
 
     margin-bottom: 11px;
   }
