@@ -8,8 +8,8 @@ const Container = ({ children }) => {
     <div
       style={
         !isMobile
-          ? { width: "1100px", margin: "0 auto" }
-          : { width: "80%", margin: "0 auto" }
+          ? { width: "1100px", margin: "0 auto", position: "relative" }
+          : { width: "80%", margin: "0 auto", position: "relative" }
       }
     >
       {children}
