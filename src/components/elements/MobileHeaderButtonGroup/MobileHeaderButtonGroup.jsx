@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import styles from "./MobileHeaderButtonGroup.module.scss";
 import { useSelector } from "react-redux";
 
-const MobileHeaderButtonGroup = () => {
+const MobileHeaderButtonGroup = (props) => {
   const order = useSelector((state) => state.order.orderList);
 
   let orderCount = 0;
@@ -19,14 +19,20 @@ const MobileHeaderButtonGroup = () => {
   }
 
   return (
-    <div className={styles.container}>
+    <div
+      className={
+        props.order
+          ? `${styles.container} ${styles.container__gallery}`
+          : styles.container
+      }
+    >
       <div className={styles.links}>
         {/* <Link to={'/wishlist'}>
             <img src={pathname ? LikeActive : LikeDisActive} alt="whishlist" />
         </Link> */}
         <Link to={"/gallery/order"}>
           {/* Значок корзины */}
-          {/* <Garbadge /> */}
+          <Garbadge />
           {orderCount > 0 && <div className={styles.counter}>{orderCount}</div>}
         </Link>
       </div>

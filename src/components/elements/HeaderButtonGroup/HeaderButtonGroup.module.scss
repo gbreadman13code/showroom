@@ -1,5 +1,5 @@
 .container {
-  display: flex;
+  display: none;
   align-items: center;
   height: 100%;
 
@@ -36,5 +36,9 @@
         fill: #50535a;
       }
     }
+  }
+
+  &__gallery {
+    display: flex;
   }
 }

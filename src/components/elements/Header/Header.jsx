@@ -43,7 +43,7 @@ const Header = (props) => {
           {/* <Link to="/gallery/payment_and_delivery">Контакты</Link> */}
         </div>
       </div>
-      <HeaderButtonGroup header={props.header} />
+      <HeaderButtonGroup header={props.header} order={props.order} />
 
       {/* <Burger /> */}
     </div>
