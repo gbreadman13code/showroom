@@ -1,0 +1,116 @@
+.card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  // 323px * 1.5 (Ширина карточки со scale 1.5)
+  width: 481px;
+  // 434px * 1.5 (Высота карточки со scale 1.5)
+  height: 651px;
+  @media (max-width: 900px) {
+    width: 214px;
+    height: 287px;
+    transform: translate(-50%, calc(-50% - 70px));
+  }
+}
+.cross {
+  display: block;
+  width: 59px;
+  height: 59px;
+  position: absolute;
+  top: calc(50% - 354px);
+  left: calc(50% + 213px);
+  z-index: 300;
+  cursor: pointer;
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    width: 83px;
+    height: 2px;
+    background-color: #f0e400;
+  }
+  &::before {
+    transform: rotateZ(45deg);
+  }
+  &::after {
+    transform: rotateZ(-45deg);
+  }
+  @media (max-width: 900px) {
+    position: fixed;
+    top: calc(50% - 243px);
+    left: calc(50% + 90px);
+    &::before,
+    &::after {
+      width: 48px;
+    }
+  }
+}
+.cardText {
+  position: fixed;
+  top: calc(50% + 120px);
+  left: calc(50% + 161px);
+
+  height: 200px;
+
+  color: red;
+  font-size: 80px;
+  & .cardTitle::after {
+    content: '';
+    margin-top: 2px;
+    display: block;
+    height: 1px;
+    background-color: #fff;
+    width: 0;
+    transition: width 0.3s ease;
+  }
+  &:hover {
+    & .cardTitle::after {
+      width: 100%;
+    }
+  }
+  @media (max-width: 900px) {
+    left: 0;
+    top: 310px;
+  }
+}
+
+.cardTitle {
+  width: min-content;
+  border-bottom: 0;
+  margin-bottom: 8px;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  font-family: 'Geometria';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 41.4866px;
+  line-height: 100.3%;
+
+  transition: border-bottom 0.3s ease;
+
+  @media (max-width: 900px) {
+    font-size: 30px;
+  }
+}
+
+.cardDescription {
+  text-transform: none;
+  width: 272px;
+  color: #fff;
+  font-family: 'Geometria';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 136.3%;
+
+  @media (max-width: 900px) {
+    font-size: 14px;
+  }
+}

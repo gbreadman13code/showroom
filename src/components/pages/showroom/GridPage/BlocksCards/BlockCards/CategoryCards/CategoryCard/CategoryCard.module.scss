@@ -1,0 +1,23 @@
+.card {
+  position: relative;
+  width: 323px;
+  height: 434px;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.3s ease, top 0.3s ease;
+  background-size: contain;
+  top: 0;
+
+  &.active {
+    transform: scale(1.5);
+    z-index: 5;
+    @media (max-width: 900px) {
+      transform: scale(1.75);
+      top: -70px;
+    }
+  }
+  @media (max-width: 900px) {
+    width: 122px;
+    height: 164px;
+  }
+}

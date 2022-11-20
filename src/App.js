@@ -11,6 +11,10 @@ import getExhibitions from './redux/requests/getExhibitions';
 import ContactsPage from './components/pages/gallery/ContactsPage/ContactsPage';
 import ConfirmPage from './components/pages/gallery/ConfirmPage/ConfirmPage';
 import PrimaryPage from './components/pages/events/PrimaryPage/PrimaryPage';
+import GridPage from './components/pages/showroom/GridPage/GridPage';
+import CategoryPage from './components/pages/showroom/CategoryPage/CategoryPage';
+import ShopPage from './components/pages/showroom/ShopPage/ShopPage';
+import ProductPage from './components/pages/showroom/ProductPage/ProductPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -29,6 +33,11 @@ function App() {
         <Route path='/gallery/confirm' element={<ConfirmPage />} />
         <Route path='/gallery/payment_and_delivery' element={<ContactsPage />} />
         <Route path='/gallery/profile/:id' element={<ProfilePage />} />
+        <Route path='/showroom' element={<GridPage />} />
+        <Route path='/showroom/categories/:id' element={<CategoryPage />} />
+        <Route path='/showroom/categories' element={<CategoryPage />} />
+        <Route path='/showroom/shops/:id' element={<ShopPage />} />
+        <Route path='/showroom/products/:id' element={<ProductPage />} />
       </Routes>
     </>
   );

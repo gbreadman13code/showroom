@@ -4,8 +4,8 @@ import HeaderButtonGroup from "../HeaderButtonGroup/HeaderButtonGroup";
 import Logo from "../Logo/Logo";
 // import useMobileDetect from "use-mobile-detect-hook";
 
-import styles from "./MobileHeader.module.scss";
-import MobileHeaderButtonGroup from "../MobileHeaderButtonGroup/MobileHeaderButtonGroup";
+import styles from './MobileHeader.module.scss';
+import MobileHeaderButtonGroup from '../MobileHeaderButtonGroup/MobileHeaderButtonGroup';
 
 const MobileHeader = (props) => {
   // const detectMobile = useMobileDetect();

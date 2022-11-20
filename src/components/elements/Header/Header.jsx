@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import HeaderButtonGroup from "../HeaderButtonGroup/HeaderButtonGroup";
@@ -26,6 +27,7 @@ const Header = (props) => {
         </NavLink>
 
         <div className={styles.navLinks}>
+
           <NavLink
             to="/gallery"
             className={({ isActive }) => (isActive ? styles.pressed : "")}

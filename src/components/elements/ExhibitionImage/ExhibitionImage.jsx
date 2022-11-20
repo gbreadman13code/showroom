@@ -19,10 +19,6 @@ const ExhibitionImage = ({ isLiked = false, url, author, name, id }) => {
 
   const imageWidthRef = useRef();
 
-  // const setLike = (id) => {
-  //   console.log(id)
-  // }
-
   useEffect(() => {
     if (imageWidthRef.current && isLoadImage) {
       setImageWidth(imageWidthRef.current.getBoundingClientRect().width);

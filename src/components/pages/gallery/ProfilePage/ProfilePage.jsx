@@ -25,13 +25,16 @@ const ProfilePage = () => {
   const params = useParams();
   const dispatch = useDispatch();
 
-  const item = useSelector((state) => state.exhibitions.exhibitions[0]);
+  const exhibitions = useSelector((state) => state.exhibitions.exhibitions);
+  let item = { pictures: [] };
+  exhibitions.forEach((exhibition) => {
+    item.pictures.unshift(...exhibition.pictures);
+  });
   const orderList = useSelector((state) => state.order.orderList);
 
   useEffect(() => {
     if (!item) return;
-    // console.log(item.pictures.find((point) => point.id === +params.id));
-    // console.log(params.id);
+
     setCurrentProfile(item.pictures.find((point) => point.id === +params.id));
   }, [item, params.id]);
 
