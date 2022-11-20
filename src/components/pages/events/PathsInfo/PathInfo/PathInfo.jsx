@@ -1,22 +1,90 @@
-import HTMLReactParser from 'html-react-parser';
-import React, { useEffect, useState } from 'react';
-import RecommendationPlace from './RecommendationPlace/RecommendationPlace';
+import HTMLReactParser from "html-react-parser";
+import React, { useEffect, useState } from "react";
+import RecommendationPlace from "./RecommendationPlace/RecommendationPlace";
+import styles from "./PathInfo.module.scss";
+
+import useMobileDetect from "use-mobile-detect-hook";
 
 const PathInfo = ({ path }) => {
-  let [time, setTime] = useState('00:00');
+  const detectMobile = useMobileDetect();
+  const isMobile = detectMobile.isMobile();
+
+  let [time, setTime] = useState("00:00");
   useEffect(() => {
     setTime(getPathTime(path));
   }, [path]);
   return (
-    <div>
-      <div>{time}</div>
-      <div>{path.event_title}</div>
-      <div>
-        {path.event_location_start} | {path.event_location_end}
+    <div
+      className={
+        isMobile ? `${styles.path} ${styles.path__mobile}` : styles.path
+      }
+    >
+      <div
+        className={
+          isMobile ? `${styles.info} ${styles.info__mobile}` : styles.info
+        }
+      >
+        <div
+          className={
+            isMobile ? `${styles.time} ${styles.time__mobile}` : styles.time
+          }
+        >
+          {time}
+        </div>
+        <div
+          className={
+            isMobile
+              ? `${styles.event_title} ${styles.event_title__mobile}`
+              : styles.event_title
+          }
+        >
+          {path.event_title}
+        </div>
+        <div
+          className={
+            isMobile
+              ? `${styles.location} ${styles.location__mobile}`
+              : styles.location
+          }
+        >
+          {path.event_location_start} | {path.event_location_end}
+        </div>
+        <div
+          className={
+            isMobile ? `${styles.desc} ${styles.desc__mobile}` : styles.desc
+          }
+        >
+          {path.description && HTMLReactParser(path.description)}
+        </div>
       </div>
-      <div>{path.description && HTMLReactParser(path.description)}</div>
-      <div>{path.recommendation}</div>
-      <div>{path.places && path.places.map((place) => <RecommendationPlace key={place.id} place={place} />)}</div>
+      <div
+        className={
+          isMobile
+            ? `${styles.recomend} ${styles.recomend__mobile}`
+            : styles.recomend
+        }
+        data-recomend="Рекомендуем посетить"
+      >
+        <div
+          className={
+            isMobile ? `${styles.grid} ${styles.grid__mobile}` : styles.grid
+          }
+        >
+          {path.places &&
+            path.places.map((place) => (
+              <RecommendationPlace key={place.id} place={place} />
+            ))}
+        </div>
+        <div
+          className={
+            isMobile
+              ? `${styles.recomend_text} ${styles.recomend_text__mobile}`
+              : styles.recomend_text
+          }
+        >
+          {path.recommendation}
+        </div>
+      </div>
     </div>
   );
 };
@@ -25,5 +93,7 @@ export default PathInfo;
 
 function getPathTime(path) {
   let date = new Date(path.start_datetime);
-  return `${('0' + date.getHours()).slice(-2)}:${('0' + date.getMinutes()).slice(-2)}`;
+  return `${("0" + date.getHours()).slice(-2)}:${(
+    "0" + date.getMinutes()
+  ).slice(-2)}`;
 }

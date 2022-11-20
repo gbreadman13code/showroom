@@ -1,10 +1,11 @@
-import React from 'react';
-import Garbadge from '../../../assets/img/garbadge.svg';
+import React from "react";
+// import Garbadge from "../../../assets/img/garbadge.svg";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { ReactComponent as Garbadge } from "../../../assets/img/garbadge.svg";
 
-import styles from './HeaderButtonGroup.module.scss';
-import { useSelector } from 'react-redux';
+import styles from "./HeaderButtonGroup.module.scss";
+import { useSelector } from "react-redux";
 
 const HeaderButtonGroup = () => {
   const order = useSelector((state) => state.order.orderList);
@@ -23,8 +24,9 @@ const HeaderButtonGroup = () => {
       {/* <Link to={'/wishlist'}>
             <img src={pathname ? LikeActive : LikeDisActive} alt="whishlist" />
         </Link> */}
-      <Link to={'/gallery/order'}>
-        <img src={Garbadge} alt='order' />
+      <Link to={"/gallery/order"}>
+        <Garbadge />
+        {/* <img src={Garbadge} alt="order" /> */}
         {orderCount > 0 && <div className={styles.counter}>{orderCount}</div>}
       </Link>
       {/* <Link to={'/'}>

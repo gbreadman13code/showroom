@@ -1,0 +1,45 @@
+.months {
+  grid-area: 1/1/2/2;
+
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: -25px;
+    top: 50%;
+    transform: translateY(-35%);
+
+    height: 20px;
+    width: 1px;
+    background-color: #fff;
+  }
+
+  button {
+    color: #bfbfbf;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 38px;
+
+    background-color: transparent;
+    border: none;
+    text-transform: capitalize;
+
+    padding: 0;
+  }
+
+  &__mobile {
+    grid-area: 1/1/2/2;
+
+    &::after {
+      display: none;
+    }
+
+    button {
+      font-size: 20px;
+      line-height: 25px;
+
+      // margin-bottom: 25px;
+    }
+  }
+}

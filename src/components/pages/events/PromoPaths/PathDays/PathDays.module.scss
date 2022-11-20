@@ -1,0 +1,106 @@
+.days {
+  // display: inline-block;
+  // vertical-align: baseline;
+  grid-area: 1/2/2/3;
+  display: flex;
+  align-items: flex-start;
+  height: 100%;
+  // outline: 2px solid red;
+
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    margin-right: 50px;
+    padding: 0;
+
+    position: relative;
+    height: 100%;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &.active {
+      background-color: red;
+    }
+
+    span {
+      position: absolute;
+
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 33px;
+      color: white;
+
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+
+      transition: transform 0.3s ease;
+
+      &::before {
+        content: attr(data-days);
+        position: absolute;
+        display: block;
+        left: 0;
+
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 33px;
+        color: white;
+      }
+    }
+
+    &:hover {
+      span {
+        transform: translateY(-50%) scale(1.4);
+        font-weight: 600;
+
+        background: linear-gradient(
+          180deg,
+          rgba(#d6358c, 1) 30%,
+          rgba(#4f4898, 1) 90%
+        );
+
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+
+        background-blend-mode: screen;
+        mix-blend-mode: screen;
+
+        &::before {
+          background: linear-gradient(
+            180deg,
+            rgba(#d6358c, 0.2) 30%,
+            rgba(#4f4898, 0.2) 90%
+          );
+          filter: blur(5px);
+        }
+      }
+    }
+  }
+
+  &__mobile {
+    // background-color: red;
+    grid-area: 2/1/3/2;
+
+    button {
+      margin-right: 45px;
+      margin-bottom: 55px;
+
+      span {
+        // font-weight: 400;
+        font-size: 19px;
+        line-height: 19px;
+
+        &::before {
+          font-size: 19px;
+          line-height: 19px;
+        }
+      }
+    }
+  }
+}

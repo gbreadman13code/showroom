@@ -1,10 +1,11 @@
-import React from 'react';
-import Garbadge from '../../../assets/img/garbadge.svg';
+import React from "react";
+// import Garbadge from '../../../assets/img/garbadge.svg';
+import { ReactComponent as Garbadge } from "../../../assets/img/garbadge.svg";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import styles from './MobileHeaderButtonGroup.module.scss';
-import { useSelector } from 'react-redux';
+import styles from "./MobileHeaderButtonGroup.module.scss";
+import { useSelector } from "react-redux";
 
 const MobileHeaderButtonGroup = () => {
   const order = useSelector((state) => state.order.orderList);
@@ -23,8 +24,9 @@ const MobileHeaderButtonGroup = () => {
         {/* <Link to={'/wishlist'}>
             <img src={pathname ? LikeActive : LikeDisActive} alt="whishlist" />
         </Link> */}
-        <Link to={'/gallery/order'}>
-          <img src={Garbadge} alt='order' />
+        <Link to={"/gallery/order"}>
+          {/* Значок корзины */}
+          {/* <Garbadge /> */}
           {orderCount > 0 && <div className={styles.counter}>{orderCount}</div>}
         </Link>
       </div>
