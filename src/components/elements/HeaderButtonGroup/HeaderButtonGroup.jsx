@@ -7,7 +7,7 @@ import { ReactComponent as Garbadge } from "../../../assets/img/garbadge.svg";
 import styles from "./HeaderButtonGroup.module.scss";
 import { useSelector } from "react-redux";
 
-const HeaderButtonGroup = () => {
+const HeaderButtonGroup = (props) => {
   const order = useSelector((state) => state.order.orderList);
 
   let orderCount = 0;
@@ -19,7 +19,13 @@ const HeaderButtonGroup = () => {
   }
 
   return (
-    <div className={styles.container}>
+    <div
+      className={
+        props.order
+          ? `${styles.container} ${styles.container__gallery}`
+          : styles.container
+      }
+    >
       {/* <SearchField /> */}
       {/* <Link to={'/wishlist'}>
             <img src={pathname ? LikeActive : LikeDisActive} alt="whishlist" />
