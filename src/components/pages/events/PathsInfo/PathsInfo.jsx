@@ -28,6 +28,7 @@ const PathsInfo = ({ paths }) => {
             onClick={() => {
               setActivePath(path);
             }}
+            className={path === activePath ? styles.active : null}
           >
             <span>{path.path_title}</span>
           </button>
