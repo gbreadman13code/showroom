@@ -6,12 +6,13 @@
   &::before {
     content: attr(data-title);
     position: absolute;
-    left: calc(50% - 750px);
+    left: calc(50% - 600px);
     top: 50%;
-    transform: translateY(-50%) rotate(-90deg);
+    transform: translateY(-50%) translateX(-50%) rotate(-90deg);
 
     font-size: 62px;
     color: white;
+    white-space: nowrap;
   }
 
   &:nth-of-type(3) {
@@ -66,10 +67,11 @@
 
   &__mobile {
     &::before {
-      left: calc(11vw - 105px);
+      // left: calc(11vw - 12px);
+      left: 10vw;
       // left: -5%;
       top: 50%;
-      transform: translateY(-50%) rotate(-90deg);
+      transform: translateY(-50%) translateX(-50%) rotate(-90deg);
       font-size: 44px;
 
       // outline: 20px solid red;
