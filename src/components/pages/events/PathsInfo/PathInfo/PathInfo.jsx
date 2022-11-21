@@ -9,6 +9,8 @@ const PathInfo = ({ path }) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
+  // console.log(path.places.length);
+
   let [time, setTime] = useState("00:00");
   useEffect(() => {
     setTime(getPathTime(path));
@@ -57,7 +59,57 @@ const PathInfo = ({ path }) => {
           {path.description && HTMLReactParser(path.description)}
         </div>
       </div>
-      <div
+
+      {/* Блок рекомендаций */}
+
+      {isMobile ? (
+        // Мобилка
+        <div
+          className={`${styles.recomend} ${styles.recomend__mobile}`}
+          data-recomend="Рекомендуем посетить"
+          style={
+            path.places?.length === 0
+              ? { display: "none" }
+              : { display: "block" }
+          }
+        >
+          <div
+            className={`${styles.recomend_text} ${styles.recomend_text__mobile}`}
+          >
+            {path.recommendation}
+          </div>
+          <div className={`${styles.grid} ${styles.grid__mobile}`}>
+            {path.places &&
+              path.places.map((place) => (
+                <RecommendationPlace key={place.id} place={place} />
+              ))}
+          </div>
+        </div>
+      ) : (
+        // Десктоп
+        <div
+          style={
+            path.places?.length === 0
+              ? { display: "none" }
+              : { display: "block" }
+          }
+        >
+          <div className={styles.recomend} data-recomend="Рекомендуем посетить">
+            <div className={styles.grid}>
+              {path.places &&
+                path.places.map((place) => (
+                  <RecommendationPlace key={place.id} place={place} />
+                ))}
+            </div>
+          </div>
+          <div className={styles.recomend_text}>{path.recommendation}</div>
+        </div>
+      )}
+
+      {/* <div
+        style={
+          path.places?.length === 0 ? { display: "none" } : { display: "block" }
+        }
         className={
           isMobile
             ? `${styles.recomend} ${styles.recomend__mobile}`
@@ -84,7 +136,7 @@ const PathInfo = ({ path }) => {
         >
           {path.recommendation}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
