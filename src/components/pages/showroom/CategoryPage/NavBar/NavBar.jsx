@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from './NavBar.module.scss';
 import { Link } from 'react-router-dom';
 import useMobileDetect from 'use-mobile-detect-hook';
@@ -7,7 +7,12 @@ import Slider from 'react-slick';
 const NavBar = ({ categories, activeCategory }) => {
   let slider = useRef();
   useEffect(() => {
-    if (slider.current) slider.current.slickGoTo(activeCategory - 1);
+    let cats = categories.sort((first, second) => first.id - second.id);
+    let first_id = 0;
+    if (cats.length) {
+      first_id = cats[0].id;
+    }
+    if (slider.current) slider.current.slickGoTo(activeCategory - first_id);
   }, [activeCategory, categories]);
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
