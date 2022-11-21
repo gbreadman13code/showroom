@@ -24,6 +24,7 @@ const PromoPaths = () => {
       let months = getMonthsFromPathsArray(pathsData);
       setActiveMonth(months[0]);
       let days = getDaysFromPathsArray(pathsData, months[0]);
+      setActiveDay(days[0]);
       setPaths(getPathToDisplay(pathsData, months[0], days[0]));
     });
   }, []);
