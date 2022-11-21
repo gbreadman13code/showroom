@@ -5,7 +5,7 @@
   user-select: none;
   -webkit-tap-highlight-color: transparent;
   transition: transform 0.3s ease, top 0.3s ease;
-  background-size: contain;
+  background-size: cover;
   top: 0;
 
   &.active {
