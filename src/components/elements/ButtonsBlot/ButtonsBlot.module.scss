@@ -9,6 +9,13 @@
 
   li {
     list-style: none;
+
+    // button {}
+    &:last-child {
+      button {
+        margin-right: 0;
+      }
+    }
   }
 
   // мобильная версия
