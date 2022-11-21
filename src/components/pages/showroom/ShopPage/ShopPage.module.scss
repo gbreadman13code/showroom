@@ -70,7 +70,7 @@
   margin-bottom: 10px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   @media (max-width: 900px) {
     justify-content: center;
     margin-bottom: 0;
@@ -94,6 +94,7 @@
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 10px;
+  margin-right: 4px;
   background-size: contain;
 
   & .productReadMore {
@@ -184,6 +185,9 @@
   line-height: 100.3%;
 }
 .backLink {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
   margin-top: 44px;
   margin-left: auto;
   font-family: 'Geometria';
@@ -191,8 +195,10 @@
   font-weight: 500;
   font-size: 22.8237px;
   line-height: 29px;
-  color: #fff;
-  text-decoration: none;
+  & a {
+    color: #fff;
+    text-decoration: none;
+  }
   @media (max-width: 900px) {
     margin-top: 10px;
   }

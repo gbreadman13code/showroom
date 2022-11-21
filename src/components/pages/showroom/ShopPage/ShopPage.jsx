@@ -52,11 +52,13 @@ const ShopPage = () => {
                   </Link>
                 ))}
               {!isMobile && (
-                <Link className={styles.backLink} to={`/showroom/categories/${shop.category}`}>
-                  <>
-                    <GoBackArrow /> Назад
-                  </>
-                </Link>
+                <div className={styles.backLink}>
+                  <Link to={`/showroom/categories/${shop.category}`}>
+                    <>
+                      <GoBackArrow /> Назад
+                    </>
+                  </Link>
+                </div>
               )}
             </div>
             {isMobile && (
