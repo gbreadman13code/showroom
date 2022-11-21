@@ -312,7 +312,7 @@ const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setI
         className={styles.grid}
         style={{
           transform: `translate(${-gridXPosition}px, ${-gridYPosition}px)`,
-          transition: isBlockTransitive ? 'transform 0.8s ease' : 'transform 0.1s ease',
+          transition: isBlockTransitive ? (isMobile ? '' : 'transform 0.8s ease') : 'transform 0.1s ease',
         }}>
         {cardsBlocks &&
           cardsBlocks.map((block, index) => (
