@@ -4,6 +4,7 @@ import BlocksCards from './BlocksCards/BlocksCards';
 import ActiveCard from './ActiveCard/ActiveCard';
 import { getShopsCategories } from '../../../../redux/requests/getShopsCategories';
 import { useLocation } from 'react-router-dom';
+import PageTemplate from '../../../templates/PageTemplate';
 
 const GridPage = () => {
   let [isBlockTransitive, setIsBlockTransitive] = useState(false);
@@ -25,26 +26,29 @@ const GridPage = () => {
   };
 
   return (
-    <div>
-      <BlocksCards
-        cards={cards}
-        setActiveCard={setActiveCard}
-        activeCard={activeCard}
-        setIsBlockTransitive={setIsBlockTransitive}
-        isBlockTransitive={isBlockTransitive}
-        // isBlockTransitive={false}
-      />
-      <div
-        className={activeCard.image > 0 ? `${styles.background} ${styles.active}` : styles.background}
-        onClick={closeActiveCard}>
-        {activeCard.image > 0 && (
-          <ActiveCard
-            card={cards.filter((card) => card.id === activeCard.image)[0]}
-            closeActiveCard={closeActiveCard}
-          />
-        )}
+    <PageTemplate header='absolute' isFooter={false}>
+      <div>
+        <div className={styles.headerBackground}></div>
+        <BlocksCards
+          cards={cards}
+          setActiveCard={setActiveCard}
+          activeCard={activeCard}
+          setIsBlockTransitive={setIsBlockTransitive}
+          isBlockTransitive={isBlockTransitive}
+          // isBlockTransitive={false}
+        />
+        <div
+          className={activeCard.image > 0 ? `${styles.background} ${styles.active}` : styles.background}
+          onClick={closeActiveCard}>
+          {activeCard.image > 0 && (
+            <ActiveCard
+              card={cards.filter((card) => card.id === activeCard.image)[0]}
+              closeActiveCard={closeActiveCard}
+            />
+          )}
+        </div>
       </div>
-    </div>
+    </PageTemplate>
   );
 };
 
