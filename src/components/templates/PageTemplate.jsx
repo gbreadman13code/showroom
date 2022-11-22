@@ -7,14 +7,32 @@ import useMobileDetect from 'use-mobile-detect-hook';
 import MobileHeader from '../elements/MobileHeader/MobileHeader';
 import MobileFooter from '../elements/Footer/MobileFooter';
 
-const PageTemplate = ({ children, header, order, isFooter = true }) => {
+const PageTemplate = ({
+  children,
+  header,
+  order,
+  isFooter = true,
+  headerBackground,
+}) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
   return (
     <div className={styles.PageTemplate}>
       <Container>
-        {isMobile ? <MobileHeader header={header} order={order} /> : <Header header={header} order={order} />}
+        {isMobile ? (
+          <MobileHeader
+            header={header}
+            order={order}
+            headerBackground={headerBackground}
+          />
+        ) : (
+          <Header
+            header={header}
+            order={order}
+            headerBackground={headerBackground}
+          />
+        )}
       </Container>
       <main style={{ flex: '1 1 auto' }}>{children}</main>
 

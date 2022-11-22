@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import BlockCards from './BlockCards/BlockCards';
-import styles from './BlocksCards.module.scss';
-import useMobileDetect from 'use-mobile-detect-hook';
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import BlockCards from "./BlockCards/BlockCards";
+import styles from "./BlocksCards.module.scss";
+import useMobileDetect from "use-mobile-detect-hook";
 
 const offset = 3;
 
@@ -29,7 +29,13 @@ class CardsBlock {
   }
 }
 
-const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setIsBlockTransitive }) => {
+const BlocksCards = ({
+  cards,
+  setActiveCard,
+  activeCard,
+  isBlockTransitive,
+  setIsBlockTransitive,
+}) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
   if (isMobile) {
@@ -55,15 +61,15 @@ const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setI
 
   useEffect(() => {
     if (isMobile) {
-      document.body.style.overflow = 'hidden';
-      document.querySelector('#root').style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
+      document.querySelector("#root").style.overflow = "hidden";
     }
     maxColumn = 3;
     insertNewCardsBlock(0, 0);
     while (checkBorders());
     return () => {
-      document.body.style.overflow = '';
-      document.querySelector('#root').style.overflow = '';
+      document.body.style.overflow = "";
+      document.querySelector("#root").style.overflow = "";
     };
   }, [location]);
 
@@ -113,7 +119,9 @@ const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setI
       );
       if (
         t.filter((value) => {
-          return value.rowNumber === rowNumber && value.columnNumber === columnNumber;
+          return (
+            value.rowNumber === rowNumber && value.columnNumber === columnNumber
+          );
         }).length !== 0
       ) {
         return t;
@@ -127,7 +135,7 @@ const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setI
 
     moveStartX = event.clientX + gridXPosition;
     moveStartY = event.clientY + gridYPosition;
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
   };
   let mouseMoveHandler = (event) => {
     if (isTouched) {
@@ -163,21 +171,29 @@ const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setI
   let pointerUpHandler = (event) => {
     setIsTouched(false);
     if (!isMobile) {
-      document.body.style.overflow = '';
-      document.querySelector('#root').style.overflow = '';
+      document.body.style.overflow = "";
+      document.querySelector("#root").style.overflow = "";
     }
   };
   let pointerDownHandler = (event) => {
     setIsTouched(true);
     moveStartX = event.touches[0].clientX + gridXPosition;
     moveStartY = event.touches[0].clientY + gridYPosition;
-    document.body.style.overflow = 'hidden';
-    document.querySelector('#root').style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
+    document.querySelector("#root").style.overflow = "hidden";
   };
   let pointerMoveHandler = (event) => {
     if (isTouched) {
-      setCurrentColumn(((gridXPosition + window.innerWidth / 2) / (blockWidth + blockMarginWidth)) * 2);
-      setCurrentRow(((gridYPosition + window.innerHeight / 2) / (blockHeight + blockMarginHeight)) * 2);
+      setCurrentColumn(
+        ((gridXPosition + window.innerWidth / 2) /
+          (blockWidth + blockMarginWidth)) *
+          2
+      );
+      setCurrentRow(
+        ((gridYPosition + window.innerHeight / 2) /
+          (blockHeight + blockMarginHeight)) *
+          2
+      );
       if (currentColumn > maxColumn - offset) {
         updateWindow();
         removeFarCards();
@@ -280,7 +296,8 @@ const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setI
       //   -2 в конце чтобы получить числа от -2 до +2
       let multiplier = parseInt(card.style.left) / (cardWidth + cardMargin) - 2;
       let offsetInsideBlock = multiplier * (cardWidth + cardMargin);
-      let blockOffset = (block.columnNumber * (blockWidth + blockMarginWidth)) / 2;
+      let blockOffset =
+        (block.columnNumber * (blockWidth + blockMarginWidth)) / 2;
       return blockCenterCoords + offsetInsideBlock + blockOffset;
     });
     setGridYPosition((v) => {
@@ -288,11 +305,26 @@ const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setI
       //   -2 в конце чтобы получить числа от -2 до +2
       let multiplier = parseInt(card.style.top) / (cardHeight + cardMargin) - 2;
       let offsetInsideBlock = multiplier * (cardHeight + cardMargin);
-      let blockOffset = (block.rowNumber * (blockHeight + blockMarginHeight)) / 2;
-      return blockCenterCoords + offsetInsideBlock + blockOffset + cardHeight + cardMargin;
+      let blockOffset =
+        (block.rowNumber * (blockHeight + blockMarginHeight)) / 2;
+      return (
+        blockCenterCoords +
+        offsetInsideBlock +
+        blockOffset +
+        cardHeight +
+        cardMargin
+      );
     });
-    setCurrentColumn(((gridXPosition + window.innerWidth / 2) / (blockWidth + blockMarginWidth)) * 2);
-    setCurrentRow(((gridYPosition + window.innerHeight / 2) / (blockHeight + blockMarginHeight)) * 2);
+    setCurrentColumn(
+      ((gridXPosition + window.innerWidth / 2) /
+        (blockWidth + blockMarginWidth)) *
+        2
+    );
+    setCurrentRow(
+      ((gridYPosition + window.innerHeight / 2) /
+        (blockHeight + blockMarginHeight)) *
+        2
+    );
 
     updateWindow();
     removeFarCards();
@@ -307,13 +339,21 @@ const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setI
       onPointerLeave={pointerUpHandler}
       onMouseDown={mouseDownHandler}
       onMouseMove={mouseMoveHandler}
-      onWheelCapture={scrollHandler}>
+      onWheelCapture={scrollHandler}
+    >
       <div
         className={styles.grid}
         style={{
           transform: `translate(${-gridXPosition}px, ${-gridYPosition}px)`,
-          transition: isMobile ? '' : isBlockTransitive ? 'transform 0.8s ease' : 'transform 0.1s ease',
-        }}>
+          transition: isMobile
+            ? isBlockTransitive
+              ? "transform 0.8s ease"
+              : ""
+            : isBlockTransitive
+            ? "transform 0.8s ease"
+            : "",
+        }}
+      >
         {cardsBlocks &&
           cardsBlocks.map((block, index) => (
             <BlockCards
