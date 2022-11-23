@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './PartnersSection.module.scss';
 import NavBar from '../../../elements/NavBar/NavBar';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { getShopsCategories } from '../../../../redux/requests/getShopsCategories';
+import { getPartners } from '../../../../redux/requests/getPartners';
 import { getShops } from '../../../../redux/requests/getShops';
 import Container from '../../../templates/Container';
 
@@ -15,22 +15,20 @@ const PartnersSection = () => {
 
   let params = useParams();
   let [categories, setCategories] = useState([]);
-  let [activeCategory, setActiveCategory] = useState(0);
+  let [activeCategory, _setActiveCategory] = useState(0);
   let [shops, setShops] = useState([]);
   let location = useLocation();
 
   useEffect(() => {
-    getShopsCategories().then((res) => {
+    getPartners().then((res) => {
       setCategories(res.results);
+      setActiveCategory(res.results[0].id);
     });
-    getShops().then((res) => {
-      setShops(res.results);
-    });
-
-    if (params.id) {
-      setActiveCategory(+params.id);
-    }
   }, [location]);
+
+  let setActiveCategory = (categoryId) => {
+    _setActiveCategory(categoryId);
+  };
 
   return (
     <div
@@ -48,9 +46,19 @@ const PartnersSection = () => {
         >
           Сеть партнёров
         </h2>
-        <NavBar categories={categories} activeCategory={activeCategory} />
+        <NavBar
+          categories={categories}
+          activeCategory={activeCategory}
+          onClickCallback={setActiveCategory}
+        />
 
-        <PartnersProfile />
+        {categories.length > 0 && (
+          <PartnersProfile
+            partners={
+              categories.filter((cat) => cat.id === activeCategory)[0].partners
+            }
+          />
+        )}
       </Container>
     </div>
   );
