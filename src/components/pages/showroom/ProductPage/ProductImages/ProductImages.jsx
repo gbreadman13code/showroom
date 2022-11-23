@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react';
-import styles from './ProductImages.module.scss';
-import useMobileDetect from 'use-mobile-detect-hook';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import './slick.scss';
-import { ReactComponent as SliderArrow } from '../../../../../assets/img/showroom/sliderArrow.svg';
+import React, { useEffect, useState, useRef } from "react";
+import styles from "./ProductImages.module.scss";
+import useMobileDetect from "use-mobile-detect-hook";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "./slick.scss";
+import { ReactComponent as SliderArrow } from "../../../../../assets/img/showroom/sliderArrow.svg";
 
 const ProductImages = ({ images, title }) => {
   let [activeImage, setActiveImage] = useState({});
@@ -14,7 +14,7 @@ const ProductImages = ({ images, title }) => {
   useEffect(() => {
     setActiveImage(images[0]);
     let list = slider.current.innerSlider.list;
-    let slides = list.querySelectorAll('.slick-slide');
+    let slides = list.querySelectorAll(".slick-slide");
     setIsAfterArrow(slides.length > 3);
   }, []);
 
@@ -32,13 +32,14 @@ const ProductImages = ({ images, title }) => {
       swipeToSlide: true,
       beforeChange: (oldIndex, newIndex) => {
         let list = slider.current.innerSlider.list;
-        let slides = list.querySelectorAll('.slick-slide');
+        let slides = list.querySelectorAll(".slick-slide");
         setIsBeforeArrow(newIndex > 0);
         setIsAfterArrow(slides.length > newIndex + 3);
       },
     };
   } else {
     settings = {
+      // fade: true,
       arrows: false,
       infinite: false,
       slidesToShow: 3,
@@ -48,7 +49,7 @@ const ProductImages = ({ images, title }) => {
       verticalSwiping: true,
       beforeChange: (oldIndex, newIndex) => {
         let list = slider.current.innerSlider.list;
-        let slides = list.querySelectorAll('.slick-slide');
+        let slides = list.querySelectorAll(".slick-slide");
         setIsBeforeArrow(newIndex > 0);
         setIsAfterArrow(slides.length > newIndex + 3);
       },
@@ -56,18 +57,22 @@ const ProductImages = ({ images, title }) => {
   }
 
   return (
-    <div className={styles.productImages} id='productImages'>
+    <div className={styles.productImages} id="productImages">
       <div className={styles.productImage}>
         <img src={activeImage.cropped_image} alt={title} />
       </div>
 
-      <div className={styles.slider} style={{ display: images.length > 1 ? '' : 'none' }}>
+      <div
+        className={styles.slider}
+        style={{ display: images.length > 1 ? "" : "none" }}
+      >
         {isAfterArrow && (
           <div
             className={styles.afterArrow}
             onClick={() => {
               slider.current.slickNext();
-            }}>
+            }}
+          >
             <SliderArrow />
           </div>
         )}
@@ -83,7 +88,8 @@ const ProductImages = ({ images, title }) => {
               }
               onClick={() => {
                 setActiveImage(image);
-              }}>
+              }}
+            >
               <img src={image.cropped_image} alt={title} />
             </div>
           ))}
@@ -93,7 +99,8 @@ const ProductImages = ({ images, title }) => {
             className={styles.beforeArrow}
             onClick={() => {
               slider.current.slickPrev();
-            }}>
+            }}
+          >
             <SliderArrow />
           </div>
         )}

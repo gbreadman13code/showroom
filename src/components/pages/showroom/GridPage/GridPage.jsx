@@ -26,9 +26,13 @@ const GridPage = () => {
   };
 
   return (
-    <PageTemplate header='absolute' isFooter={false}>
+    <PageTemplate
+      header="absolute"
+      isFooter={false}
+      headerBackground={!activeCard.image > 0}
+    >
       <div>
-        <div className={styles.headerBackground}></div>
+        {/* <div className={styles.headerBackground}></div> */}
         <BlocksCards
           cards={cards}
           setActiveCard={setActiveCard}
@@ -38,8 +42,13 @@ const GridPage = () => {
           // isBlockTransitive={false}
         />
         <div
-          className={activeCard.image > 0 ? `${styles.background} ${styles.active}` : styles.background}
-          onClick={closeActiveCard}>
+          className={
+            activeCard.image > 0
+              ? `${styles.background} ${styles.active}`
+              : styles.background
+          }
+          onClick={closeActiveCard}
+        >
           {activeCard.image > 0 && (
             <ActiveCard
               card={cards.filter((card) => card.id === activeCard.image)[0]}

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import styles from "./OrderPage.module.scss";
+import styles from './OrderPage.module.scss';
 
 const InputNumber = ({ defaultValue, funcChange, quantity }) => {
   const [value, setValue] = useState(defaultValue);
@@ -26,10 +26,10 @@ const InputNumber = ({ defaultValue, funcChange, quantity }) => {
           className={
             value <= 1 ? `${styles.minus} ${styles.disabled}` : styles.minus
           }
-        >
-          -
-        </button>
-        {value}
+        ></button>
+
+        <p className={styles.quantity}>{value}</p>
+
         <button
           onClick={increment}
           className={
@@ -37,9 +37,7 @@ const InputNumber = ({ defaultValue, funcChange, quantity }) => {
               ? `${styles.plus} ${styles.disabled}`
               : styles.plus
           }
-        >
-          +
-        </button>
+        ></button>
       </div>
     </div>
   );

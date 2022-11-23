@@ -2,26 +2,44 @@
   position: fixed;
   top: 50%;
   left: 50%;
+  z-index: 500;
+
   transform: translate(-50%, -50%);
   // 323px * 1.5 (Ширина карточки со scale 1.5)
   width: 481px;
   // 434px * 1.5 (Высота карточки со scale 1.5)
   height: 651px;
+
   @media (max-width: 900px) {
     width: 214px;
     height: 287px;
     transform: translate(-50%, calc(-50% - 70px));
   }
 }
+
 .cross {
-  display: block;
   width: 59px;
   height: 59px;
   position: absolute;
   top: calc(50% - 354px);
   left: calc(50% + 213px);
-  z-index: 300;
+  z-index: 520;
+
+  opacity: 0;
+
+  animation-name: emergence_close-button;
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-delay: 0.8s;
+
+  // opacity: 0.3;
+
   cursor: pointer;
+
+  transition: all 0.3s ease;
+
   &::before,
   &::after {
     content: '';
@@ -39,6 +57,11 @@
   &::after {
     transform: rotateZ(-45deg);
   }
+
+  &:hover {
+    transform: rotateZ(90deg);
+  }
+
   @media (max-width: 900px) {
     position: fixed;
     top: calc(50% - 243px);
@@ -58,6 +81,16 @@
 
   color: red;
   font-size: 80px;
+
+  opacity: 0;
+
+  animation-name: emergence_close-button;
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-delay: 0.8s;
+
   & .cardTitle::after {
     content: '';
     margin-top: 2px;
@@ -112,5 +145,15 @@
 
   @media (max-width: 900px) {
     font-size: 14px;
+  }
+}
+
+@keyframes emergence_close-button {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
