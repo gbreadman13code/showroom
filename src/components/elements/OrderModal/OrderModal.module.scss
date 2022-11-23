@@ -5,7 +5,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 50;
+  z-index: 500;
 
   display: flex;
   align-items: center;
@@ -44,7 +44,7 @@
       outline: none;
 
       &::placeholder {
-        font-family: "Geometria", sans-serif;
+        font-family: 'Geometria', sans-serif;
         font-size: 25px;
         font-weight: 500;
         color: #ffffff;
@@ -57,7 +57,7 @@
       button {
         padding: 7px 30px;
 
-        font-family: "Geometria", sans-serif;
+        font-family: 'Geometria', sans-serif;
         font-size: 25px;
         font-weight: 500;
 
@@ -128,7 +128,7 @@
       outline: none;
 
       &::placeholder {
-        font-family: "Geometria", sans-serif;
+        font-family: 'Geometria', sans-serif;
         font-size: 18px;
         font-weight: 500;
         color: #ffffff;
@@ -141,7 +141,7 @@
       button {
         padding: 7px 30px;
 
-        font-family: "Geometria", sans-serif;
+        font-family: 'Geometria', sans-serif;
         font-size: 14px;
         font-weight: 500;
 

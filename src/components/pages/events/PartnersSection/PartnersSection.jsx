@@ -31,14 +31,9 @@ const PartnersSection = () => {
   };
 
   return (
-    <div
-      className={
-        isMobile
-          ? `${styles.partners} ${styles.partners__mobile}`
-          : styles.partners
-      }
-    >
+    <div className={isMobile ? `${styles.partners} ${styles.partners__mobile}` : styles.partners}>
       <Container>
+
         <h2
           className={
             isMobile ? `${styles.title} ${styles.title__mobile}` : styles.title
@@ -51,6 +46,7 @@ const PartnersSection = () => {
           activeCategory={activeCategory}
           onClickCallback={setActiveCategory}
         />
+
 
         {categories.length > 0 && (
           <PartnersProfile

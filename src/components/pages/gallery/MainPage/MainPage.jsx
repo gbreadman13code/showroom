@@ -71,7 +71,7 @@ const MainPage = () => {
   }, [data]);
 
   return (
-    <PageTemplate order={orderActive}>
+    <PageTemplate order={orderActive} orderLink='/gallery/order'>
       <canvas id='noisy-canvas' className={styles.noisy_canvas}></canvas>
       <Container>
         {exhibitions &&

@@ -35,13 +35,9 @@ const CategoryPage = () => {
 
   return (
     <div className={styles.wrapper}>
-      <PageTemplate header="absolute">
+      <PageTemplate header='absolute' orderLink='/showroom/order'>
         <Container>
-          <NavBar
-            categories={categories}
-            activeCategory={activeCategory}
-            onClickCallback={changeActiveCategory}
-          />
+          <NavBar categories={categories} activeCategory={activeCategory} onClickCallback={changeActiveCategory} />
           <CategoryCards activeCategory={activeCategory} shops={shops} />
         </Container>
       </PageTemplate>
