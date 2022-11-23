@@ -29,8 +29,8 @@ function App() {
         <Route path='/' element={<PrimaryPage />} />
         <Route path='/gallery' element={<MainPage />} />
         <Route path='/gallery/wishlist' element={<WishListPage />} />
-        <Route path='/gallery/order' element={<OrderPage />} />
-        <Route path='/gallery/confirm' element={<ConfirmPage />} />
+        {/* <Route path='/gallery/order' element={<OrderPage />} /> */}
+        {/* <Route path='/gallery/confirm' element={<ConfirmPage />} /> */}
         <Route path='/gallery/payment_and_delivery' element={<ContactsPage />} />
         <Route path='/gallery/profile/:id' element={<ProfilePage />} />
         <Route path='/showroom' element={<GridPage />} />

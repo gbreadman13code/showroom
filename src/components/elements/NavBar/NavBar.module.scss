@@ -5,7 +5,7 @@
   margin-bottom: 56px;
   padding-top: 150px;
 
-  overflow-x: hidden;
+  overflow: hidden;
 
   @media (max-width: 900px) {
     overflow: hidden;
@@ -16,7 +16,7 @@
 .category {
   margin-right: 18px;
 
-  font-family: "Geometria";
+  font-family: 'Geometria';
   font-style: normal;
   font-weight: 300;
   font-size: 20px;
@@ -25,7 +25,7 @@
   text-decoration: none;
   color: #fff;
   &.active {
-    font-family: "Geometria";
+    font-family: 'Geometria';
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
