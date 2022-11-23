@@ -21,9 +21,12 @@
   font-weight: 300;
   font-size: 20px;
   line-height: 100.3%;
+  white-space: nowrap;
 
   text-decoration: none;
   color: #fff;
+  cursor: pointer;
+
   &.active {
     font-family: 'Geometria';
     font-style: normal;
