@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import useMobileDetect from 'use-mobile-detect-hook';
 import Slider from 'react-slick';
 
-const NavBar = ({ categories, activeCategory }) => {
+const NavBar = ({ categories, activeCategory, onClickCallback }) => {
   let slider = useRef();
   useEffect(() => {
     let cats = categories.sort((first, second) => first.id - second.id);
@@ -32,12 +32,19 @@ const NavBar = ({ categories, activeCategory }) => {
               {categories
                 .sort((first, second) => first.id - second.id)
                 .map((category) => (
-                  <Link
-                    className={activeCategory === category.id ? `${styles.category} ${styles.active}` : styles.category}
+                  <div
+                    className={
+                      activeCategory === category.id
+                        ? `${styles.category} ${styles.active}`
+                        : styles.category
+                    }
                     key={category.id}
-                    to={`/showroom/categories/${category.id}`}>
+                    onClick={() => {
+                      onClickCallback(category.id);
+                    }}
+                  >
                     {category.title}
-                  </Link>
+                  </div>
                 ))}
             </Slider>
           )
@@ -45,12 +52,19 @@ const NavBar = ({ categories, activeCategory }) => {
           categories
             .sort((first, second) => first.id - second.id)
             .map((category) => (
-              <Link
-                className={activeCategory === category.id ? `${styles.category} ${styles.active}` : styles.category}
+              <div
+                className={
+                  activeCategory === category.id
+                    ? `${styles.category} ${styles.active}`
+                    : styles.category
+                }
                 key={category.id}
-                to={`/showroom/categories/${category.id}`}>
+                onClick={() => {
+                  onClickCallback(category.id);
+                }}
+              >
                 {category.title}
-              </Link>
+              </div>
             ))}
     </nav>
   );

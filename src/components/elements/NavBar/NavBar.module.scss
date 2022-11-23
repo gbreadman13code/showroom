@@ -5,6 +5,8 @@
   margin-bottom: 56px;
   padding-top: 150px;
 
+  overflow-x: hidden;
+
   @media (max-width: 900px) {
     overflow: hidden;
     display: block;
