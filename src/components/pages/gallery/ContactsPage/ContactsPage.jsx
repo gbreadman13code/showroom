@@ -16,7 +16,7 @@ const ContactsPage = () => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
   return (
-    <PageTemplate>
+    <PageTemplate order={true}>
       <Container>
         <div style={{ marginBottom: 80 }}>
           <h1>Доставка по всей территории РФ</h1>

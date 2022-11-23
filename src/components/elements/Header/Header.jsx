@@ -11,15 +11,9 @@ const Header = (props) => {
   return (
     <div
       id={!props.headerBackground ? styles.header_disable : null}
-      className={
-        props.headerBackground
-          ? props.header
-            ? `${styles.header} ${styles.header__primary} ${styles.header__background}`
-            : `${styles.header} ${styles.header__background}`
-          : props.header
-          ? `${styles.header} ${styles.header__primary}`
-          : `${styles.header}`
-      }>
+      className={`${styles.header} ${props.headerBackground ? styles.header__background : ''} ${
+        props.header ? styles.header__primary : ''
+      }`}>
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <NavLink to='/' style={{ marginRight: 50 }} className={({ isActive }) => (isActive ? styles.pressed : '')}>
           <Logo />

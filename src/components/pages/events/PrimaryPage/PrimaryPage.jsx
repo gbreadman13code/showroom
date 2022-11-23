@@ -14,7 +14,7 @@ const PrimaryPage = () => {
     <PageTemplate header='absolute'>
       <PromoSection />
       <PromoPaths />
-      <PartnersSection />
+      {/* <PartnersSection /> */}
     </PageTemplate>
   );
 };

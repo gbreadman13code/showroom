@@ -67,7 +67,7 @@ const ProfilePage = () => {
   }, [currentProfile, orderList]);
 
   return (
-    <PageTemplate orderLink='/gallery/order'>
+    <PageTemplate orderLink='/gallery/order' order={true}>
       <Container>
         {currentProfile ? (
           <div>
