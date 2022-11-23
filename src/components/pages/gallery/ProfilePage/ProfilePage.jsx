@@ -67,7 +67,7 @@ const ProfilePage = () => {
   }, [currentProfile, orderList]);
 
   return (
-    <PageTemplate>
+    <PageTemplate orderLink='/gallery/order'>
       <Container>
         {currentProfile ? (
           <div>
@@ -120,19 +120,12 @@ const ProfilePage = () => {
                     <span className={styles.price}>
                       {currentProfile.price.slice(0, -3).replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, '$1 ')} ₽
                     </span>
-                    {/* <button
-                      className={
-                        currentProfile.is_bought ? styles.saled : undefined
-                      }
+                    <button
+                      className={currentProfile.is_bought ? styles.saled : undefined}
                       onClick={addToOrder}
-                      disabled={currentProfile.is_bought || !canIBuy}
-                    >
-                      {currentProfile.is_bought
-                        ? "В частной коллекции"
-                        : !canIBuy
-                        ? "В корзине"
-                        : "В корзину"}
-                    </button> */}
+                      disabled={currentProfile.is_bought || !canIBuy}>
+                      {currentProfile.is_bought ? 'В частной коллекции' : !canIBuy ? 'В корзине' : 'В корзину'}
+                    </button>
                   </div>
                 </div>
               </div>

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-import { ReactComponent as CloseIcon } from '../../../../assets/img/close.svg';
+import { ReactComponent as CloseIcon } from '../../../assets/img/close.svg';
 
 import styles from './OrderPage.module.scss';
 import { useDispatch } from 'react-redux';
-import { deleteItemFromOrderAction, incrementAction } from '../../../../redux/reducers/orderReducer';
+import { deleteItemFromOrderAction, incrementAction } from '../../../redux/reducers/orderReducer';
 import MobileInputNumber from './MobileInputNumber';
 
 const MobileOrderItem = ({

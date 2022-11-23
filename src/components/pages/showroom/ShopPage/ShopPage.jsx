@@ -23,7 +23,7 @@ const ShopPage = () => {
 
   return (
     <div className={styles.wrapper}>
-      <PageTemplate header='absolute'>
+      <PageTemplate header='absolute' orderLink='/showroom/order'>
         <Container>
           <div className={styles.shop}>
             <div className={styles.shopInfo}>
@@ -43,11 +43,11 @@ const ShopPage = () => {
                         <div className={styles.productInfo}>
                           <div className={styles.productTitle}>{product.title}</div>
                           <div className={styles.productCost}>
-                            {String(product.cost).replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, '$1 ')}р.
+                            {String(product.price).replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, '$1 ')}р.
                           </div>
-                          {/* <button type='button' className={styles.productButton}>
-                          Купить
-                        </button> */}
+                          <button type='button' className={styles.productButton}>
+                            Купить
+                          </button>
                         </div>
                       </div>
                     </div>

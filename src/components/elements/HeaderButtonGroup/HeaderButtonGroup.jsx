@@ -21,17 +21,17 @@ const HeaderButtonGroup = (props) => {
   return (
     <div
       className={props.order ? `${styles.container} ${styles.container__gallery}` : styles.container}
+      // className={`${styles.container} ${styles.container__gallery}`}
       // className={styles.container}
     >
       {/* <SearchField /> */}
       {/* <Link to={'/wishlist'}>
             <img src={pathname ? LikeActive : LikeDisActive} alt="whishlist" />
         </Link> */}
-      {/* <Link to={'/gallery/order'}> */}
-      {/* <Garbadge /> */}
-      {/* <img src={Garbadge} alt="order" /> */}
-      {/* {orderCount > 0 && <div className={styles.counter}>{orderCount}</div>} */}
-      {/* </Link> */}
+      <Link to={props.orderLink}>
+        <Garbadge />
+        {orderCount > 0 && <div className={styles.counter}>{orderCount}</div>}
+      </Link>
       {/* <Link to={'/'}>
             <img src={Colors} alt="main" />
         </Link> */}

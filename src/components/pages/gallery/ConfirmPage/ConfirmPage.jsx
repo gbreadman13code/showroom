@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 import useMobileDetect from 'use-mobile-detect-hook';
 
-const ConfirmPage = () => {
+const ConfirmPage = ({ localStorageVariableName, url }) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
@@ -23,8 +23,9 @@ const ConfirmPage = () => {
   };
 
   useEffect(() => {
-    if (window.localStorage.paymentsIndustry) {
-      getPaymentInfo().then((res) => {
+    console.log(window.localStorage[localStorageVariableName]);
+    if (window.localStorage[localStorageVariableName]) {
+      getPaymentInfo(url, localStorageVariableName).then((res) => {
         if (!res) {
           navigate('/gallery');
           return;
@@ -35,7 +36,7 @@ const ConfirmPage = () => {
   }, [navigate]);
 
   return (
-    <PageTemplate>
+    <PageTemplate orderLink='/gallery/order'>
       <Container>
         <div className={styles.confirm_wrapper}>
           {answer && (
@@ -43,10 +44,7 @@ const ConfirmPage = () => {
               <div style={!isMobile ? { padding: '0 300px' } : undefined} className={styles.answer_wrapper}>
                 <SuccessIcon />
                 <p>Ваш заказ успешно оформлен!</p>
-                <p>
-                  Забрать работу вы сможете по завершении выставки после 18 ноября по адресу Красной Армии 10/3, офис
-                  302.{' '}
-                </p>
+                <p>В ближайшее время с вами свяжутся!</p>
                 <p>
                   Уточнить нюансы можно, написав на почту{' '}
                   <a href='mailto:place@industry.art' style={{ color: 'inherit' }}>

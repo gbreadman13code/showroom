@@ -6,17 +6,17 @@ import { setPayments } from '../../../redux/requests/setPayments';
 
 import useMobileDetect from 'use-mobile-detect-hook';
 
-const OrderModal = ({ onClose }) => {
+const OrderModal = ({ onClose, url, product_ids, localStorageVariableName }) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
-  const [paymentsData, setPaymentsData] = useState({ email: '', fio: '', phone: '', picture_ids: '' });
+  const [paymentsData, setPaymentsData] = useState({ email: '', fio: '', phone: '', product_ids: '' });
 
   const currentOrder = useSelector((state) => state.order.orderList);
 
   const confirmOrder = () => {
-    if (paymentsData.email && paymentsData.fio && paymentsData.phone && paymentsData.picture_ids) {
-      setPayments(paymentsData);
+    if (paymentsData.email && paymentsData.fio && paymentsData.phone && paymentsData.product_ids) {
+      setPayments(paymentsData, url, localStorageVariableName);
     }
   };
 
@@ -24,13 +24,17 @@ const OrderModal = ({ onClose }) => {
 
   useEffect(() => {
     if (!currentOrder) return;
-    let orderArray = [];
-    currentOrder.forEach((item) => {
-      orderArray.push(`${item.id}: ${item.count}`);
-    });
-    let orderToString = orderArray.join(', ');
-    setPaymentsData({ ...paymentsData, picture_ids: orderToString });
-  }, [currentOrder, paymentsData]);
+    if (product_ids) {
+      setPaymentsData({ ...paymentsData, product_ids: product_ids });
+    } else {
+      let orderArray = [];
+      currentOrder.forEach((item) => {
+        orderArray.push(`${item.id}: ${item.count}`);
+      });
+      let orderToString = orderArray.join(', ');
+      setPaymentsData({ ...paymentsData, product_ids: orderToString });
+    }
+  }, [currentOrder]);
 
   return (
     <div className={isMobile ? styles.mobile_modal_screen : styles.modal_screen}>

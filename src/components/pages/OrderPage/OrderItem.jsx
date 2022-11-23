@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-import { ReactComponent as CloseIcon } from '../../../../assets/img/close.svg';
+import { ReactComponent as CloseIcon } from '../../../assets/img/close.svg';
 import InputNumber from './InputNumber';
 
 import styles from './OrderPage.module.scss';
 import { useDispatch } from 'react-redux';
-import { deleteItemFromOrderAction, incrementAction } from '../../../../redux/reducers/orderReducer';
+import { deleteItemFromOrderAction, incrementAction } from '../../../redux/reducers/orderReducer';
 
 const OrderItem = ({ id, url, name, author, material, technichs, size, price, value, quantity, onChange, onClose }) => {
   const [localValue, setLocalValue] = useState(price);

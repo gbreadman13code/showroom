@@ -1,6 +1,6 @@
 import { BASE_URL } from '../API/BASE_URL';
 
-export const setPayments = async (data) => {
+export const setPayments = async (data, url, localStorageVariableName) => {
   function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -19,7 +19,7 @@ export const setPayments = async (data) => {
 
   const csrftoken = getCookie('csrftoken');
 
-  const response = await fetch(BASE_URL + 'payments/', {
+  const response = await fetch(BASE_URL + url, {
     headers: {
       'Content-Type': 'application/json; charset=UTF-8',
       'X-CSRFToken': csrftoken,
@@ -29,8 +29,7 @@ export const setPayments = async (data) => {
   });
 
   const json = await response.json();
-
-  window.localStorage.setItem('paymentsIndustry', JSON.stringify(json));
+  window.localStorage.setItem(localStorageVariableName, JSON.stringify(json));
 
   const link = document.createElement('a');
   link.setAttribute('href', json.confirmation_url);
