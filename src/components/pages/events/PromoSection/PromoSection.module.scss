@@ -10,6 +10,7 @@
   box-sizing: border-box;
 
   &__mobile {
+    height: 90vh;
     padding: 1px 0 0;
     background-position: 0 0;
     background-size: 300% 500%;
@@ -29,7 +30,7 @@
   &__mobile {
     padding-top: 120px;
 
-    height: 100vh;
+    height: 90vh;
     box-sizing: border-box;
 
     display: flex;
@@ -173,7 +174,7 @@
   &__mobile {
     position: absolute;
     width: 100%;
-    bottom: 30%;
+    bottom: 32%;
     transform: translateY(50%);
   }
 }

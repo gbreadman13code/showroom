@@ -1,11 +1,17 @@
-import React from 'react';
-import PalletSwitch from '../../../../elements/PalletSwitch/PalletSwitch';
-import ButtonsBlot from '../../../../elements/ButtonsBlot/ButtonsBlot';
+import React from "react";
+import PalletSwitch from "../../../../elements/PalletSwitch/PalletSwitch";
+import ButtonsBlot from "../../../../elements/ButtonsBlot/ButtonsBlot";
 
-import styles from '../MainPage.module.scss';
-import DescriptionSlider from './Slider/DescriptionSlider';
+import styles from "../MainPage.module.scss";
+import DescriptionSlider from "./Slider/DescriptionSlider";
 
-const MobileMainPageContent = ({ data, sliderContent, activeExhibition, setActiveExhibition, exhibitionsCount }) => {
+const MobileMainPageContent = ({
+  data,
+  sliderContent,
+  activeExhibition,
+  setActiveExhibition,
+  exhibitionsCount,
+}) => {
   const { image, title, sub_title, description } = data;
 
   return (
@@ -19,7 +25,10 @@ const MobileMainPageContent = ({ data, sliderContent, activeExhibition, setActiv
       </div>
 
       <div className={styles.mobile_slider_wrapper}>
-        <DescriptionSlider description={description} sliderContent={sliderContent} />
+        <DescriptionSlider
+          description={description}
+          sliderContent={sliderContent}
+        />
       </div>
 
       <ButtonsBlot
@@ -31,7 +40,7 @@ const MobileMainPageContent = ({ data, sliderContent, activeExhibition, setActiv
         title={title}
         activeExhibition={activeExhibition}
         setActiveExhibition={setActiveExhibition}
-        isActivateButtons={exhibitionsCount > 2}
+        isActivateButtons={exhibitionsCount > 1}
       />
     </div>
   );

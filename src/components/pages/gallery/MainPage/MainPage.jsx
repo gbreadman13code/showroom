@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import Container from "../../../templates/Container";
-import PageTemplate from "../../../templates/PageTemplate";
+import React, { useEffect, useState } from 'react';
+import Container from '../../../templates/Container';
+import PageTemplate from '../../../templates/PageTemplate';
 
-import styles from "./MainPage.module.scss";
-import { useSelector } from "react-redux";
-import MainPageContent from "./MainPaigeComponents/MainPageContent";
-import ColorWrapper from "../../../elements/ColorWrapper/ColorWrapper";
-import MasonryBlock from "../../../elements/MasonryBlock/MasonryBlock";
-import ExhibitionImage from "../../../elements/ExhibitionImage/ExhibitionImage";
-import MobileMainPageContent from "./MainPaigeComponents/MobileMainPageContent";
-import useMobileDetect from "use-mobile-detect-hook";
-import background from "../../../../assets/img/promo_background.jpg";
+import styles from './MainPage.module.scss';
+import { useSelector } from 'react-redux';
+import MainPageContent from './MainPaigeComponents/MainPageContent';
+import ColorWrapper from '../../../elements/ColorWrapper/ColorWrapper';
+import MasonryBlock from '../../../elements/MasonryBlock/MasonryBlock';
+import ExhibitionImage from '../../../elements/ExhibitionImage/ExhibitionImage';
+import MobileMainPageContent from './MainPaigeComponents/MobileMainPageContent';
+import useMobileDetect from 'use-mobile-detect-hook';
+import background from '../../../../assets/img/promo_background.jpg';
 
 const MainPage = () => {
   const orderActive = true;
@@ -23,7 +23,7 @@ const MainPage = () => {
 
   const data = useSelector((state) => state.exhibitions.exhibitions);
 
-  const COLORS = ["#4F4B98", "#F0E400", "#2CA99B", "#D6358C"];
+  const COLORS = ['#4F4B98', '#F0E400', '#2CA99B', '#D6358C'];
 
   const IMAGES_PER_PAGE = 12;
 
@@ -53,11 +53,7 @@ const MainPage = () => {
 
     let exhibition_pictures = firstExhibition.pictures;
     let pagesQuantity = Math.ceil(exhibition_pictures.length / IMAGES_PER_PAGE);
-    pages = parsePicturesArray(
-      exhibition_pictures,
-      pagesQuantity,
-      IMAGES_PER_PAGE
-    );
+    pages = parsePicturesArray(exhibition_pictures, pagesQuantity, IMAGES_PER_PAGE);
   }
   let setActiveExhibition = (exhibitionNumber) => {
     if (exhibitionNumber >= exhibitions.length) {
@@ -76,7 +72,7 @@ const MainPage = () => {
 
   return (
     <PageTemplate order={orderActive}>
-      <canvas id="noisy-canvas" className={styles.noisy_canvas}></canvas>
+      <canvas id='noisy-canvas' className={styles.noisy_canvas}></canvas>
       <Container>
         {exhibitions &&
           (isMobile ? (
@@ -99,17 +95,14 @@ const MainPage = () => {
       </Container>
       {isMobile ? (
         <div className={styles.mobile_paletteWrapper}>
-          <div className={styles.palette_bg}></div>
+          <div
+            className={styles.palette_bg}
+            style={{ backgroundImage: `url(${exhibitions[activeExhibition]?.background_image})` }}></div>
         </div>
       ) : (
         <div className={styles.paletteWrapper}>
           <div className={styles.palette_bg}>
-            {exhibitions && (
-              <img
-                src={exhibitions[activeExhibition].background_image}
-                alt=""
-              />
-            )}
+            {exhibitions && <img src={exhibitions[activeExhibition].background_image} alt='' />}
           </div>
         </div>
       )}
@@ -117,11 +110,7 @@ const MainPage = () => {
         <>
           {pages.map((page, index) => {
             return (
-              <ColorWrapper
-                color={getNextColor(index)}
-                key={index}
-                activeExhibition={activeExhibition}
-              >
+              <ColorWrapper color={getNextColor(index)} key={index} activeExhibition={activeExhibition}>
                 <MasonryBlock>
                   {page.map(
                     (item, index) =>

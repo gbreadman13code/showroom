@@ -9,6 +9,13 @@
 
   li {
     list-style: none;
+
+    // button {}
+    &:last-child {
+      button {
+        margin-right: 0;
+      }
+    }
   }
 
   // мобильная версия
@@ -26,7 +33,7 @@
     padding: 0 35px;
     margin-top: 15px;
 
-    background-image: url("../../../assets/img/pallet-blot.svg");
+    // background-image: url("../../../assets/img/pallet-blot.svg");
     background-repeat: no-repeat;
     background-size: 100% 55px;
 

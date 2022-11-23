@@ -37,16 +37,18 @@ const ShopPage = () => {
               {shop.products &&
                 shop.products.map((product) => (
                   <Link key={product.id} className={styles.productLink} to={`/showroom/products/${product.id}`}>
-                    <div className={styles.product} style={{ backgroundImage: `url(${product.cropped_image})` }}>
-                      <div className={styles.productReadMore}>Подробнее</div>
-                      <div className={styles.productInfo}>
-                        <div className={styles.productTitle}>{product.title}</div>
-                        <div className={styles.productCost}>
-                          {String(product.cost).replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, '$1 ')}р.
-                        </div>
-                        {/* <button type='button' className={styles.productButton}>
+                    <div className={styles.productWrapper}>
+                      <div className={styles.product} style={{ backgroundImage: `url(${product.cropped_image})` }}>
+                        <div className={styles.productReadMore}>Подробнее</div>
+                        <div className={styles.productInfo}>
+                          <div className={styles.productTitle}>{product.title}</div>
+                          <div className={styles.productCost}>
+                            {String(product.cost).replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, '$1 ')}р.
+                          </div>
+                          {/* <button type='button' className={styles.productButton}>
                           Купить
                         </button> */}
+                        </div>
                       </div>
                     </div>
                   </Link>
