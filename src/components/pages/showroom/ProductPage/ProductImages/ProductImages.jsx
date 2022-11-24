@@ -57,18 +57,22 @@ const ProductImages = ({ images, title }) => {
   }
 
   return (
-    <div className={styles.productImages} id='productImages'>
+    <div className={styles.productImages} id="productImages">
       <div className={styles.productImage}>
         <img src={activeImage.cropped_image} alt={title} />
       </div>
 
-      <div className={styles.slider} style={{ display: images.length > 1 ? '' : 'none' }}>
+      <div
+        className={styles.slider}
+        style={{ display: images.length > 1 ? '' : 'none' }}
+      >
         {isAfterArrow && (
           <div
             className={styles.afterArrow}
             onClick={() => {
               slider.current.slickNext();
-            }}>
+            }}
+          >
             <SliderArrow />
           </div>
         )}
@@ -78,13 +82,14 @@ const ProductImages = ({ images, title }) => {
             <div
               key={image.id}
               className={
-                image.id !== activeImage.id
+                image.id === activeImage.id
                   ? `${styles.productAdditionalImage} ${styles.active}`
                   : styles.productAdditionalImage
               }
               onClick={() => {
                 setActiveImage(image);
-              }}>
+              }}
+            >
               <img src={image.cropped_image} alt={title} />
             </div>
           ))}
@@ -94,7 +99,8 @@ const ProductImages = ({ images, title }) => {
             className={styles.beforeArrow}
             onClick={() => {
               slider.current.slickPrev();
-            }}>
+            }}
+          >
             <SliderArrow />
           </div>
         )}

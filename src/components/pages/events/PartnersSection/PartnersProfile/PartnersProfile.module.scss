@@ -17,16 +17,41 @@
   grid-auto-rows: min-content;
   column-gap: 20px;
   row-gap: 20px;
+
+  &__mobile {
+    display: block;
+    margin-bottom: 30px;
+  }
 }
 
 .actions {
+  font-family: 'Geometria';
   font-weight: 500;
   font-size: 25px;
   line-height: 31px;
   color: white;
 
+  background-color: transparent;
+  border: none;
+
   margin-bottom: 20px;
 
   &__mobile {
+  }
+}
+
+.have_actions {
+  // background-color: red;
+
+  .not_act {
+    display: none;
+  }
+}
+
+.not_actions {
+  .not_act {
+    font-size: 18px;
+    line-height: 22px;
+    color: #999;
   }
 }

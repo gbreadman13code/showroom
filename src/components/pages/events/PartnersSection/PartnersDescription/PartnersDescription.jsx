@@ -3,8 +3,6 @@ import styles from './PartnersDescription.module.scss';
 import useMobileDetect from 'use-mobile-detect-hook';
 
 const PartnersDescription = (props) => {
-  // console.log(props);
-
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 

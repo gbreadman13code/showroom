@@ -1,111 +1,138 @@
 h1 {
-    margin-top: 30px;
-    font-size: 20px;
+  margin-top: 30px;
+  font-size: 20px;
 }
 
 .point_wrap {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    margin-top: 50px;
+  margin-top: 50px;
 
-    & > div {
-        display: grid;
-        grid-template-columns: repeat(10, 1fr);
-        grid-template-rows: 1fr;
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
+  & > div {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
 
-        margin-bottom: 20px;
-        .left_text {
-            grid-area: 1 / 1 / 2 / 4;
-            display: flex;
-            flex-direction: column;
-            align-items: start;
-            justify-content: center;
-
-        }
-        .slash {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            grid-area: 1 / 4 / 2 / 5;
-        }
-        .right_text {
-            grid-area: 1 / 5 / 2 / 11;
-            display: flex;
-            align-items: center;
-        }
+    margin-bottom: 20px;
+    .left_text {
+      grid-area: 1 / 1 / 2 / 4;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
     }
+    .slash {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      grid-area: 1 / 4 / 2 / 5;
+    }
+    .right_text {
+      grid-area: 1 / 5 / 2 / 11;
+      display: flex;
+      align-items: center;
+    }
+  }
+  p {
+    font-size: 18px;
+    font-weight: 300;
+    color: #50535a;
+  }
+  span {
+    font-size: 22px;
+    font-weight: 500;
+    color: #50535a;
+  }
 }
 
 .payment {
-    span {
-        margin-bottom: 30px;
+  span {
+    margin-bottom: 30px;
+  }
+  p {
+    margin: 10px 0 30px;
+  }
+  .card_wrapper {
+    img {
+      width: 45px;
+      margin-right: 25px;
     }
-    p {
-        margin: 10px 0 30px;    
-    }
-    .card_wrapper {
-        img {
-            width: 45px;
-            margin-right: 25px;
-        }
-    }
+  }
+  p {
+    font-size: 18px;
+    font-weight: 300;
+    color: #50535a;
+  }
+  span {
+    font-size: 22px;
+    font-weight: 500;
+    color: #50535a;
+  }
 }
 
 .mobile_point_wrap {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 50px;
+
+  & > div {
     display: flex;
     flex-direction: column;
 
-    margin-top: 50px;
-
-    & > div {
-        display: flex;
-        flex-direction: column;
-
-        margin-bottom: 20px;
-        .left_text {
-            display: flex;
-            flex-direction: column;
-            align-items: start;
-            justify-content: center;
-
-        }
-        .slash {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transform: rotate(59deg);
-        }
-        .right_text {
-            display: flex;
-            align-items: center;
-        }
+    margin-bottom: 20px;
+    .left_text {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
     }
+    .slash {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: rotate(59deg);
+    }
+    .right_text {
+      display: flex;
+      align-items: center;
+    }
+  }
+  p {
+    font-size: 18px;
+    font-weight: 300;
+    color: #50535a;
+  }
+  span {
+    font-size: 22px;
+    font-weight: 500;
+    color: #50535a;
+  }
 }
 
 .payment {
-    span {
-        margin-bottom: 30px;
-    }
-    p {
-        margin: 10px 0 30px;    
-    }
-    .card_wrapper {
-        img {
-            margin-right: 25px;
-        }
-    }
-}
-
-p {
+  p {
     font-size: 18px;
     font-weight: 300;
-    color: #50535A;
-}
-span {
+    color: #50535a;
+  }
+  span {
     font-size: 22px;
     font-weight: 500;
-    color: #50535A;
+    color: #50535a;
+  }
+  span {
+    margin-bottom: 30px;
+  }
+  p {
+    margin: 10px 0 30px;
+  }
+  .card_wrapper {
+    img {
+      margin-right: 25px;
+    }
+  }
 }

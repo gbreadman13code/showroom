@@ -11,10 +11,10 @@ const PrimaryPage = () => {
   const isMobile = detectMobile.isMobile();
 
   return (
-    <PageTemplate header='absolute'>
+    <PageTemplate header="absolute">
       <PromoSection />
       <PromoPaths />
-      {/* <PartnersSection /> */}
+      <PartnersSection />
     </PageTemplate>
   );
 };
