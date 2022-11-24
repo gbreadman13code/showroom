@@ -1,0 +1,36 @@
+#partners_slider {
+  .slick-dots {
+    // background-color: red;
+    bottom: unset;
+    top: 0;
+
+    li {
+      margin: 0 5px;
+
+      button {
+        &::before {
+          content: '';
+          width: 6px;
+          height: 16px;
+          border-radius: 0;
+          transform: skew(-30deg);
+          background-color: transparent;
+          border: 1px solid #f0e400;
+
+          transition: background-color 0.4s ease;
+        }
+      }
+
+      &.slick-active {
+        button {
+          &::before {
+            width: 6px;
+            height: 16px;
+            top: 0;
+            background-color: #f0e400;
+          }
+        }
+      }
+    }
+  }
+}
