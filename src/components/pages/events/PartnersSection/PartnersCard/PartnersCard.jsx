@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './PartnersCard.module.scss';
 import useMobileDetect from 'use-mobile-detect-hook';
 
@@ -7,8 +7,6 @@ import { ReactComponent as Icon_tlgrm } from '../../../../../assets/img/icon_tel
 import { ReactComponent as Icon_web } from '../../../../../assets/img/icon_web.svg';
 
 const PartnersCard = (props) => {
-  // console.log(props);
-
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
@@ -19,18 +17,53 @@ const PartnersCard = (props) => {
         isMobile ? `${styles.card} ${styles.card__mobile}` : styles.card
       }
     >
-      <img
+      <div
         className={
-          isMobile ? `${styles.image} ${styles.image__mobile}` : styles.image
+          isMobile
+            ? `${styles.inner_image} ${styles.inner_image__mobile}`
+            : styles.inner_image
         }
-        src={props.image}
-        alt=""
-        width={isMobile ? '222' : '155'}
-        height={isMobile ? '222' : '155'}
-        onClick={() => {
-          props.setActivePartner(props.id);
-        }}
-      />
+      >
+        <img
+          className={
+            isMobile ? `${styles.image} ${styles.image__mobile}` : styles.image
+          }
+          src={props.image}
+          alt=""
+          width={isMobile ? '222' : '155'}
+          height={isMobile ? '222' : '155'}
+          onClick={() => {
+            props.setActivePartner(props.id);
+          }}
+        />
+        {props.partners?.length > 1 ? (
+          isMobile ? (
+            <div className={styles.dots}>
+              {props.partners.map((item, index) => {
+                return (
+                  <span
+                    key={index}
+                    // className={styles.dot_button}
+                    className={
+                      props.activeSlide === index
+                        ? `${styles.dot_button} ${styles.dot_button__active}`
+                        : styles.dot_button
+                    }
+                    onClick={() => {
+                      props.sliderGo.slickGoTo(index);
+                      // console.log(props.sliderGo.beforeChange(index));
+                      props.setCurrentSlide(index);
+                      // console.log(index);
+
+                      // console.log(currentSlide);
+                    }}
+                  ></span>
+                );
+              })}
+            </div>
+          ) : null
+        ) : null}
+      </div>
 
       <h3
         className={

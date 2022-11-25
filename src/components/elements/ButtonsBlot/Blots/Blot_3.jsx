@@ -1,8 +1,15 @@
-import React from "react";
+import React from 'react';
 
 const Blot_3 = () => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 35 39">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      x="0px"
+      y="0px"
+      viewBox="0 0 35 39"
+      width="30px"
+      height="30px"
+    >
       <path
         fill="#50535A"
         d="M33.3,14.5c0-0.3-0.2-0.5-0.5-0.4c0,0,0,0,0,0c0,0,0,0,0,0c-0.1-0.1-0.1-0.1-0.2,0c0,0,0,0,0,0l0,0

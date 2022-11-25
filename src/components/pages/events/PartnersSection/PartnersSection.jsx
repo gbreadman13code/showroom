@@ -27,6 +27,7 @@ const PartnersSection = () => {
 
   return (
     <div
+      id="partners"
       className={
         isMobile
           ? `${styles.partners} ${styles.partners__mobile}`
