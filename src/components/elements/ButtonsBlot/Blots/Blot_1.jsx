@@ -1,8 +1,15 @@
-import React from "react";
+import React from 'react';
 
 const Blob_1 = () => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 37 36">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      x="0px"
+      y="0px"
+      viewBox="0 0 37 36"
+      width="30px"
+      height="30px"
+    >
       <path
         fill="#50535A"
         d="M35.2,12.4c-0.1-0.5-0.4-0.7-0.9-0.6c0,0,0,0,0,0v0c0,0,0,0,0,0c0,0,0,0,0,0c-0.2-0.4,0.1-1-0.3-1.4

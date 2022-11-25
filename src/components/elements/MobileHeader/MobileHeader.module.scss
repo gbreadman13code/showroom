@@ -15,7 +15,7 @@
     // border-top: 1px solid #000;
 
     & > a {
-      margin-right: calc(10vw - 25px);
+      margin-right: calc(10vw - 30px);
     }
   }
 
@@ -24,7 +24,7 @@
     align-items: center;
 
     a {
-      margin: 0 15px;
+      margin: 0 10px;
 
       font-size: 16px;
       font-weight: 400;
@@ -37,7 +37,7 @@
 
       &::before,
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         left: -2px;
         top: 3px;
