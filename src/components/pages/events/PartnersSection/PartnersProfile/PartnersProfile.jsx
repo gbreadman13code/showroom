@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './PartnersProfile.module.scss';
 
 import useMobileDetect from 'use-mobile-detect-hook';
@@ -17,16 +17,18 @@ const PartnersProfile = ({ partners }) => {
   const isMobile = detectMobile.isMobile();
 
   let [activePartner, _setActivePartner] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-  console.log(
-    partners.filter((par) => par.id === activePartner)[0]?.promotions
-  );
+  let slider = useRef();
+  // console.log(slider.current.slickGoTo(2));
+  // if (slider.current) slider.current.slickGoTo(3);
 
   useEffect(() => {
     document
       .querySelector('.slick-active [class*="PartnersCard_image"]')
       ?.click();
-  });
+    setCurrentSlide(0);
+  }, []);
 
   let setActivePartner = (id) => {
     _setActivePartner(id);
@@ -34,7 +36,7 @@ const PartnersProfile = ({ partners }) => {
 
   let settings = {
     fade: true,
-    dots: true,
+    dots: false,
     arrows: false,
     infinite: true,
     speed: 300,
@@ -47,6 +49,7 @@ const PartnersProfile = ({ partners }) => {
       document
         .querySelector('.slick-active [class*="PartnersCard_image"]')
         .click();
+      setCurrentSlide(oldIndex);
     },
   };
 
@@ -60,10 +63,10 @@ const PartnersProfile = ({ partners }) => {
     >
       {isMobile ? (
         <div
-          id="partners_slider"
+          id={stylesSlider.partners_slider}
           className={`${styles.cards} ${styles.cards__mobile}`}
         >
-          <Slider {...settings}>
+          <Slider {...settings} ref={slider}>
             {partners.map((item) => {
               return (
                 <PartnersCard
@@ -75,6 +78,10 @@ const PartnersProfile = ({ partners }) => {
                   website={item.site_link}
                   setActivePartner={setActivePartner}
                   id={item.id}
+                  partners={partners}
+                  sliderGo={slider.current}
+                  activeSlide={currentSlide}
+                  setCurrentSlide={setCurrentSlide}
                 />
               );
             })}

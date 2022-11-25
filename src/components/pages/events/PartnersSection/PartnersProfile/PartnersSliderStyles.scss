@@ -7,49 +7,49 @@
     }
   }
 
-  .slick-dots {
-    left: 40%;
-    top: 195px;
-    bottom: unset;
+  // .slick-dots {
+  //   left: 40%;
+  //   top: 75%;
+  //   bottom: unset;
 
-    padding: 4px 0 3px 7px;
+  //   padding: 4px 0 3px 7px;
 
-    transform: translateX(-48%);
+  //   transform: translateX(-48%);
 
-    display: inline-flex !important;
+  //   display: inline-flex !important;
 
-    width: auto;
-    background-color: rgba(black, 0.4);
+  //   width: auto;
+  //   background-color: rgba(black, 0.4);
 
-    li {
-      margin: 0 3px;
+  //   li {
+  //     margin: 0 3px;
 
-      button {
-        &::before {
-          content: '';
-          width: 6px;
-          height: 16px;
-          border-radius: 0;
-          transform: skew(-30deg);
-          background-color: transparent;
-          border: 1px solid #f0e400;
+  //     button {
+  //       &::before {
+  //         content: '';
+  //         width: 6px;
+  //         height: 16px;
+  //         border-radius: 0;
+  //         transform: skew(-30deg);
+  //         background-color: transparent;
+  //         border: 1px solid #f0e400;
 
-          mix-blend-mode: screen;
+  //         mix-blend-mode: screen;
 
-          transition: background-color 0.4s ease;
-        }
-      }
+  //         transition: background-color 0.4s ease;
+  //       }
+  //     }
 
-      &.slick-active {
-        button {
-          &::before {
-            width: 6px;
-            height: 16px;
-            top: 0;
-            background-color: #f0e400;
-          }
-        }
-      }
-    }
-  }
+  //     &.slick-active {
+  //       button {
+  //         &::before {
+  //           width: 6px;
+  //           height: 16px;
+  //           top: 0;
+  //           background-color: #f0e400;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 }
