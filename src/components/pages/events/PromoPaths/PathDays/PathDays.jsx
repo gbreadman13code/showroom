@@ -26,6 +26,6 @@ export function getDaysFromPathsArray(data, month) {
     }
   });
   return [...daysSet].sort((d1, d2) => {
-    return d1 < d2;
+    return d1 - d2;
   });
 }
