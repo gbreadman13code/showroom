@@ -8,12 +8,13 @@
   }
 
   .slick-dots {
-    left: 50%;
-    bottom: 65px;
+    left: 40%;
+    top: 195px;
+    bottom: unset;
 
     padding: 4px 0 3px 7px;
 
-    transform: translateX(-65%);
+    transform: translateX(-48%);
 
     display: inline-flex !important;
 
