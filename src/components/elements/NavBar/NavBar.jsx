@@ -62,6 +62,7 @@ const NavBar = ({ categories, activeCategory, onClickCallback }) => {
                 onClick={() => {
                   onClickCallback(category.id);
                 }}
+                data-text={category.title}
               >
                 {category.title}
               </div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import styles from './PartnersProfile.module.scss';
 
 import useMobileDetect from 'use-mobile-detect-hook';
@@ -18,17 +19,32 @@ const PartnersProfile = ({ partners }) => {
 
   let [activePartner, _setActivePartner] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
+  // const [heightCardsObject, setHeightObject] = useState(0);
+
+  // console.log(activePartner);
 
   let slider = useRef();
-  // console.log(slider.current.slickGoTo(2));
-  // if (slider.current) slider.current.slickGoTo(3);
+
+  // let cardsObject = useRef();
 
   useEffect(() => {
-    document
-      .querySelector('.slick-active [class*="PartnersCard_image"]')
-      ?.click();
+    if (isMobile) {
+      document
+        .querySelector('.slick-active [class*="PartnersCard_image"]')
+        ?.click();
+    } else {
+      document
+        .querySelector(
+          '[class*="PartnersCard_card"] [class*="PartnersCard_image"]'
+        )
+        ?.click();
+    }
     setCurrentSlide(0);
-  }, []);
+  }, [partners]);
+
+  // useEffect(() => {
+  //   setHeightObject(cardsObject.current.getBoundingClientRect().height);
+  // }, [partners, cardsObject]);
 
   let setActivePartner = (id) => {
     _setActivePartner(id);
@@ -63,7 +79,7 @@ const PartnersProfile = ({ partners }) => {
     >
       {isMobile ? (
         <div
-          id={stylesSlider.partners_slider}
+          id="partners_slider"
           className={`${styles.cards} ${styles.cards__mobile}`}
         >
           <Slider {...settings} ref={slider}>
@@ -88,7 +104,10 @@ const PartnersProfile = ({ partners }) => {
           </Slider>
         </div>
       ) : (
-        <div className={styles.cards}>
+        <div
+          className={styles.cards}
+          // ref={cardsObject}
+        >
           {partners.map((item) => {
             return (
               <PartnersCard
@@ -99,6 +118,7 @@ const PartnersProfile = ({ partners }) => {
                 telegram={item.tg_link}
                 website={item.site_link}
                 setActivePartner={setActivePartner}
+                active={activePartner}
                 id={item.id}
               />
             );
@@ -110,6 +130,7 @@ const PartnersProfile = ({ partners }) => {
         className={
           isMobile ? `${styles.desc} ${styles.desc__mobile}` : styles.desc
         }
+        // style={{ height: `${heightCardsObject}` + 'px' }}
       >
         <div
           className={
@@ -130,8 +151,16 @@ const PartnersProfile = ({ partners }) => {
             <p className={styles.not_act}>нет акций</p>
           </p>
         </div>
-
-        {partners.filter((par) => par.id === activePartner)[0]?.promotions}
+        <CSSTransition
+          classNames={styles.desc_text_inner}
+          // in={true}
+          // timeout={300}
+          // unmountOnExit
+        >
+          <p className={styles.desc_text}>
+            {partners.filter((par) => par.id === activePartner)[0]?.promotions}
+          </p>
+        </CSSTransition>
       </div>
     </div>
   );

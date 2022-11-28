@@ -1,6 +1,9 @@
 .nav {
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
+
+  position: relative;
 
   margin-bottom: 56px;
   padding-top: 150px;
@@ -14,7 +17,8 @@
   }
 }
 .category {
-  margin-right: 18px;
+  margin-right: 14px;
+  margin-bottom: 10px;
 
   font-family: 'Geometria';
   font-style: normal;
@@ -22,10 +26,20 @@
   font-size: 20px;
   line-height: 100.3%;
   white-space: nowrap;
+  text-align: center;
 
   text-decoration: none;
   color: #fff;
   cursor: pointer;
+
+  &::after {
+    content: attr(data-text);
+    visibility: hidden;
+    overflow: hidden;
+    font-weight: 700;
+    height: 0;
+    display: block;
+  }
 
   &.active {
     font-family: 'Geometria';

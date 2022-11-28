@@ -10,11 +10,17 @@ const PartnersCard = (props) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
+  // console.log(props.active);
+
   return (
     <button
       type="button"
       className={
-        isMobile ? `${styles.card} ${styles.card__mobile}` : styles.card
+        isMobile
+          ? `${styles.card} ${styles.card__mobile}`
+          : props.active === props.id
+          ? `${styles.card} ${styles.card__active}`
+          : styles.card
       }
     >
       <div
@@ -24,6 +30,7 @@ const PartnersCard = (props) => {
             : styles.inner_image
         }
       >
+        <div className={styles.img_shadow}></div>
         <img
           className={
             isMobile ? `${styles.image} ${styles.image__mobile}` : styles.image

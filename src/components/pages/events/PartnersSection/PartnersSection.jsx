@@ -6,6 +6,7 @@ import Container from '../../../templates/Container';
 
 import useMobileDetect from 'use-mobile-detect-hook';
 import PartnersProfile from './PartnersProfile/PartnersProfile';
+import PartnersAdditionalStyles from './PartnersSection.scss';
 
 const PartnersSection = () => {
   const detectMobile = useMobileDetect();
