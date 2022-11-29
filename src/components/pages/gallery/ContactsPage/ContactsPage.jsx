@@ -12,11 +12,11 @@ import green_slash from '../../../../assets/img/green-slash.svg';
 
 import useMobileDetect from 'use-mobile-detect-hook';
 
-const ContactsPage = () => {
+const ContactsPage = ({ orderDict }) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
   return (
-    <PageTemplate order={true}>
+    <PageTemplate order={true} orderDict={orderDict}>
       <Container>
         <div style={{ marginBottom: 80 }}>
           <h1>Доставка по всей территории РФ</h1>

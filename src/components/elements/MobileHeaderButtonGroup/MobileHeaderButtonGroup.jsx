@@ -1,36 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 // import Garbadge from '../../../assets/img/garbadge.svg';
-import { ReactComponent as Garbadge } from "../../../assets/img/garbadge.svg";
+import { ReactComponent as Garbadge } from '../../../assets/img/garbadge.svg';
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import styles from "./MobileHeaderButtonGroup.module.scss";
-import { useSelector } from "react-redux";
+import styles from './MobileHeaderButtonGroup.module.scss';
+import { useSelector } from 'react-redux';
 
 const MobileHeaderButtonGroup = (props) => {
-  const order = useSelector((state) => state.order.orderList);
+  const [orderCount, setOrderCount] = useState(0);
 
-  let orderCount = 0;
+  useEffect(() => {
+    let order = props.orderDict;
+    let counter = 0;
 
-  if (order.length > 0) {
-    order.forEach((item) => {
-      orderCount += item.count;
-    });
-  }
+    for (let key in order) {
+      let productDict = order[key];
+      counter += productDict.quantity;
+    }
+    setOrderCount(counter);
+  }, [props.orderDict]);
 
   return (
-    <div
-      className={
-        props.order
-          ? `${styles.container} ${styles.container__gallery}`
-          : styles.container
-      }
-    >
+    <div className={props.order ? `${styles.container} ${styles.container__gallery}` : styles.container}>
       <div className={styles.links}>
         {/* <Link to={'/wishlist'}>
             <img src={pathname ? LikeActive : LikeDisActive} alt="whishlist" />
         </Link> */}
-        <Link to={"/gallery/order"}>
+        <Link to={props.orderLink}>
           {/* Значок корзины */}
           <Garbadge />
           {orderCount > 0 && <div className={styles.counter}>{orderCount}</div>}

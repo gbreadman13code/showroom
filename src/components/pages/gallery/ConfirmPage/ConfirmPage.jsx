@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 import useMobileDetect from 'use-mobile-detect-hook';
 
-const ConfirmPage = ({ localStorageVariableName, url }) => {
+const ConfirmPage = ({ localStorageVariableName, url, orderDict }) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
@@ -23,7 +23,6 @@ const ConfirmPage = ({ localStorageVariableName, url }) => {
   };
 
   useEffect(() => {
-    console.log(window.localStorage[localStorageVariableName]);
     if (window.localStorage[localStorageVariableName]) {
       getPaymentInfo(url, localStorageVariableName).then((res) => {
         if (!res) {
@@ -36,7 +35,7 @@ const ConfirmPage = ({ localStorageVariableName, url }) => {
   }, [navigate]);
 
   return (
-    <PageTemplate orderLink='/gallery/order'>
+    <PageTemplate orderLink='/gallery/order' orderDict={orderDict}>
       <Container>
         <div className={styles.confirm_wrapper}>
           {answer && (

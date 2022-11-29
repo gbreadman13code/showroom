@@ -1,6 +1,41 @@
 .wrapper {
   &.black {
     background-color: #000;
+    & .order_name {
+      color: #fff;
+      & span {
+        color: #fff;
+      }
+    }
+    & .other_info {
+      & span {
+        color: #fff;
+      }
+    }
+    & .order_item {
+      span {
+        color: #fff;
+      }
+    }
+    & .button_group {
+      a {
+        color: #fff;
+      }
+    }
+    & .summury {
+      p {
+        color: #fff;
+      }
+    }
+    & .innerWrapper {
+      @media (min-width: 900px) {
+        padding-top: 200px;
+      }
+      padding-top: 50px;
+    }
+    & .emptyCard {
+      color: #fff;
+    }
   }
 }
 .order_item {

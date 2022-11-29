@@ -6,13 +6,13 @@ import { setPayments } from '../../../redux/requests/setPayments';
 
 import useMobileDetect from 'use-mobile-detect-hook';
 
-const OrderModal = ({ onClose, url, product_ids, localStorageVariableName }) => {
+const OrderModal = ({ onClose, url, product_ids, localStorageVariableName, orderDict }) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
   const [paymentsData, setPaymentsData] = useState({ email: '', fio: '', phone: '', product_ids: '' });
 
-  const currentOrder = useSelector((state) => state.order.orderList);
+  // const currentOrder = useSelector((state) => state.order.orderList);
 
   const confirmOrder = () => {
     if (paymentsData.email && paymentsData.fio && paymentsData.phone && paymentsData.product_ids) {
@@ -23,18 +23,16 @@ const OrderModal = ({ onClose, url, product_ids, localStorageVariableName }) => 
   const closeModal = () => onClose(false);
 
   useEffect(() => {
-    if (!currentOrder) return;
-    if (product_ids) {
-      setPaymentsData({ ...paymentsData, product_ids: product_ids });
-    } else {
-      let orderArray = [];
-      currentOrder.forEach((item) => {
-        orderArray.push(`${item.id}: ${item.count}`);
-      });
-      let orderToString = orderArray.join(', ');
-      setPaymentsData({ ...paymentsData, product_ids: orderToString });
+    if (!orderDict) return;
+
+    let orderArray = [];
+    for (let key in orderDict) {
+      let item = orderDict[key];
+      orderArray.push(`${item.product.id}: ${item.quantity}`);
     }
-  }, [currentOrder]);
+    let orderToString = orderArray.join(', ');
+    setPaymentsData({ ...paymentsData, product_ids: orderToString });
+  }, [orderDict]);
 
   return (
     <div className={isMobile ? styles.mobile_modal_screen : styles.modal_screen}>

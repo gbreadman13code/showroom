@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 // import Garbadge from "../../../assets/img/garbadge.svg";
 
 import { Link } from 'react-router-dom';
@@ -9,14 +9,17 @@ import { useSelector } from 'react-redux';
 
 const HeaderButtonGroup = (props) => {
   const order = useSelector((state) => state.order.orderList);
-
-  let orderCount = 0;
-
-  if (order.length > 0) {
-    order.forEach((item) => {
-      orderCount += item.count;
-    });
-  }
+  const [orderCount, setOrderCount] = useState(0);
+  // let orderCount = 0;
+  useEffect(() => {
+    let order = props.orderDict;
+    let counter = 0;
+    for (let key in order) {
+      let productDict = order[key];
+      counter += productDict.quantity;
+    }
+    setOrderCount(counter);
+  }, [props.orderDict]);
 
   return (
     <div

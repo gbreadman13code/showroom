@@ -51,11 +51,8 @@ const PartnersCard = (props) => {
                     }
                     onClick={() => {
                       props.sliderGo.slickGoTo(index);
-                      // console.log(props.sliderGo.beforeChange(index));
                       props.setCurrentSlide(index);
-                      // console.log(index);
 
-                      // console.log(currentSlide);
                     }}
                   ></span>
                 );

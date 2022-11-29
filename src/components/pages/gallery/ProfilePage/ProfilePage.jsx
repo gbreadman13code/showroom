@@ -13,7 +13,7 @@ import { MEDIA_URL } from '../../../../redux/API/BASE_URL';
 import useMobileDetect from 'use-mobile-detect-hook';
 import ProfileSlider from './Slider/ProfileSlider';
 
-const ProfilePage = () => {
+const ProfilePage = ({ addProductToOrder, orderDict }) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
@@ -43,9 +43,7 @@ const ProfilePage = () => {
   }, [orderList, params.id]);
 
   const addToOrder = () => {
-    let newObj = { count: 1 };
-    Object.assign(newObj, currentProfile);
-    dispatch(setNewItemToOrderAction(newObj));
+    addProductToOrder(currentProfile);
   };
 
   useEffect(() => {
@@ -67,7 +65,7 @@ const ProfilePage = () => {
   }, [currentProfile, orderList]);
 
   return (
-    <PageTemplate orderLink='/gallery/order' order={true}>
+    <PageTemplate orderLink='/gallery/order' order={true} orderDict={orderDict}>
       <Container>
         {currentProfile ? (
           <div>
@@ -123,8 +121,12 @@ const ProfilePage = () => {
                     <button
                       className={currentProfile.is_bought ? styles.saled : undefined}
                       onClick={addToOrder}
-                      disabled={currentProfile.is_bought || !canIBuy}>
-                      {currentProfile.is_bought ? 'В частной коллекции' : !canIBuy ? 'В корзине' : 'В корзину'}
+                      disabled={currentProfile.quantity < 1 || orderDict[currentProfile.title]}>
+                      {currentProfile.quantity < 1
+                        ? 'В частной коллекции'
+                        : orderDict[currentProfile.title]
+                        ? 'В корзине'
+                        : 'В корзину'}
                     </button>
                   </div>
                 </div>
