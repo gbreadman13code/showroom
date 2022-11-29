@@ -14,7 +14,11 @@ const PartnersCard = (props) => {
     <button
       type="button"
       className={
-        isMobile ? `${styles.card} ${styles.card__mobile}` : styles.card
+        isMobile
+          ? `${styles.card} ${styles.card__mobile}`
+          : props.active === props.id
+          ? `${styles.card} ${styles.card__active}`
+          : styles.card
       }
     >
       <div
@@ -24,6 +28,7 @@ const PartnersCard = (props) => {
             : styles.inner_image
         }
       >
+        <div className={styles.img_shadow}></div>
         <img
           className={
             isMobile ? `${styles.image} ${styles.image__mobile}` : styles.image
@@ -34,6 +39,7 @@ const PartnersCard = (props) => {
           height={isMobile ? '222' : '155'}
           onClick={() => {
             props.setActivePartner(props.id);
+            // props.setShowDescription(!props.showDescription);
           }}
         />
         {props.partners?.length > 1 ? (
@@ -43,7 +49,6 @@ const PartnersCard = (props) => {
                 return (
                   <span
                     key={index}
-                    // className={styles.dot_button}
                     className={
                       props.activeSlide === index
                         ? `${styles.dot_button} ${styles.dot_button__active}`
@@ -52,7 +57,6 @@ const PartnersCard = (props) => {
                     onClick={() => {
                       props.sliderGo.slickGoTo(index);
                       props.setCurrentSlide(index);
-
                     }}
                   ></span>
                 );
