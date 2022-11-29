@@ -10,8 +10,6 @@ const PartnersCard = (props) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
-  // console.log(props.active);
-
   return (
     <button
       type="button"
@@ -41,6 +39,7 @@ const PartnersCard = (props) => {
           height={isMobile ? '222' : '155'}
           onClick={() => {
             props.setActivePartner(props.id);
+            // props.setShowDescription(!props.showDescription);
           }}
         />
         {props.partners?.length > 1 ? (
@@ -50,7 +49,6 @@ const PartnersCard = (props) => {
                 return (
                   <span
                     key={index}
-                    // className={styles.dot_button}
                     className={
                       props.activeSlide === index
                         ? `${styles.dot_button} ${styles.dot_button__active}`
@@ -58,11 +56,7 @@ const PartnersCard = (props) => {
                     }
                     onClick={() => {
                       props.sliderGo.slickGoTo(index);
-                      // console.log(props.sliderGo.beforeChange(index));
                       props.setCurrentSlide(index);
-                      // console.log(index);
-
-                      // console.log(currentSlide);
                     }}
                   ></span>
                 );

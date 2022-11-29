@@ -40,8 +40,6 @@
 }
 
 .have_actions {
-  // background-color: red;
-
   .not_act {
     display: none;
   }
@@ -81,11 +79,12 @@
 .desc_text {
   white-space: pre-wrap;
 
-  // opacity: 0;
+  opacity: 1;
 }
 
 // .desc_text {
 //   opacity: 0;
+//   white-space: pre-wrap;
 
 //   animation-name: emergence-text;
 //   animation-duration: 0.3s;

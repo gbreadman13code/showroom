@@ -19,6 +19,7 @@ const PartnersProfile = ({ partners }) => {
 
   let [activePartner, _setActivePartner] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [showDescription, setShowDescription] = useState(false);
   // const [heightCardsObject, setHeightObject] = useState(0);
 
   // console.log(activePartner);
@@ -120,6 +121,8 @@ const PartnersProfile = ({ partners }) => {
                 setActivePartner={setActivePartner}
                 active={activePartner}
                 id={item.id}
+                // showDescription={showDescription}
+                // setShowDescription={setShowDescription}
               />
             );
           })}
@@ -130,7 +133,6 @@ const PartnersProfile = ({ partners }) => {
         className={
           isMobile ? `${styles.desc} ${styles.desc__mobile}` : styles.desc
         }
-        // style={{ height: `${heightCardsObject}` + 'px' }}
       >
         <div
           className={
@@ -152,10 +154,10 @@ const PartnersProfile = ({ partners }) => {
           </p>
         </div>
         <CSSTransition
-          classNames={styles.desc_text_inner}
-          // in={true}
-          // timeout={300}
-          // unmountOnExit
+        // classNames={styles.desc_text_inner}
+        // in={showDescription}
+        // timeout={300}
+        // unmountOnExit
         >
           <p className={styles.desc_text}>
             {partners.filter((par) => par.id === activePartner)[0]?.promotions}
