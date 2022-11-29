@@ -40,6 +40,7 @@ const PartnersCard = (props) => {
           onClick={() => {
             props.setActivePartner(props.id);
             // props.setShowDescription(!props.showDescription);
+            props.setState((state) => !state);
           }}
         />
         {props.partners?.length > 1 ? (

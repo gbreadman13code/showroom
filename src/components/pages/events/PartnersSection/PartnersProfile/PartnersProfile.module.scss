@@ -53,7 +53,7 @@
   }
 }
 
-.desc_text_inner {
+.desc_text_animate {
   &-enter {
     opacity: 0;
     transform: scale(0.9);
@@ -79,7 +79,7 @@
 .desc_text {
   white-space: pre-wrap;
 
-  opacity: 1;
+  // opacity: 1;
 }
 
 // .desc_text {
@@ -87,11 +87,11 @@
 //   white-space: pre-wrap;
 
 //   animation-name: emergence-text;
-//   animation-duration: 0.3s;
+//   animation-duration: 0.2s;
 //   animation-timing-function: ease;
 //   animation-iteration-count: 1;
 //   animation-fill-mode: forwards;
-//   animation-delay: 0.5s;
+//   animation-delay: 0.2s;
 // }
 
 // @keyframes emergence-text {
