@@ -6,7 +6,7 @@ import { getShopsCategories } from '../../../../redux/requests/getShopsCategorie
 import { useLocation } from 'react-router-dom';
 import PageTemplate from '../../../templates/PageTemplate';
 
-const GridPage = () => {
+const GridPage = ({ orderDict }) => {
   let [isBlockTransitive, setIsBlockTransitive] = useState(false);
   let [activeCard, setActiveCard] = useState({ block: 0, image: 0 });
   let [cards, setCards] = useState([]);
@@ -30,7 +30,9 @@ const GridPage = () => {
       header='absolute'
       isFooter={false}
       headerBackground={!activeCard.image > 0}
-      orderLink='/showroom/order'>
+      orderLink='/showroom/order'
+      order={true}
+      orderDict={orderDict}>
       <div>
         {/* <div className={styles.headerBackground}></div> */}
         <BlocksCards

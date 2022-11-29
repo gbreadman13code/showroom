@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 
-import { ReactComponent as CloseIcon } from '../../../assets/img/close.svg';
-import InputNumber from './InputNumber';
+import { ReactComponent as CloseIcon } from '../../../../assets/img/close.svg';
+import InputNumber from '../../OrderPage/InputNumber';
 
-import styles from './OrderPage.module.scss';
-import { MEDIA_URL } from '../../../redux/API/BASE_URL';
+import styles from '../../OrderPage/OrderPage.module.scss';
+import { useDispatch } from 'react-redux';
+import { deleteItemFromOrderAction, incrementAction } from '../../../../redux/reducers/orderReducer';
 
-const OrderItem = ({ product, value, onChange, onClose }) => {
+const ShowroomOrderItem = ({ value, quantity, product, onChange, onClose }) => {
   const [localValue, setLocalValue] = useState(product.price);
+  const dispatch = useDispatch();
   const onChangeCounter = (value) => {
     setLocalValue(value);
     onChange(product, value);
@@ -20,25 +22,16 @@ const OrderItem = ({ product, value, onChange, onClose }) => {
   return (
     <div className={styles.order_item}>
       <div className={styles.img_wrapper}>
-        <img src={MEDIA_URL + product.thumbnail} alt={product.title} />
+        <img src={product.cropped_image} alt={product.title} />
       </div>
       <div className={styles.order_info}>
         <div className={styles.order_name}>
           <span className={styles.head_span}>{product.title}</span>
-          <span>{product.author}</span>
         </div>
         <div className={styles.other_info}>
           <div>
-            <span className={styles.head_span}>Материал</span>
-            <span>{product.material ? product.material : 'Не указано'}</span>
-          </div>
-          <div>
-            <span className={styles.head_span}>Техника</span>
-            <span>{product.technichs ? product.technichs : 'Не указано'}</span>
-          </div>
-          <div>
-            <span className={styles.head_span}>Размер</span>
-            <span>{product.size ? product.size : 'Не указано'}</span>
+            <span className={styles.head_span}>Магазин</span>
+            <span>{product.shop ? product.shop.title : 'Не указано'}</span>
           </div>
         </div>
       </div>
@@ -53,4 +46,4 @@ const OrderItem = ({ product, value, onChange, onClose }) => {
   );
 };
 
-export default OrderItem;
+export default ShowroomOrderItem;

@@ -8,7 +8,7 @@ import useMobileDetect from 'use-mobile-detect-hook';
 import { ReactComponent as GoBackArrow } from '../../../../assets/img/arrow-left.svg';
 import { ReactComponent as MobileGoBackArrow } from '../../../../assets/img/showroom/goBackMobile.svg';
 
-const ShopPage = () => {
+const ShopPage = ({ orderDict }) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
@@ -23,7 +23,7 @@ const ShopPage = () => {
 
   return (
     <div className={styles.wrapper}>
-      <PageTemplate header='absolute' orderLink='/showroom/order'>
+      <PageTemplate header='absolute' orderLink='/showroom/order' order={true} orderDict={orderDict}>
         <Container>
           <div className={styles.shop}>
             <div className={styles.shopInfo}>

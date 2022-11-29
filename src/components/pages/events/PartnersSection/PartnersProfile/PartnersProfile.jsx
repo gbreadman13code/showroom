@@ -63,21 +63,13 @@ const PartnersProfile = ({ partners }) => {
     adaptiveHeight: false,
 
     afterChange: (oldIndex, newIndex) => {
-      document
-        .querySelector('.slick-active [class*="PartnersCard_image"]')
-        .click();
+      document.querySelector('.slick-active [class*="PartnersCard_image"]').click();
       setCurrentSlide(oldIndex);
     },
   };
 
   return (
-    <div
-      className={
-        isMobile
-          ? `${styles.profile} ${styles.profile__mobile}`
-          : styles.profile
-      }
-    >
+    <div className={isMobile ? `${styles.profile} ${styles.profile__mobile}` : styles.profile}>
       {isMobile ? (
         <div
           id="partners_slider"
@@ -129,26 +121,12 @@ const PartnersProfile = ({ partners }) => {
         </div>
       )}
 
-      <div
-        className={
-          isMobile ? `${styles.desc} ${styles.desc__mobile}` : styles.desc
-        }
-      >
+      <div className={isMobile ? `${styles.desc} ${styles.desc__mobile}` : styles.desc}>
         <div
           className={
-            partners.filter((par) => par.id === activePartner)[0]?.promotions
-              ? styles.have_actions
-              : styles.not_actions
-          }
-        >
-          <p
-            className={
-              isMobile
-                ? `${styles.actions} ${styles.actions__mobile}`
-                : styles.actions
-            }
-            type="button"
-          >
+            partners.filter((par) => par.id === activePartner)[0]?.promotions ? styles.have_actions : styles.not_actions
+          }>
+          <p className={isMobile ? `${styles.actions} ${styles.actions__mobile}` : styles.actions} type='button'>
             Акции
             <p className={styles.not_act}>нет акций</p>
           </p>

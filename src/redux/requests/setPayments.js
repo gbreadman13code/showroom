@@ -7,7 +7,6 @@ export const setPayments = async (data, url, localStorageVariableName) => {
       const cookies = document.cookie.split(';');
       for (let i = 0; i < cookies.length; i++) {
         const cookie = cookies[i].trim();
-        // Does this cookie string begin with the name we want?
         if (cookie.substring(0, name.length + 1) === name + '=') {
           cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
           break;
@@ -30,7 +29,6 @@ export const setPayments = async (data, url, localStorageVariableName) => {
 
   const json = await response.json();
   window.localStorage.setItem(localStorageVariableName, JSON.stringify(json));
-
   const link = document.createElement('a');
   link.setAttribute('href', json.confirmation_url);
   link.click();

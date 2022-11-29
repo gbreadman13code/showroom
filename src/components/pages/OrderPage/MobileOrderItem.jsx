@@ -3,58 +3,46 @@ import React, { useState } from 'react';
 import { ReactComponent as CloseIcon } from '../../../assets/img/close.svg';
 
 import styles from './OrderPage.module.scss';
-import { useDispatch } from 'react-redux';
-import { deleteItemFromOrderAction, incrementAction } from '../../../redux/reducers/orderReducer';
 import MobileInputNumber from './MobileInputNumber';
+import { MEDIA_URL } from '../../../redux/API/BASE_URL';
 
-const MobileOrderItem = ({
-  id,
-  url,
-  name,
-  author,
-  material,
-  technichs,
-  size,
-  price,
-  value,
-  quantity,
-  onChange,
-  onClose,
-}) => {
-  const [localValue, setLocalValue] = useState(price);
-  const dispatch = useDispatch();
+const MobileOrderItem = ({ product, value, onClose, onChange, text, isGallery }) => {
+  const [localValue, setLocalValue] = useState(product.price);
   const onChangeCounter = (value) => {
     setLocalValue(value);
-    dispatch(incrementAction({ id: id, value: value }));
+    onChange(product, value);
   };
 
   const onCloseHandler = () => {
-    dispatch(deleteItemFromOrderAction(id));
+    onClose(product);
   };
   return (
     <div className={styles.mobile_order_item}>
       <div className={styles.img_wrapper}>
-        <img src={url} alt={name} />
+        <img src={product.thumbnail ? MEDIA_URL + product.thumbnail : product.cropped_image} alt={product.name} />
       </div>
       <div className={styles.order_info}>
         <div className={styles.order_name}>
-          <span className={styles.head_span}>{name}</span>
+          <span className={styles.head_span}>{product.name}</span>
         </div>
         <div className={styles.other_info}>
+          {isGallery && (
+            <div>
+              <span className={styles.autor}>
+                <span className={styles.head_span}>Автор:</span> <span>{product.author}</span>
+              </span>
+            </div>
+          )}
+
           <div>
-            <span className={styles.autor}>
-              <span className={styles.head_span}>Автор:</span> <span>{author}</span>
-            </span>
-          </div>
-          <div>
-            <span className={styles.head_span}>Характеристики: </span>
-            <span> {material && material}</span>, <span>{technichs && technichs}</span>, <span>{size && size}</span>
+            <span className={styles.head_span}>{isGallery ? 'Характеристики' : 'Магазин'}: </span>
+            <span>{text}</span>
           </div>
         </div>
       </div>
       <div className={styles.price_info}>
-        <span>{String(localValue * price).replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, '$1' + ' ')} ₽</span>
-        <MobileInputNumber defaultValue={value} quantity={quantity} funcChange={onChangeCounter} />
+        <span>{String(localValue * product.price).replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, '$1 ')} ₽</span>
+        <MobileInputNumber defaultValue={value} quantity={product.quantity} funcChange={onChangeCounter} />
       </div>
       <div className={styles.close}>
         <CloseIcon onClick={onCloseHandler} />

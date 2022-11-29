@@ -10,7 +10,7 @@ import { ReactComponent as MobileGoBackArrow } from '../../../../assets/img/show
 import ProductImages from './ProductImages/ProductImages';
 import OrderModal from '../../../elements/OrderModal/OrderModal';
 
-const ProductPage = () => {
+const ProductPage = ({ addProductToOrder, orderDict }) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
@@ -19,14 +19,18 @@ const ProductPage = () => {
   let [images, setImages] = useState([]);
   let [product, setProduct] = useState({});
   let [isModalActive, setIsModalActive] = useState(false);
+  let [isButtonActive, setIsButtonActive] = useState(true);
   useEffect(() => {
     getProduct(params.id).then((res) => {
       setProduct(res);
       let images = [{ id: 0, image: res.image, cropped_image: res.cropped_image }, ...res.additional_photos];
       setImages(images);
-      console.log(res);
     });
-  }, [location]);
+
+    if (orderDict[product.title]) {
+      setIsButtonActive(false);
+    }
+  }, [location, orderDict]);
 
   let openModal = () => {
     setIsModalActive(true);
@@ -44,7 +48,7 @@ const ProductPage = () => {
           localStorageVariableName={'paymentsShowroomIndustry'}
         />
       )}
-      <PageTemplate header='absolute' orderLink='/showroom/order'>
+      <PageTemplate header='absolute' orderLink='/showroom/order' order={true} orderDict={orderDict}>
         <Container>
           {product.shop && (
             <div className={styles.product}>
@@ -76,11 +80,12 @@ const ProductPage = () => {
               <button
                 type='button'
                 className={styles.productButton}
-                disabled={product.quantity < 1}
+                disabled={(product.quantity < 1) | !isButtonActive}
                 onClick={() => {
-                  openModal();
+                  // openModal();
+                  addProductToOrder(product);
                 }}>
-                {product.quantity > 0 ? 'Купить' : 'Нет в наличии'}
+                {product.quantity > 0 ? (isButtonActive ? 'Купить' : 'В корзине') : 'Нет в наличии'}
               </button>
             </div>
           )}

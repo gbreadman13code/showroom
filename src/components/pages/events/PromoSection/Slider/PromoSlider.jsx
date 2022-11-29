@@ -13,8 +13,6 @@ const PromoSlider = ({ slides }) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
-  // console.log(slides);
-
   let settings = {
     fade: isMobile ? true : false,
     dots: false,

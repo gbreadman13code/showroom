@@ -15,35 +15,42 @@ import MobileOrderItem from './MobileOrderItem';
 
 import useMobileDetect from 'use-mobile-detect-hook';
 
-const OrderPage = ({ isBackgroundBlack = false }) => {
+const OrderPage = ({ isBlack = false, orderLink, orderDict, OrderItemComponent, onClose, onChange, url, backLink }) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
   const [summury, setSummury] = useState(0);
   const [isShowModal, setIsShowModal] = useState(false);
-  const order = useSelector((state) => state.order.orderList);
-
+  const [order, setOrder] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (order) {
+    let orderToSet = [];
+    for (let key in orderDict) {
+      orderToSet.unshift(orderDict[key]);
+    }
+    setOrder(orderToSet);
+
+    if (orderToSet) {
       let summuryCounter = 0;
-      order.forEach((item) => {
-        summuryCounter += item.price * item.count;
+      orderToSet.forEach((item) => {
+        summuryCounter += item.product.price * item.quantity;
       });
       setSummury(summuryCounter);
     }
-  }, [order]);
+  }, [orderDict]);
 
   return (
-    <div className={isBackgroundBlack ? `${styles.wrapper} ${styles.black}` : styles.wrapper}>
-      <PageTemplate orderLink='/gallery/order'>
+    <div className={isBlack ? `${styles.wrapper} ${styles.black}` : styles.wrapper}>
+      <PageTemplate orderLink={orderLink} order={true} orderDict={orderDict} header={isBlack ? 'absolute' : ''}>
         <Container>
+          <div className={styles.innerWrapper}></div>
           {isShowModal && (
             <OrderModal
               onClose={setIsShowModal}
-              url={'exhibitions/payments/'}
+              url={url}
               localStorageVariableName={'paymentsIndustry'}
+              orderDict={orderDict}
             />
           )}
           {isMobile && (
@@ -61,7 +68,7 @@ const OrderPage = ({ isBackgroundBlack = false }) => {
                 }}>
                 Корзина
               </span>
-              <Link to={'/gallery/'}>
+              <Link to={backLink}>
                 {' '}
                 <MobileGoBackArrow />
               </Link>
@@ -73,31 +80,24 @@ const OrderPage = ({ isBackgroundBlack = false }) => {
                 ? order.map((item, index) => (
                     <MobileOrderItem
                       key={index}
-                      id={item.id}
-                      url={MEDIA_URL + item.thumbnail}
-                      name={item.title}
-                      author={item.author}
-                      material={item.material}
-                      technichs={item.technique}
-                      size={item.size}
-                      price={item.price}
-                      value={item.count}
-                      quantity={item.quantity}
+                      product={item.product}
+                      value={item.quantity}
+                      onClose={onClose}
+                      onChange={onChange}
+                      text={
+                        item.product.material
+                          ? `${item.product.material}, ${item.product.technique}, ${item.product.size}`
+                          : item.product.shop.title
+                      }
                     />
                   ))
                 : order.map((item, index) => (
-                    <OrderItem
+                    <OrderItemComponent
                       key={index}
-                      id={item.id}
-                      url={MEDIA_URL + item.thumbnail}
-                      name={item.title}
-                      author={item.author}
-                      material={item.material}
-                      technichs={item.technique}
-                      size={item.size}
-                      price={item.price}
-                      value={item.count}
-                      quantity={item.quantity}
+                      product={item.product}
+                      value={item.quantity}
+                      onClose={onClose}
+                      onChange={onChange}
                     />
                   ))}
               <div className={isMobile ? styles.mobile_order_page_footer : styles.order_page_footer}>
@@ -109,7 +109,7 @@ const OrderPage = ({ isBackgroundBlack = false }) => {
                 </div>
                 <div className={styles.button_group}>
                   {!isMobile && (
-                    <Link to={'/gallery/'}>
+                    <Link to={backLink}>
                       {' '}
                       <GoBackArrow /> Назад
                     </Link>
@@ -136,7 +136,8 @@ const OrderPage = ({ isBackgroundBlack = false }) => {
                 style={{
                   fontSize: 40,
                   fontWeight: 500,
-                }}>
+                }}
+                className={styles.emptyCard}>
                 В корзине пусто
               </p>
             </div>

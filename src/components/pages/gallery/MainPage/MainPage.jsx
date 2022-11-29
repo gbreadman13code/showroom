@@ -12,7 +12,7 @@ import MobileMainPageContent from './MainPaigeComponents/MobileMainPageContent';
 import useMobileDetect from 'use-mobile-detect-hook';
 import background from '../../../../assets/img/promo_background.jpg';
 
-const MainPage = () => {
+const MainPage = ({ orderDict }) => {
   const orderActive = true;
 
   const [exhibitions, setExhibitions] = useState(false);
@@ -71,7 +71,7 @@ const MainPage = () => {
   }, [data]);
 
   return (
-    <PageTemplate order={orderActive} orderLink='/gallery/order'>
+    <PageTemplate order={orderActive} orderLink='/gallery/order' orderDict={orderDict}>
       <canvas id='noisy-canvas' className={styles.noisy_canvas}></canvas>
       <Container>
         {exhibitions &&
