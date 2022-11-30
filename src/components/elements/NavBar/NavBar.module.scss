@@ -41,6 +41,15 @@
     display: block;
   }
 
+  &:hover {
+    // font-weight: 700;
+    background: linear-gradient(180deg, #d6358c 32.54%, #4f4b98 96.36%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    // font-weight: 500;
+  }
+
   &.active {
     font-family: 'Geometria';
     font-style: normal;

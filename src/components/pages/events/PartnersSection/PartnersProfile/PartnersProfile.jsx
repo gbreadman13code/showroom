@@ -13,21 +13,21 @@ import stylesSlider from './PartnersSliderStyles.scss';
 
 import PartnersCard from '../PartnersCard/PartnersCard';
 
-const modes = ['out-in', 'in-out'];
-
 const PartnersProfile = ({ partners }) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
   let [activePartner, _setActivePartner] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
-  // const [showDescription, setShowDescription] = useState(false);
-  const [mode, setMode] = useState('out-in');
-  const [state, setState] = useState(true);
-  // const helloRef = useRef(null);
-  // const goodbyeRef = useRef(null);
-  // const nodeRef = state ? helloRef : goodbyeRef;
 
+  const mode = 'out-in';
+  const [state, setState] = useState();
+
+  useEffect(() => {
+    setState(partners.filter((par) => par.id === activePartner)[0]?.promotions);
+  }, [partners, activePartner]);
+
+  const descriptionRef = useRef(null);
   let slider = useRef();
 
   useEffect(() => {
@@ -116,10 +116,6 @@ const PartnersProfile = ({ partners }) => {
                 setActivePartner={setActivePartner}
                 active={activePartner}
                 id={item.id}
-                // showDescription={showDescription}
-                // setShowDescription={setShowDescription}
-                state={state}
-                setState={setState}
               />
             );
           })}
@@ -147,22 +143,18 @@ const PartnersProfile = ({ partners }) => {
             type="button"
           >
             Акции
-            <p className={styles.not_act}>нет акций</p>
           </p>
         </div>
         <SwitchTransition mode={mode}>
           <CSSTransition
+            className="fade"
             key={state}
-            classNames={styles.desc_text_animate}
-            // in={showDescription}
-            timeout={{ enter: 500, exit: 500 }}
-            // unmountOnExit
+            nodeRef={descriptionRef}
+            timeout={{ enter: 250, exit: 250 }}
+            unmountOnExit
           >
-            <p className={styles.desc_text}>
-              {
-                partners.filter((par) => par.id === activePartner)[0]
-                  ?.promotions
-              }
+            <p className={styles.desc_text} ref={descriptionRef}>
+              {state?.length === 0 ? 'Нет акций' : state}
             </p>
           </CSSTransition>
         </SwitchTransition>

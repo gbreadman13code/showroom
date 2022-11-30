@@ -10,6 +10,8 @@ const PartnersCard = (props) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
+  // console.log(props);
+
   return (
     <button
       type="button"
@@ -39,8 +41,8 @@ const PartnersCard = (props) => {
           height={isMobile ? '222' : '155'}
           onClick={() => {
             props.setActivePartner(props.id);
-            // props.setShowDescription(!props.showDescription);
-            props.setState((state) => !state);
+            // props.setState(props.state);
+            // console.log(props);
           }}
         />
         {props.partners?.length > 1 ? (
