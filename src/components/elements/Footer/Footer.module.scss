@@ -97,6 +97,22 @@
     }
   }
 
+  .doc_links {
+    a {
+      img {
+        transition: transform 0.3s ease;
+      }
+    }
+
+    a {
+      &:hover {
+        img {
+          transform: translateX(-10px);
+        }
+      }
+    }
+  }
+
   .bottom_of_footer {
     display: flex;
     margin-top: 12px;
