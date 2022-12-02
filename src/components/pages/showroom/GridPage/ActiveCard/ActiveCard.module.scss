@@ -24,6 +24,7 @@
   top: calc(50% - 354px);
   left: calc(50% + 213px);
   z-index: 520;
+  box-sizing: border-box;
 
   opacity: 0;
 
@@ -45,11 +46,12 @@
     content: '';
     display: block;
     position: absolute;
-    top: 50%;
-    left: -10px;
-    width: 83px;
+    top: 49%;
+    left: -13px;
+    width: 84px;
     height: 2px;
     background-color: #f0e400;
+    // transform: translate(-4%, -90%);
   }
   &::before {
     transform: rotateZ(45deg);
