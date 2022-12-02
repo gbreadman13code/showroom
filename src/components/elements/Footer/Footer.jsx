@@ -5,8 +5,9 @@ import FooterLogo from './FooterLogo';
 import Location from '../../../assets/img/gps.svg';
 import Phone from '../../../assets/img/phone.svg';
 import Mail from '../../../assets/img/mail.svg';
-import VkFix from '../../../assets/img/vk.png';
-import tg from '../../../assets/img/tg.png';
+
+import { ReactComponent as Icon_vk } from '../../../assets/img/icon_vk.svg';
+import { ReactComponent as Icon_tlgrm } from '../../../assets/img/icon_telegram.svg';
 
 import PinkSlash from '../../../assets/img/pink-slash.svg';
 
@@ -70,14 +71,14 @@ const Footer = () => {
                   _blank="target"
                   className={styles.social}
                 >
-                  <img src={tg} alt="vk.com" />
+                  <Icon_vk />
                 </a>
                 <a
                   href="https://vk.com/industry_art"
                   _blank="target"
                   className={styles.social}
                 >
-                  <img src={VkFix} alt="Telegram" />
+                  <Icon_tlgrm />
                 </a>
               </li>
             </ul>
