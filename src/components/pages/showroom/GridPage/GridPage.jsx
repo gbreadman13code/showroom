@@ -13,7 +13,7 @@ const GridPage = ({ orderDict }) => {
   let location = useLocation();
   useEffect(() => {
     getShopsCategories().then((res) => {
-      setCards(res.results);
+      setCards(res.results.filter((card) => card.is_visible_on_main_page));
     });
   }, [location]);
 
