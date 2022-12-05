@@ -9,8 +9,6 @@ const PathInfo = ({ path }) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
-  console.log(path.event_location_start);
-
   let [time, setTime] = useState('00:00');
   useEffect(() => {
     setTime(getPathTime(path));

@@ -12,7 +12,7 @@ const PrimaryPage = () => {
 
   return (
     <PageTemplate header="absolute">
-      <PromoSection />
+      {/* <PromoSection /> */}
       <PromoPaths />
       <PartnersSection />
     </PageTemplate>

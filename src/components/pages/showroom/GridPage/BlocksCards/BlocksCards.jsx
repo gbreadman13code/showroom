@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import BlockCards from "./BlockCards/BlockCards";
-import styles from "./BlocksCards.module.scss";
-import useMobileDetect from "use-mobile-detect-hook";
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import BlockCards from './BlockCards/BlockCards';
+import styles from './BlocksCards.module.scss';
+import useMobileDetect from 'use-mobile-detect-hook';
 
 const offset = 3;
 
@@ -61,15 +61,15 @@ const BlocksCards = ({
 
   useEffect(() => {
     if (isMobile) {
-      document.body.style.overflow = "hidden";
-      document.querySelector("#root").style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
+      document.querySelector('#root').style.overflow = 'hidden';
     }
     maxColumn = 3;
     insertNewCardsBlock(0, 0);
     while (checkBorders());
     return () => {
-      document.body.style.overflow = "";
-      document.querySelector("#root").style.overflow = "";
+      document.body.style.overflow = '';
+      document.querySelector('#root').style.overflow = '';
     };
   }, [location]);
 
@@ -135,7 +135,7 @@ const BlocksCards = ({
 
     moveStartX = event.clientX + gridXPosition;
     moveStartY = event.clientY + gridYPosition;
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = 'hidden';
   };
   let mouseMoveHandler = (event) => {
     if (isTouched) {
@@ -171,16 +171,16 @@ const BlocksCards = ({
   let pointerUpHandler = (event) => {
     setIsTouched(false);
     if (!isMobile) {
-      document.body.style.overflow = "";
-      document.querySelector("#root").style.overflow = "";
+      document.body.style.overflow = '';
+      document.querySelector('#root').style.overflow = '';
     }
   };
   let pointerDownHandler = (event) => {
     setIsTouched(true);
     moveStartX = event.touches[0].clientX + gridXPosition;
     moveStartY = event.touches[0].clientY + gridYPosition;
-    document.body.style.overflow = "hidden";
-    document.querySelector("#root").style.overflow = "hidden";
+    document.body.style.overflow = 'hidden';
+    document.querySelector('#root').style.overflow = 'hidden';
   };
   let pointerMoveHandler = (event) => {
     if (isTouched) {
@@ -336,7 +336,7 @@ const BlocksCards = ({
       onTouchStart={pointerDownHandler}
       onPointerUp={pointerUpHandler}
       onTouchMove={pointerMoveHandler}
-      onPointerLeave={pointerUpHandler}
+      onMouseLeave={pointerUpHandler}
       onMouseDown={mouseDownHandler}
       onMouseMove={mouseMoveHandler}
       onWheelCapture={scrollHandler}
@@ -347,11 +347,11 @@ const BlocksCards = ({
           transform: `translate(${-gridXPosition}px, ${-gridYPosition}px)`,
           transition: isMobile
             ? isBlockTransitive
-              ? "transform 0.8s ease"
-              : ""
+              ? 'transform 0.8s ease'
+              : ''
             : isBlockTransitive
-            ? "transform 0.8s ease"
-            : "",
+            ? 'transform 0.8s ease'
+            : '',
         }}
       >
         {cardsBlocks &&
