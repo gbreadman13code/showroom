@@ -105,16 +105,23 @@
   &__mobile {
     grid-area: 2/1/3/2;
 
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+    // justify-content: center;
+    margin-top: 20px;
+
     button {
-      margin-right: 25px;
-      margin-bottom: 55px;
+      margin-right: 0;
+      margin-bottom: 25px;
+      align-self: center;
+      justify-self: center;
 
       span {
         font-size: 19px;
         line-height: 19px;
         &::before {
-          font-size: 19px;
-          line-height: 19px;
+          font-size: inherit;
+          line-height: inherit;
         }
       }
     }
