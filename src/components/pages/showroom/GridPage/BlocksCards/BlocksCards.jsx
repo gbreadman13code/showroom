@@ -6,10 +6,12 @@ import useMobileDetect from 'use-mobile-detect-hook';
 
 const offset = 3;
 
-let blockHeight = 1416;
-let blockWidth = 1846;
-let blockMarginWidth = 440;
-let blockMarginHeight = 57;
+let blockHeight;
+let blockWidth;
+let blockMarginWidth;
+let blockMarginHeight;
+
+let cardQuantityInRow;
 
 let cardWidth = 323;
 let cardHeight = 434;
@@ -29,25 +31,26 @@ class CardsBlock {
   }
 }
 
-const BlocksCards = ({
-  cards,
-  setActiveCard,
-  activeCard,
-  isBlockTransitive,
-  setIsBlockTransitive,
-}) => {
+const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setIsBlockTransitive }) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
-  if (isMobile) {
-    blockHeight = 539;
-    blockWidth = 698;
-    blockMarginWidth = 166;
-    blockMarginHeight = 22;
 
+  if (isMobile) {
     cardWidth = 122;
     cardHeight = 165;
     cardMargin = 22;
   }
+
+  cardQuantityInRow = Math.sqrt(cards.length);
+  if (cardQuantityInRow > 0) {
+    blockHeight = cardHeight * cardQuantityInRow + cardMargin * (cardQuantityInRow - 1);
+    blockWidth = cardWidth * (cardQuantityInRow * 2 - 1) + cardMargin * (cardQuantityInRow * 2 - 2);
+    blockMarginWidth = cardWidth + cardMargin * 2;
+    blockMarginHeight = cardMargin;
+  }
+  useEffect(() => {
+    checkBorders();
+  }, [blockWidth]);
   let [cardsBlocks, setCardsBlocks] = useState([]);
 
   let [gridXPosition, setGridXPosition] = useState(0);
@@ -76,15 +79,20 @@ const BlocksCards = ({
   let checkBorders = () => {
     let windowWidth = window.innerWidth;
     let windowHeight = window.innerHeight;
-    if (windowWidth / (blockWidth + blockMarginWidth) > maxColumn - offset) {
-      fillWindow();
-      return true;
+    if (!blockWidth) {
+      return false;
     }
-    if (windowHeight / (blockHeight + blockMarginHeight) > maxColumn - offset) {
-      fillWindow();
-      return true;
+    if (blockWidth) {
+      if (windowWidth / (blockWidth + blockMarginWidth) > maxColumn - offset) {
+        fillWindow();
+        return true;
+      }
+      if (windowHeight / (blockHeight + blockMarginHeight) > maxColumn - offset) {
+        fillWindow();
+        return true;
+      }
+      return false;
     }
-    return false;
   };
 
   function fillWindow() {
@@ -119,9 +127,7 @@ const BlocksCards = ({
       );
       if (
         t.filter((value) => {
-          return (
-            value.rowNumber === rowNumber && value.columnNumber === columnNumber
-          );
+          return value.rowNumber === rowNumber && value.columnNumber === columnNumber;
         }).length !== 0
       ) {
         return t;
@@ -184,16 +190,8 @@ const BlocksCards = ({
   };
   let pointerMoveHandler = (event) => {
     if (isTouched) {
-      setCurrentColumn(
-        ((gridXPosition + window.innerWidth / 2) /
-          (blockWidth + blockMarginWidth)) *
-          2
-      );
-      setCurrentRow(
-        ((gridYPosition + window.innerHeight / 2) /
-          (blockHeight + blockMarginHeight)) *
-          2
-      );
+      setCurrentColumn(((gridXPosition + window.innerWidth / 2) / (blockWidth + blockMarginWidth)) * 2);
+      setCurrentRow(((gridYPosition + window.innerHeight / 2) / (blockHeight + blockMarginHeight)) * 2);
       if (currentColumn > maxColumn - offset) {
         updateWindow();
         removeFarCards();
@@ -294,37 +292,21 @@ const BlocksCards = ({
     setGridXPosition((v) => {
       let blockCenterCoords = blockWidth / 2 - window.innerWidth / 2;
       //   -2 в конце чтобы получить числа от -2 до +2
-      let multiplier = parseInt(card.style.left) / (cardWidth + cardMargin) - 2;
+      let multiplier = parseInt(card.style.left) / (cardWidth + cardMargin) - (cardQuantityInRow - 1);
       let offsetInsideBlock = multiplier * (cardWidth + cardMargin);
-      let blockOffset =
-        (block.columnNumber * (blockWidth + blockMarginWidth)) / 2;
+      let blockOffset = (block.columnNumber * (blockWidth + blockMarginWidth)) / 2;
       return blockCenterCoords + offsetInsideBlock + blockOffset;
     });
     setGridYPosition((v) => {
       let blockCenterCoords = blockHeight / 2 - window.innerHeight / 2;
       //   -2 в конце чтобы получить числа от -2 до +2
-      let multiplier = parseInt(card.style.top) / (cardHeight + cardMargin) - 2;
+      let multiplier = parseInt(card.style.top) / (cardHeight + cardMargin) - 0.5 * (cardQuantityInRow + 1);
       let offsetInsideBlock = multiplier * (cardHeight + cardMargin);
-      let blockOffset =
-        (block.rowNumber * (blockHeight + blockMarginHeight)) / 2;
-      return (
-        blockCenterCoords +
-        offsetInsideBlock +
-        blockOffset +
-        cardHeight +
-        cardMargin
-      );
+      let blockOffset = (block.rowNumber * (blockHeight + blockMarginHeight)) / 2;
+      return blockCenterCoords + offsetInsideBlock + blockOffset + cardHeight + cardMargin;
     });
-    setCurrentColumn(
-      ((gridXPosition + window.innerWidth / 2) /
-        (blockWidth + blockMarginWidth)) *
-        2
-    );
-    setCurrentRow(
-      ((gridYPosition + window.innerHeight / 2) /
-        (blockHeight + blockMarginHeight)) *
-        2
-    );
+    setCurrentColumn(((gridXPosition + window.innerWidth / 2) / (blockWidth + blockMarginWidth)) * 2);
+    setCurrentRow(((gridYPosition + window.innerHeight / 2) / (blockHeight + blockMarginHeight)) * 2);
 
     updateWindow();
     removeFarCards();
@@ -339,8 +321,7 @@ const BlocksCards = ({
       onMouseLeave={pointerUpHandler}
       onMouseDown={mouseDownHandler}
       onMouseMove={mouseMoveHandler}
-      onWheelCapture={scrollHandler}
-    >
+      onWheelCapture={scrollHandler}>
       <div
         className={styles.grid}
         style={{
@@ -352,8 +333,7 @@ const BlocksCards = ({
             : isBlockTransitive
             ? 'transform 0.8s ease'
             : '',
-        }}
-      >
+        }}>
         {cardsBlocks &&
           cardsBlocks.map((block, index) => (
             <BlockCards
