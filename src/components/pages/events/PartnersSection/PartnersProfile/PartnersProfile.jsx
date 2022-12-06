@@ -22,12 +22,14 @@ const PartnersProfile = ({ partners }) => {
 
   const mode = 'out-in';
   const [state, setState] = useState();
+  const [stateCard, setStateCard] = useState();
 
   useEffect(() => {
     setState(partners.filter((par) => par.id === activePartner)[0]?.promotions);
   }, [partners, activePartner]);
 
   const descriptionRef = useRef(null);
+  const cardRef = useRef(null);
   let slider = useRef();
 
   useEffect(() => {
@@ -77,49 +79,69 @@ const PartnersProfile = ({ partners }) => {
       }
     >
       {isMobile ? (
-        <div
-          id="partners_slider"
-          className={`${styles.cards} ${styles.cards__mobile}`}
-        >
-          <Slider {...settings} ref={slider}>
-            {partners.map((item) => {
-              return (
-                <PartnersCard
-                  key={item.id}
-                  image={item.cropped_image}
-                  title={item.title}
-                  vk={item.vk_link}
-                  telegram={item.tg_link}
-                  website={item.site_link}
-                  setActivePartner={setActivePartner}
-                  id={item.id}
-                  partners={partners}
-                  sliderGo={slider.current}
-                  activeSlide={currentSlide}
-                  setCurrentSlide={setCurrentSlide}
-                />
-              );
-            })}
-          </Slider>
-        </div>
+        <SwitchTransition mode={mode}>
+          <CSSTransition
+            className={`${styles.cards} ${styles.cards__mobile} ${styles.fade}`}
+            key={stateCard}
+            nodeRef={cardRef}
+            timeout={{ enter: 250, exit: 250 }}
+            unmountOnExit
+          >
+            <div
+              id="partners_slider"
+              className={`${styles.cards} ${styles.cards__mobile}`}
+            >
+              <Slider {...settings} ref={slider}>
+                {partners.map((item) => {
+                  return (
+                    <PartnersCard
+                      key={item.id}
+                      image={item.cropped_image}
+                      title={item.title}
+                      vk={item.vk_link}
+                      telegram={item.tg_link}
+                      website={item.site_link}
+                      setActivePartner={setActivePartner}
+                      id={item.id}
+                      partners={partners}
+                      sliderGo={slider.current}
+                      activeSlide={currentSlide}
+                      setCurrentSlide={setCurrentSlide}
+                    />
+                  );
+                })}
+              </Slider>
+            </div>
+          </CSSTransition>
+        </SwitchTransition>
       ) : (
-        <div className={styles.cards}>
-          {partners.map((item) => {
-            return (
-              <PartnersCard
-                key={item.id}
-                image={item.cropped_image}
-                title={item.title}
-                vk={item.vk_link}
-                telegram={item.tg_link}
-                website={item.site_link}
-                setActivePartner={setActivePartner}
-                active={activePartner}
-                id={item.id}
-              />
-            );
-          })}
-        </div>
+        <SwitchTransition mode={mode}>
+          <CSSTransition
+            className={`${styles.cards} ${styles.fade}`}
+            key={stateCard}
+            nodeRef={cardRef}
+            timeout={{ enter: 250, exit: 250 }}
+            unmountOnExit
+          >
+            <div>
+              {partners.map((item) => {
+                return (
+                  <PartnersCard
+                    key={item.id}
+                    image={item.cropped_image}
+                    title={item.title}
+                    vk={item.vk_link}
+                    telegram={item.tg_link}
+                    website={item.site_link}
+                    setActivePartner={setActivePartner}
+                    active={activePartner}
+                    id={item.id}
+                  />
+                );
+              })}
+            </div>
+          </CSSTransition>
+        </SwitchTransition>
       )}
 
       <div

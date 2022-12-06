@@ -10,7 +10,7 @@ const PartnersCard = (props) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
-  // console.log(props);
+  // console.log(props.active);
 
   return (
     <button
