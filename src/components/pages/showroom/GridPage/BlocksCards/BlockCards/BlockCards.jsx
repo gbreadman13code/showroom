@@ -10,9 +10,12 @@ const BlockCards = ({ positionTop, positionLeft, images, setActiveCard, activeCa
     <div
       className={styles.block}
       style={{
-        top: positionTop,
-        left: positionLeft,
+        top: positionTop ? positionTop : null,
+        left: positionLeft ? positionLeft : null,
       }}>
+      {/* <div className={styles.temp}>
+        {block.columnNumber} {block.rowNumber}
+      </div> */}
       <CategoryCards
         images={images}
         setActiveCard={_setActiveCard}
