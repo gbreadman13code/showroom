@@ -147,23 +147,8 @@ const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setI
     if (isTouched) {
       setCurrentColumn((gridXPosition / (blockWidth + blockMarginWidth)) * 2);
       setCurrentRow((gridYPosition / (blockHeight + blockMarginHeight)) * 2);
-
-      if (currentColumn > maxColumn - offset) {
-        updateWindow();
-        removeFarCards();
-      }
-      if (currentColumn < -maxColumn + offset) {
-        updateWindow();
-        removeFarCards();
-      }
-      if (currentRow < -maxColumn + offset) {
-        updateWindow();
-        removeFarCards();
-      }
-      if (currentRow > maxColumn - offset) {
-        updateWindow();
-        removeFarCards();
-      }
+      updateWindow();
+      removeFarCards();
 
       setGridXPosition((value) => {
         return moveStartX - event.clientX;
@@ -190,25 +175,14 @@ const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setI
   };
   let pointerMoveHandler = (event) => {
     if (isTouched) {
-      setCurrentColumn((gridXPosition / (blockWidth + blockMarginWidth)) * 2);
-      setCurrentRow((gridYPosition / (blockHeight + blockMarginHeight)) * 2);
-      if (currentColumn > maxColumn - offset) {
+      let cc = Math.round((gridXPosition / (blockWidth + blockMarginWidth)) * 2);
+      let cr = Math.round((gridYPosition / (blockHeight + blockMarginHeight)) * 2);
+      if (cc !== currentColumn || cr !== currentRow) {
+        setCurrentColumn(cc);
+        setCurrentRow(cr);
         updateWindow();
         removeFarCards();
       }
-      if (currentColumn < -maxColumn + offset) {
-        updateWindow();
-        removeFarCards();
-      }
-      if (currentRow < -maxColumn + offset) {
-        updateWindow();
-        removeFarCards();
-      }
-      if (currentRow > maxColumn - offset) {
-        updateWindow();
-        removeFarCards();
-      }
-
       setGridXPosition((value) => {
         return moveStartX - event.touches[0].clientX;
       });
