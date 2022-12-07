@@ -4,7 +4,7 @@ import BlockCards from './BlockCards/BlockCards';
 import styles from './BlocksCards.module.scss';
 import useMobileDetect from 'use-mobile-detect-hook';
 
-const offset = 5;
+const offset = 10;
 
 let blockHeight;
 let blockWidth;
@@ -190,8 +190,8 @@ const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setI
   };
   let pointerMoveHandler = (event) => {
     if (isTouched) {
-      setCurrentColumn(((gridXPosition + window.innerWidth / 2) / (blockWidth + blockMarginWidth)) * 2);
-      setCurrentRow(((gridYPosition + window.innerHeight / 2) / (blockHeight + blockMarginHeight)) * 2);
+      setCurrentColumn((gridXPosition / (blockWidth + blockMarginWidth)) * 2);
+      setCurrentRow((gridYPosition / (blockHeight + blockMarginHeight)) * 2);
       if (currentColumn > maxColumn - offset) {
         updateWindow();
         removeFarCards();
@@ -244,9 +244,12 @@ const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setI
   };
 
   let updateWindow = () => {
-    let startColumn = Math.round(currentColumn);
-    let startRow = Math.round(currentRow);
+    let startColumn;
+    let startRow;
+    startColumn = Math.round(currentColumn);
+    startRow = Math.round(currentRow);
     let column = startColumn - offset;
+    console.log(startColumn);
     while (column <= startColumn + offset) {
       if (column % 2 === 0) {
         let row = startRow - offset;
@@ -291,7 +294,6 @@ const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setI
     });
     setGridXPosition((v) => {
       let blockCenterCoords = blockWidth / 2 - window.innerWidth / 2;
-      //   -2 в конце чтобы получить числа от -2 до +2
       let multiplier = parseInt(card.style.left) / (cardWidth + cardMargin) - (cardQuantityInRow - 1);
       let offsetInsideBlock = multiplier * (cardWidth + cardMargin);
       let blockOffset = (block.columnNumber * (blockWidth + blockMarginWidth)) / 2;
@@ -299,17 +301,15 @@ const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setI
     });
     setGridYPosition((v) => {
       let blockCenterCoords = blockHeight / 2 - window.innerHeight / 2;
-      //   -2 в конце чтобы получить числа от -2 до +2
       let multiplier = parseInt(card.style.top) / (cardHeight + cardMargin) - 0.5 * (cardQuantityInRow + 1);
       let offsetInsideBlock = multiplier * (cardHeight + cardMargin);
       let blockOffset = (block.rowNumber * (blockHeight + blockMarginHeight)) / 2;
       return blockCenterCoords + offsetInsideBlock + blockOffset + cardHeight + cardMargin;
     });
-    setCurrentColumn(((gridXPosition + window.innerWidth / 2) / (blockWidth + blockMarginWidth)) * 2);
-    setCurrentRow(((gridYPosition + window.innerHeight / 2) / (blockHeight + blockMarginHeight)) * 2);
+    setCurrentColumn((gridXPosition / (blockWidth + blockMarginWidth)) * 2);
+    setCurrentRow((gridYPosition / (blockHeight + blockMarginHeight)) * 2);
 
     updateWindow();
-    checkBorders();
     removeFarCards();
   }
 

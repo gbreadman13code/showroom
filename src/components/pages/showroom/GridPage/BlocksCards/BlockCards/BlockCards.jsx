@@ -13,6 +13,9 @@ const BlockCards = ({ positionTop, positionLeft, images, setActiveCard, activeCa
         top: positionTop,
         left: positionLeft,
       }}>
+      {/* <div className={styles.temp}>
+        {block.columnNumber} {block.rowNumber}
+      </div> */}
       <CategoryCards
         images={images}
         setActiveCard={_setActiveCard}
