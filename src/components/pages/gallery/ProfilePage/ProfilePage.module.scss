@@ -122,7 +122,10 @@
         button {
           position: relative;
 
-          font-family: "Geometria", sans-serif;
+          width: 200px;
+          height: 61px;
+
+          font-family: 'Geometria', sans-serif;
           font-size: 24px;
           font-weight: 500;
 
@@ -136,12 +139,13 @@
 
           overflow: hidden;
 
-          transition: all 0.3s ease;
+          // transition: left 0.3s ease;
 
           &::before {
-            content: "";
+            content: '';
             display: block;
             position: absolute;
+            opacity: 1;
 
             left: -30px;
             top: 31%;
@@ -151,7 +155,7 @@
             background-color: #f0e400;
 
             transform: skew(-25deg);
-            transition: left 0.3s ease;
+            transition: all 0.3s ease;
           }
 
           &.saled {
@@ -171,7 +175,7 @@
             color: #d6358c;
 
             &::before {
-              display: none;
+              opacity: 0;
             }
           }
         }
@@ -290,7 +294,7 @@
         }
 
         button {
-          font-family: "Geometria", sans-serif;
+          font-family: 'Geometria', sans-serif;
           font-size: 14px;
           font-weight: 500;
 

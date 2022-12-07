@@ -20,7 +20,7 @@
   max-width: 624px;
   margin-bottom: 11px;
 
-  font-family: "Geometria";
+  font-family: 'Geometria';
   font-style: normal;
   font-weight: 500;
   font-size: 35px;
@@ -45,7 +45,7 @@
 
   color: #fff;
 
-  font-family: "Geometria";
+  font-family: 'Geometria';
   font-style: normal;
   font-weight: 500;
   font-size: 27.1127px;
@@ -78,7 +78,7 @@
 
   margin-bottom: 26px;
 
-  font-family: "Geometria";
+  font-family: 'Geometria';
   font-style: normal;
   font-weight: 300;
   font-size: 20px;
@@ -122,7 +122,7 @@
 .productDescriptionTitle {
   margin-bottom: 26px;
 
-  font-family: "Geometria";
+  font-family: 'Geometria';
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
@@ -135,7 +135,7 @@
   }
 }
 .productDescriptionText {
-  font-family: "Geometria";
+  font-family: 'Geometria';
   font-style: normal;
   font-weight: 300;
   font-size: 20px;
@@ -153,7 +153,7 @@
   margin-bottom: 9px;
   margin-left: auto;
 
-  font-family: "Geometria";
+  font-family: 'Geometria';
   font-style: normal;
   font-weight: 500;
   font-size: 34.65px;
@@ -186,11 +186,57 @@
 
   color: #fff;
 
-  font-family: "Geometria";
+  font-family: 'Geometria';
   font-style: normal;
   font-weight: 500;
   font-size: 25px;
   line-height: 31px;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    opacity: 1;
+
+    left: -30px;
+    top: 31%;
+
+    height: 20px;
+    width: 5px;
+    background-color: #f0e400;
+
+    transform: skew(-25deg);
+    transition: all 0.3s ease;
+  }
+
+  &.saled {
+    // background-color: #d4d8da;
+    // color: #50535a;
+  }
+
+  &:hover {
+    &::before {
+      left: 17px;
+    }
+  }
+
+  &:disabled {
+    outline-offset: -2px;
+    outline: 2px solid #4f4b98;
+
+    background-color: transparent;
+    cursor: auto;
+
+    &::before {
+      opacity: 0;
+    }
+  }
 
   @media (max-width: 900px) {
     grid-row: 5/6;

@@ -67,7 +67,7 @@
   @media (max-width: 900px) {
     position: fixed;
     top: calc(50% - 243px);
-    left: calc(50% + 90px);
+    left: calc(50% + 95px);
     &::before,
     &::after {
       width: 48px;
@@ -79,7 +79,7 @@
   top: calc(50% + 120px);
   left: calc(50% + 161px);
 
-  height: 200px;
+  height: auto;
 
   color: red;
   font-size: 80px;

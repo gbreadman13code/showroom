@@ -33,11 +33,11 @@ const MobileFooter = () => {
                   Красноярск, ул. Красной Армии, 10, стр. 4, оф. 302
                 </address>
               </li>
-              <li>
+              <li className={styles.contacts_item}>
                 <img src={Phone} alt="phone" />{' '}
                 <a href="tel:+7 (391) 219-19-69">+7 (391) 219-19-69</a>
               </li>
-              <li>
+              <li className={styles.contacts_item}>
                 <img src={Mail} alt="mail" />{' '}
                 <a href="mailto:info@industry.art">info@industry.art</a>
               </li>

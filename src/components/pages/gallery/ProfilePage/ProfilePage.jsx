@@ -65,17 +65,19 @@ const ProfilePage = ({ addProductToOrder, orderDict }) => {
   }, [currentProfile, orderList]);
 
   return (
-    <PageTemplate orderLink='/gallery/order' order={true} orderDict={orderDict}>
+    <PageTemplate orderLink="/gallery/order" order={true} orderDict={orderDict}>
       <Container>
         {currentProfile ? (
           <div>
-            <div className={isMobile ? styles.mobile_main_info : styles.main_info}>
+            <div
+              className={isMobile ? styles.mobile_main_info : styles.main_info}
+            >
               <div className={styles.profileTitle}>
                 <div>
                   <span className={styles.title}>{currentProfile.title}</span>
                   <span className={styles.author}>{currentProfile.author}</span>
                 </div>
-                <Link to='/gallery/'>
+                <Link to="/gallery/">
                   {isMobile ? (
                     <MobileGoBackArrow />
                   ) : (
@@ -94,7 +96,10 @@ const ProfilePage = ({ addProductToOrder, orderDict }) => {
                     />
                   ) : (
                     <div className={`${styles.slide} ${styles.slide_single}`}>
-                      <img src={MEDIA_URL + currentProfile.thumbnail} alt={currentProfile.title} />
+                      <img
+                        src={MEDIA_URL + currentProfile.thumbnail}
+                        alt={currentProfile.title}
+                      />
                     </div>
                   )}
                 </div>
@@ -103,30 +108,45 @@ const ProfilePage = ({ addProductToOrder, orderDict }) => {
                   <dl>
                     <dt className={styles.info_title}>Материал</dt>
                     <dd className={styles.info_param}>
-                      {currentProfile.material ? currentProfile.material : 'Не указано'}
+                      {currentProfile.material
+                        ? currentProfile.material
+                        : 'Не указано'}
                     </dd>
 
                     <dt className={styles.info_title}>Техника</dt>
                     <dd className={styles.info_param}>
-                      {currentProfile.technique ? currentProfile.technique : 'Не указано'}
+                      {currentProfile.technique
+                        ? currentProfile.technique
+                        : 'Не указано'}
                     </dd>
                     <dt className={styles.info_title}>Размер</dt>
-                    <dd className={styles.info_param}>{currentProfile.size ? currentProfile.size : 'Не указано'}</dd>
+                    <dd className={styles.info_param}>
+                      {currentProfile.size ? currentProfile.size : 'Не указано'}
+                    </dd>
                   </dl>
 
                   <div className={styles.buy_block}>
                     <span className={styles.price}>
-                      {currentProfile.price.slice(0, -3).replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, '$1 ')} ₽
+                      {currentProfile.price
+                        .slice(0, -3)
+                        .replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, '$1 ')}{' '}
+                      ₽
                     </span>
                     <button
-                      className={currentProfile.is_bought ? styles.saled : undefined}
+                      className={
+                        currentProfile.is_bought ? styles.saled : undefined
+                      }
                       onClick={addToOrder}
-                      disabled={currentProfile.quantity < 1 || orderDict[currentProfile.title]}>
+                      disabled={
+                        currentProfile.quantity < 1 ||
+                        orderDict[currentProfile.title]
+                      }
+                    >
                       {currentProfile.quantity < 1
                         ? 'В частной коллекции'
                         : orderDict[currentProfile.title]
                         ? 'В корзине'
-                        : 'В корзину'}
+                        : 'Купить'}
                     </button>
                   </div>
                 </div>
@@ -136,7 +156,10 @@ const ProfilePage = ({ addProductToOrder, orderDict }) => {
               <div className={styles.description}>
                 <p>Описание</p>
                 <div className={styles.description_text}>
-                  {descriptions && descriptions.map((item, index) => <p key={index}>{item}</p>)}
+                  {descriptions &&
+                    descriptions.map((item, index) => (
+                      <p key={index}>{item}</p>
+                    ))}
                 </div>
               </div>
             )}
