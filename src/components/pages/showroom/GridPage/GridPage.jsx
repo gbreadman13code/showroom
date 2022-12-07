@@ -45,7 +45,7 @@ const GridPage = ({ orderDict }) => {
         />
         <div
           className={activeCard.image > 0 ? `${styles.background} ${styles.active}` : styles.background}
-          onClick={closeActiveCard}>
+          onPointerUp={closeActiveCard}>
           {activeCard.image > 0 && (
             <ActiveCard
               card={cards.filter((card) => card.id === activeCard.image)[0]}
