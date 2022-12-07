@@ -4,7 +4,7 @@ import BlockCards from './BlockCards/BlockCards';
 import styles from './BlocksCards.module.scss';
 import useMobileDetect from 'use-mobile-detect-hook';
 
-const offset = 3;
+const offset = 5;
 
 let blockHeight;
 let blockWidth;
@@ -309,6 +309,7 @@ const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setI
     setCurrentRow(((gridYPosition + window.innerHeight / 2) / (blockHeight + blockMarginHeight)) * 2);
 
     updateWindow();
+    checkBorders();
     removeFarCards();
   }
 
