@@ -82,6 +82,30 @@
     }
   }
 
+  .contacts_item {
+    a {
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: #fff;
+        height: 1px;
+        width: 0;
+
+        transition: width 0.3s ease;
+      }
+
+      &:hover {
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+
   .docs {
     padding-top: 1px;
     height: 100%;
@@ -259,6 +283,36 @@
 
       address {
         font-style: normal;
+      }
+    }
+  }
+
+  .contacts_item {
+    a {
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: #fff;
+        height: 1px;
+        width: 0;
+
+        transition: width 0.3s ease;
+      }
+
+      &:hover {
+        &::after {
+          width: 100%;
+        }
+      }
+
+      &:active {
+        &::after {
+          width: 100%;
+        }
       }
     }
   }

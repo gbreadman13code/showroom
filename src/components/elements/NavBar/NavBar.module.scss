@@ -88,6 +88,7 @@
   text-decoration: none;
   color: #fff;
   cursor: pointer;
+  user-select: none;
 
   &::after {
     content: attr(data-text);
