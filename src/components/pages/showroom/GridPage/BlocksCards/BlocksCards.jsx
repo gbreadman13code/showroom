@@ -249,7 +249,6 @@ const BlocksCards = ({ cards, setActiveCard, activeCard, isBlockTransitive, setI
     startColumn = Math.round(currentColumn);
     startRow = Math.round(currentRow);
     let column = startColumn - offset;
-    console.log(startColumn);
     while (column <= startColumn + offset) {
       if (column % 2 === 0) {
         let row = startRow - offset;
