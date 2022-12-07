@@ -1,7 +1,9 @@
 .days {
   grid-area: 1/2/2/3;
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
+
   height: 100%;
 
   button {

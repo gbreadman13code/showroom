@@ -33,18 +33,7 @@ const PartnersProfile = ({ partners }) => {
   let slider = useRef();
 
   useEffect(() => {
-    if (isMobile) {
-      document
-        .querySelector('.slick-active [class*="PartnersCard_image"]')
-        ?.click();
-    } else {
-      document
-        .querySelector(
-          '[class*="PartnersCard_card"] [class*="PartnersCard_image"]'
-        )
-        ?.click();
-    }
-    setCurrentSlide(0);
+    setActivePartner(partners[0]?.id);
   }, [partners]);
 
   let setActivePartner = (id) => {
@@ -56,7 +45,7 @@ const PartnersProfile = ({ partners }) => {
     dots: false,
     arrows: false,
     infinite: true,
-    speed: 300,
+    speed: 500,
     autoplay: false,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -81,14 +70,15 @@ const PartnersProfile = ({ partners }) => {
       {isMobile ? (
         <SwitchTransition mode={mode}>
           <CSSTransition
-            className={`${styles.cards} ${styles.cards__mobile} ${styles.fade}`}
-            key={stateCard}
+            className={`${styles.cards} ${styles.cards__mobile} ${'fade'}`}
+            key={partners[0]?.id}
             nodeRef={cardRef}
             timeout={{ enter: 250, exit: 250 }}
             unmountOnExit
           >
             <div
               id="partners_slider"
+              ref={cardRef}
               className={`${styles.cards} ${styles.cards__mobile}`}
             >
               <Slider {...settings} ref={slider}>
@@ -117,13 +107,13 @@ const PartnersProfile = ({ partners }) => {
       ) : (
         <SwitchTransition mode={mode}>
           <CSSTransition
-            className={`${styles.cards} ${styles.fade}`}
-            key={stateCard}
+            className={`${styles.cards} ${'fade'}`}
+            key={partners[0]?.id}
             nodeRef={cardRef}
             timeout={{ enter: 250, exit: 250 }}
             unmountOnExit
           >
-            <div>
+            <div ref={cardRef}>
               {partners.map((item) => {
                 return (
                   <PartnersCard
@@ -169,7 +159,7 @@ const PartnersProfile = ({ partners }) => {
         </div>
         <SwitchTransition mode={mode}>
           <CSSTransition
-            className="fade"
+            className="fade_swipe"
             key={state}
             nodeRef={descriptionRef}
             timeout={{ enter: 250, exit: 250 }}

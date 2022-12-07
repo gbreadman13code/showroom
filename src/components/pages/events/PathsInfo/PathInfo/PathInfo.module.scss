@@ -22,6 +22,17 @@
   column-gap: 13px;
   row-gap: 10px;
 
+  // max-height: 400px;
+  // overflow-y: auto;
+
+  position: relative;
+
+  // &::after {
+  //   content: '';
+  //   position: absolute;
+
+  // }
+
   .time {
     grid-area: 1/1/3/2;
     align-self: flex-start;
@@ -82,15 +93,21 @@
       line-height: 23px;
       text-align: justify;
       color: white;
+    }
 
-      span {
-        color: white !important;
-        background-color: transparent !important;
-        font-weight: 400 !important;
-        font-size: 18px !important;
-        line-height: 23px !important;
-        text-align: justify !important;
-      }
+    li,
+    span,
+    address {
+      color: white !important;
+      background-color: transparent !important;
+      font-weight: 400 !important;
+      font-size: 18px !important;
+      line-height: 23px !important;
+      text-align: justify !important;
+    }
+
+    li {
+      margin-left: 20px;
     }
 
     a {

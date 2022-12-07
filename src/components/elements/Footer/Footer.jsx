@@ -71,14 +71,14 @@ const Footer = () => {
                   _blank="target"
                   className={styles.social}
                 >
-                  <Icon_vk />
+                  <Icon_tlgrm />
                 </a>
                 <a
                   href="https://vk.com/industry_art"
                   _blank="target"
                   className={styles.social}
                 >
-                  <Icon_tlgrm />
+                  <Icon_vk />
                 </a>
               </li>
             </ul>
