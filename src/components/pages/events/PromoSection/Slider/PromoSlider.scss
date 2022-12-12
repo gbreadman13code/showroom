@@ -57,6 +57,11 @@
 
   .slick-next {
     position: absolute;
+    right: -50px;
+
+    @media (max-width: 1000px) {
+      right: -20px;
+    }
 
     &::before {
       content: '';
@@ -75,6 +80,11 @@
 
   .slick-prev {
     position: absolute;
+    left: -10px;
+
+    @media (max-width: 1000px) {
+      left: -20px;
+    }
 
     &::before {
       content: '';
