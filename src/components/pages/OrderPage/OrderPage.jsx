@@ -15,7 +15,16 @@ import MobileOrderItem from './MobileOrderItem';
 
 import useMobileDetect from 'use-mobile-detect-hook';
 
-const OrderPage = ({ isBlack = false, orderLink, orderDict, OrderItemComponent, onClose, onChange, url, backLink }) => {
+const OrderPage = ({
+  isBlack = false,
+  orderLink,
+  orderDict,
+  OrderItemComponent,
+  onClose,
+  onChange,
+  url,
+  backLink,
+}) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
@@ -41,8 +50,15 @@ const OrderPage = ({ isBlack = false, orderLink, orderDict, OrderItemComponent, 
   }, [orderDict]);
 
   return (
-    <div className={isBlack ? `${styles.wrapper} ${styles.black}` : styles.wrapper}>
-      <PageTemplate orderLink={orderLink} order={true} orderDict={orderDict} header={isBlack ? 'absolute' : ''}>
+    <div
+      className={isBlack ? `${styles.wrapper} ${styles.black}` : styles.wrapper}
+    >
+      <PageTemplate
+        orderLink={orderLink}
+        order={true}
+        orderDict={orderDict}
+        header={isBlack ? 'absolute' : ''}
+      >
         <Container>
           <div className={styles.innerWrapper}></div>
           {isShowModal && (
@@ -60,12 +76,14 @@ const OrderPage = ({ isBlack = false, orderLink, orderDict, OrderItemComponent, 
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 marginTop: 30,
-              }}>
+              }}
+            >
               <span
                 style={{
                   fontSize: 30,
                   fontWeight: 500,
-                }}>
+                }}
+              >
                 Корзина
               </span>
               <Link to={backLink}>
@@ -100,11 +118,21 @@ const OrderPage = ({ isBlack = false, orderLink, orderDict, OrderItemComponent, 
                       onChange={onChange}
                     />
                   ))}
-              <div className={isMobile ? styles.mobile_order_page_footer : styles.order_page_footer}>
+              <div
+                className={
+                  isMobile
+                    ? styles.mobile_order_page_footer
+                    : styles.order_page_footer
+                }
+              >
                 <div className={styles.summury}>
                   <p>
                     {/* Итого:{" "} */}
-                    {String(summury).replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, '$1 ')} ₽
+                    {String(summury).replace(
+                      /(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g,
+                      '$1 '
+                    )}{' '}
+                    ₽
                   </p>
                 </div>
                 <div className={styles.button_group}>
@@ -114,9 +142,14 @@ const OrderPage = ({ isBlack = false, orderLink, orderDict, OrderItemComponent, 
                       <GoBackArrow /> Назад
                     </Link>
                   )}
-                  <button onClick={() => setIsShowModal(true)}>Оформить заказ</button>
+                  <button onClick={() => setIsShowModal(true)}>
+                    Оформить заказ
+                  </button>
                   {isMobile && (
-                    <button style={{ backgroundColor: '#D4D8DA', color: '#50535A' }} onClick={() => navigate('/')}>
+                    <button
+                      style={{ backgroundColor: '#D4D8DA', color: '#50535A' }}
+                      onClick={() => navigate(backLink)}
+                    >
                       Продолжить покупки
                     </button>
                   )}
@@ -131,13 +164,15 @@ const OrderPage = ({ isBlack = false, orderLink, orderDict, OrderItemComponent, 
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-              }}>
+              }}
+            >
               <p
                 style={{
                   fontSize: 40,
                   fontWeight: 500,
                 }}
-                className={styles.emptyCard}>
+                className={styles.emptyCard}
+              >
                 В корзине пусто
               </p>
             </div>

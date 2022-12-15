@@ -9,6 +9,7 @@
 
   @media (max-width: 900px) {
     padding-top: 100px;
+    margin-bottom: 80px;
 
     flex-direction: column;
     align-items: center;
@@ -63,16 +64,21 @@
 .shopDescription {
   font-family: 'Geometria';
   font-style: normal;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 17px;
-  line-height: 100.3%;
+  line-height: 1.2;
 }
 .products {
-  margin-bottom: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  width: 100%;
+  margin-bottom: 50px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 10px;
+  position: relative;
+
   @media (max-width: 900px) {
+    grid-template-columns: 1fr;
     width: 100%;
     justify-content: center;
     margin-bottom: 0;
@@ -81,6 +87,8 @@
 .productLink {
   color: #fff;
   text-decoration: none;
+  display: block;
+
   & a {
     text-decoration: none;
   }
@@ -88,15 +96,24 @@
     display: block;
     width: 100%;
   }
+
+  // &:nth-child(3n) {
+  //   // background-color: red;
+  //   .product {
+  //     margin-right: 0;
+  //   }
+  // }
 }
+
 .product {
-  width: 268px;
-  height: 268px;
+  width: 100%;
+  // height: 268px;
+  aspect-ratio: 1/1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 10px;
-  margin-right: 4px;
+  // margin-right: 4px;
   background-size: contain;
 
   & .productReadMore {
@@ -107,12 +124,16 @@
     padding-top: 10px;
     padding-left: 6px;
 
-    background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
     transition: opacity 0.5s ease;
 
     font-family: 'Geometria';
     font-style: normal;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 14px;
     line-height: 100.3%;
 
@@ -142,6 +163,7 @@
     margin-bottom: 11px;
   }
 }
+
 .productWrapper {
   position: relative;
   // width: 200px;
@@ -168,6 +190,7 @@
   display: grid;
   box-sizing: border-box;
 }
+
 .productTitle {
   grid-row: 1/2;
   grid-column: 1/3;
@@ -178,6 +201,7 @@
   font-size: 14px;
   line-height: 100.3%;
 }
+
 .productCost {
   margin-top: auto;
   grid-row: 2/3;
@@ -188,6 +212,7 @@
   font-size: 14px;
   line-height: 100.3%;
 }
+
 .productButton {
   margin-top: auto;
   grid-row: 2/3;
@@ -204,6 +229,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 100.3%;
+  cursor: pointer;
 
   transition: all 0.3s ease;
 
@@ -216,6 +242,7 @@
     color: #6b68a7;
   }
 }
+
 .backLink {
   display: flex;
   justify-content: flex-end;
@@ -227,11 +254,18 @@
   font-weight: 500;
   font-size: 22.8237px;
   line-height: 29px;
+
+  position: absolute;
+  bottom: -50px;
+  right: 0;
+
   & a {
     color: #fff;
     text-decoration: none;
 
     svg {
+      position: relative;
+      top: 1px;
       transition: all 0.3s ease;
     }
 
@@ -243,5 +277,22 @@
   }
   @media (max-width: 900px) {
     margin-top: 10px;
+
+    svg {
+      rect {
+        transition: fill 0.3s ease;
+      }
+
+      &:hover {
+        rect {
+          fill: #ab1a68;
+        }
+      }
+      &:active {
+        rect {
+          fill: #ab1a68;
+        }
+      }
+    }
   }
 }

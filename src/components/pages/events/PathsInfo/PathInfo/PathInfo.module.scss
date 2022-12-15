@@ -91,7 +91,7 @@
       font-weight: 400;
       font-size: 18px;
       line-height: 23px;
-      text-align: justify;
+      text-align: left;
       color: white;
     }
 
@@ -103,7 +103,7 @@
       font-weight: 400 !important;
       font-size: 18px !important;
       line-height: 23px !important;
-      text-align: justify !important;
+      text-align: left !important;
     }
 
     li {
@@ -122,6 +122,20 @@
       p {
         font-size: 17px;
         line-height: 21px;
+      }
+      li,
+      span,
+      address {
+        color: white !important;
+        background-color: transparent !important;
+        font-weight: 400 !important;
+        font-size: 17px !important;
+        line-height: 21px !important;
+        text-align: left !important;
+      }
+
+      li {
+        margin-left: 20px;
       }
     }
   }

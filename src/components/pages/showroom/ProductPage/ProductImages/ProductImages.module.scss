@@ -1,5 +1,7 @@
 .productImages {
   display: flex;
+  height: 100%;
+
   @media (max-width: 900px) {
     flex-direction: column;
   }
@@ -26,7 +28,7 @@
 .productAdditionalImage {
   width: 104px;
   height: 104px;
-  opacity: 0.3;
+  opacity: 0.4;
 
   margin-bottom: 8px;
   cursor: pointer;
@@ -36,6 +38,12 @@
   & img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    @media (max-width: 900px) {
+      width: 100%;
+    }
   }
   &.active {
     opacity: 1;
@@ -49,8 +57,10 @@
   }
 
   @media (max-width: 900px) {
-    width: 82px !important;
-    height: auto;
+    // width: 82px !important;
+    // height: auto;
+    height: min-content;
+    // padding: 0 10px;
   }
 }
 .slider {
@@ -59,7 +69,7 @@
   height: 345px;
   @media (max-width: 900px) {
     width: 100%;
-    height: 82px;
+    height: min-content;
   }
 }
 .afterArrow,
@@ -81,13 +91,29 @@
     padding-bottom: 0;
   }
 }
+
 .afterArrow {
   bottom: 0;
 
   @media (max-width: 900px) {
-    right: -17px;
-    bottom: 19%;
-    transform: rotateZ(270deg);
+    right: 0;
+    top: 50%;
+    bottom: unset;
+    background: linear-gradient(
+      270deg,
+      #000000 -19.63%,
+      rgba(0, 0, 0, 0) 97.78%
+    );
+
+    transform: translateY(-55%);
+    height: 100%;
+    width: 50px;
+
+    svg {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%) rotate(270deg) !important;
+    }
   }
 
   svg {
@@ -101,14 +127,30 @@
     }
   }
 }
+
 .beforeArrow {
   transform: rotateZ(180deg);
   top: 0;
 
   @media (max-width: 900px) {
-    top: 19%;
-    left: -17px;
-    transform: rotateZ(90deg);
+    left: 0;
+    top: 50%;
+    bottom: unset;
+    background: linear-gradient(
+      90deg,
+      #000000 -19.63%,
+      rgba(0, 0, 0, 0) 97.78%
+    );
+
+    transform: translateY(-55%);
+    height: 100%;
+    width: 50px;
+
+    svg {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg) !important;
+    }
   }
 
   svg {

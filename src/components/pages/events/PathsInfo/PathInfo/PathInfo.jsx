@@ -13,6 +13,7 @@ const PathInfo = ({ path }) => {
   useEffect(() => {
     setTime(getPathTime(path));
   }, [path]);
+
   return (
     <div
       className={
@@ -71,9 +72,7 @@ const PathInfo = ({ path }) => {
           className={`${styles.recomend} ${styles.recomend__mobile}`}
           data-recomend="Рекомендуем посетить"
           style={
-            path.places?.length === 0
-              ? { display: 'none' }
-              : { display: 'block' }
+            path.places?.length > 0 ? { display: 'block' } : { display: 'none' }
           }
         >
           <div
@@ -92,9 +91,7 @@ const PathInfo = ({ path }) => {
         // Десктоп
         <div
           style={
-            path.places?.length === 0
-              ? { display: 'none' }
-              : { display: 'block' }
+            path.places?.length > 0 ? { display: 'block' } : { display: 'none' }
           }
         >
           <div className={styles.recomend} data-recomend="Рекомендуем посетить">
@@ -108,38 +105,6 @@ const PathInfo = ({ path }) => {
           <div className={styles.recomend_text}>{path.recommendation}</div>
         </div>
       )}
-
-      {/* <div
-        style={
-          path.places?.length === 0 ? { display: "none" } : { display: "block" }
-        }
-        className={
-          isMobile
-            ? `${styles.recomend} ${styles.recomend__mobile}`
-            : styles.recomend
-        }
-        data-recomend="Рекомендуем посетить"
-      >
-        <div
-          className={
-            isMobile ? `${styles.grid} ${styles.grid__mobile}` : styles.grid
-          }
-        >
-          {path.places &&
-            path.places.map((place) => (
-              <RecommendationPlace key={place.id} place={place} />
-            ))}
-        </div>
-        <div
-          className={
-            isMobile
-              ? `${styles.recomend_text} ${styles.recomend_text__mobile}`
-              : styles.recomend_text
-          }
-        >
-          {path.recommendation}
-        </div>
-      </div> */}
     </div>
   );
 };
@@ -148,7 +113,9 @@ export default PathInfo;
 
 function getPathTime(path) {
   let date = new Date(path.start_datetime);
-  return `${('0' + date.getHours()).slice(-2)}:${(
-    '0' + date.getMinutes()
-  ).slice(-2)}`;
+  if (path.start_datetime) {
+    return `${('0' + date.getHours()).slice(-2)}:${(
+      '0' + date.getMinutes()
+    ).slice(-2)}`;
+  }
 }

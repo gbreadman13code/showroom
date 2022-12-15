@@ -306,6 +306,12 @@
 
           cursor: pointer;
 
+          transition: all 0.3s ease;
+
+          @media (max-width: 900px) {
+            min-width: 105px;
+          }
+
           &:disabled {
             outline: 1px solid #d6358c;
             background-color: white;

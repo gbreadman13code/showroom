@@ -1,12 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import styles from './NavBar.module.scss';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import useMobileDetect from 'use-mobile-detect-hook';
 import Slider from 'react-slick';
 
 const NavBar = ({ categories, activeCategory, onClickCallback }) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
+
+  // console.log('categories: ' + categories);
+  // console.log('activeCategory: ' + activeCategory);
 
   let slider = useRef();
   let nav = useRef();
@@ -18,7 +21,7 @@ const NavBar = ({ categories, activeCategory, onClickCallback }) => {
     if (cats.length) {
       first_id = cats[0].id;
     }
-    if (slider.current) slider.current.slickGoTo(activeCategory - first_id);
+    if (slider.current) slider.current.slickGoTo(activeCategory - first_id - 1);
   }, [activeCategory, categories]);
 
   let settings = {

@@ -6,8 +6,12 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './slick.scss';
 import { ReactComponent as SliderArrow } from '../../../../../assets/img/showroom/sliderArrow.svg';
+import { SwitchTransition, CSSTransition } from 'react-transition-group';
 
 const ProductImages = ({ images, title }) => {
+  const mode = 'out-in';
+  const imageRef = useRef(null);
+
   let [activeImage, setActiveImage] = useState({});
   let [isBeforeArrow, setIsBeforeArrow] = useState(false);
   let [isAfterArrow, setIsAfterArrow] = useState(true);
@@ -56,11 +60,23 @@ const ProductImages = ({ images, title }) => {
     };
   }
 
+  console.log(activeImage);
+
   return (
     <div className={styles.productImages} id="productImages">
-      <div className={styles.productImage}>
-        <img src={activeImage.cropped_image} alt={title} />
-      </div>
+      <SwitchTransition mode={mode}>
+        <CSSTransition
+          className={`${styles.productImage} ${'fade'}`}
+          key={activeImage?.id}
+          nodeRef={imageRef}
+          timeout={{ enter: 250, exit: 250 }}
+          unmountOnExit
+        >
+          <div className={styles.productImage} ref={imageRef}>
+            <img src={activeImage.cropped_image} alt={title} />
+          </div>
+        </CSSTransition>
+      </SwitchTransition>
 
       <div
         className={styles.slider}

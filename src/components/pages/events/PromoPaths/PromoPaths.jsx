@@ -1,19 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { getPaths } from "../../../../redux/requests/getPaths";
-import Container from "../../../templates/Container";
-import PathsInfo from "../PathsInfo/PathsInfo";
-import PathDays, { getDaysFromPathsArray } from "./PathDays/PathDays";
-import PathMonths, { getMonthsFromPathsArray } from "./PathMonths/PathMonths";
-import styles from "./PromoPath.module.scss";
+import React, { useEffect, useState, useRef } from 'react';
+import { getPaths } from '../../../../redux/requests/getPaths';
+import Container from '../../../templates/Container';
+import PathsInfo from '../PathsInfo/PathsInfo';
+import PathDays, { getDaysFromPathsArray } from './PathDays/PathDays';
+import PathMonths, { getMonthsFromPathsArray } from './PathMonths/PathMonths';
+import styles from './PromoPath.module.scss';
 
-import useMobileDetect from "use-mobile-detect-hook";
+import useMobileDetect from 'use-mobile-detect-hook';
+
+import { SwitchTransition, CSSTransition } from 'react-transition-group';
 
 const PromoPaths = () => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
+  const mode = 'out-in';
+  const cardRef = useRef(null);
+
+  let info = useRef();
+
   let [pathsData, setPathsData] = useState([]);
-  let [activeMonth, _setActiveMonth] = useState("");
+  let [activeMonth, _setActiveMonth] = useState('');
   let [paths, setPaths] = useState([]);
   let [activeDay, _setActiveDay] = useState(0);
 
@@ -62,7 +69,18 @@ const PromoPaths = () => {
             activeMonth={activeMonth}
             activeDay={activeDay}
           />
-          <PathsInfo paths={paths} />
+          <SwitchTransition mode={mode}>
+            <CSSTransition
+              className={'fade'}
+              // key={paths[0]?.id}
+              key={activeDay}
+              nodeRef={cardRef}
+              timeout={{ enter: 250, exit: 250 }}
+              unmountOnExit
+            >
+              <PathsInfo paths={paths} customRef={cardRef} />
+            </CSSTransition>
+          </SwitchTransition>
         </div>
       </Container>
     </div>
@@ -74,8 +92,8 @@ export default PromoPaths;
 function getPathToDisplay(pathsData, month, day) {
   return pathsData.filter((path) => {
     let date = new Date(path.start_datetime);
-    const options = { month: "long" };
-    let monthFromPath = new Intl.DateTimeFormat("ru-ru", options).format(date);
+    const options = { month: 'long' };
+    let monthFromPath = new Intl.DateTimeFormat('ru-ru', options).format(date);
     return (monthFromPath === month) & (date.getDate() === day);
   });
 }
