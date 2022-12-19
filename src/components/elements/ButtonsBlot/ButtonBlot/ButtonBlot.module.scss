@@ -12,10 +12,6 @@
   padding: 0;
   margin-right: 20px;
 
-  //  {
-  //   margin-right: 0;
-  // }
-
   cursor: pointer;
 
   svg {
@@ -25,20 +21,110 @@
     }
   }
 
-  &:hover {
-    svg {
-      path {
-        fill: #38c3b4;
+  // &:hover {
+  //   svg {
+  //     path {
+  //       fill: #38c3b4;
+  //     }
+  //   }
+  // }
+
+  // &.active {
+  //   svg {
+  //     path {
+  //       fill: #38c3b4;
+  //     }
+  //   }
+  // }
+
+  // &:hover {
+  //   svg {
+  //     path {
+  //       fill: #38c3b4;
+  //     }
+  //   }
+  // }
+
+  // &.active {
+  //   svg {
+  //     path {
+  //       fill: #38c3b4;
+  //     }
+  //   }
+  // }
+}
+
+.buttons_item {
+  &:nth-child(4n-3) {
+    .blot {
+      &:hover {
+        svg {
+          path {
+            fill: #4f4898;
+          }
+        }
+      }
+      &.active {
+        svg {
+          path {
+            fill: #4f4898;
+          }
+        }
       }
     }
   }
-  &.active {
-    svg {
-      path {
-        fill: #38c3b4;
+  &:nth-child(4n-2) {
+    .blot {
+      &:hover {
+        svg {
+          path {
+            fill: #db1980;
+          }
+        }
+      }
+      &.active {
+        svg {
+          path {
+            fill: #db1980;
+          }
+        }
+      }
+    }
+  }
+  &:nth-child(4n-1) {
+    .blot {
+      &:hover {
+        svg {
+          path {
+            fill: #38c3b4;
+          }
+        }
+      }
+      &.active {
+        svg {
+          path {
+            fill: #38c3b4;
+          }
+        }
+      }
+    }
+  }
+  &:nth-child(4n-4) {
+    .blot {
+      &:hover {
+        svg {
+          path {
+            fill: #f0e400;
+          }
+        }
+      }
+      &.active {
+        svg {
+          path {
+            fill: #f0e400;
+          }
+        }
       }
     }
   }
 }
-
-//

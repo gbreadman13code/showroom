@@ -5,12 +5,11 @@
 
   position: absolute;
   top: 38%;
-  right: 0;
+  left: 0;
 
   li {
     list-style: none;
 
-    // button {}
     &:last-child {
       button {
         margin-right: 0;
