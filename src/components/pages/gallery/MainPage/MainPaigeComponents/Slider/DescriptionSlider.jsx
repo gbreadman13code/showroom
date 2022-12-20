@@ -1,17 +1,11 @@
-import React from "react";
-import Slider from "react-slick";
+import React from 'react';
+// import Slider from 'react-slick';
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+// import 'slick-carousel/slick/slick.css';
+// import 'slick-carousel/slick/slick-theme.css';
 
-import styles from "../../MainPage.module.scss";
-import sliderStyles from "./Slider.scss";
-
-// const descriptions = [
-//   "Выставка сюжетна и представляет собой малый внутренний «Лес» локального искусства из более 80 работ красноярских художников. ",
-//   "Выставка сюжетна и представляет собой малый внутренний «Лес» локального искусства из более 80 работ красноярских художников. ",
-//   "Выставка сюжетна и представляет собой малый внутренний «Лес» локального искусства из более 80 работ красноярских художников",
-// ];
+import styles from '../../MainPage.module.scss';
+import sliderStyles from './Slider.scss';
 
 const DescriptionSlider = ({ sliderContent }) => {
   let settings = {
@@ -24,16 +18,24 @@ const DescriptionSlider = ({ sliderContent }) => {
     // adaptiveHeight: true,
   };
 
-  let description = sliderContent.split("\n");
+  let description = sliderContent.split('\n');
+
+  // console.log(typeof description);
 
   return (
-    <Slider {...settings}>
+    <div className={styles.description_text}>
       {description.map((item, index) => (
-        <div className={styles.slide} key={index}>
-          <p>{item}</p>
-        </div>
+        <span key={index}>{item}</span>
       ))}
-    </Slider>
+    </div>
+
+    // <Slider {...settings}>
+    //   {description.map((item, index) => (
+    //     <div className={styles.slide} key={index}>
+    //       <p>{item}</p>
+    //     </div>
+    //   ))}
+    // </Slider>
   );
 };
 

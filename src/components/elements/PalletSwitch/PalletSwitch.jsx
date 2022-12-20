@@ -20,29 +20,7 @@ const PalletSwitch = ({
     >
       <p>{title}</p>
 
-      {isActivateButtons && (
-        <div>
-          {/* <button
-            className={`${styles.button__left} ${styles.button}`}
-            type="button"
-            onClick={() => {
-              setActiveExhibition(activeExhibition - 1);
-            }}
-          >
-            <span></span>
-          </button>
-
-          <button
-            className={`${styles.button__right} ${styles.button}`}
-            type="button"
-            onClick={() => {
-              setActiveExhibition(activeExhibition + 1);
-            }}
-          >
-            <span></span>
-          </button> */}
-        </div>
-      )}
+      {isActivateButtons && <div></div>}
 
       <img src={pallet} alt="" />
     </div>
