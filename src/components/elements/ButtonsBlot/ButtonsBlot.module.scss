@@ -1,11 +1,13 @@
 .buttons {
   display: flex;
   align-items: center;
-  justify-content: center;
+  // justify-content: center;
 
-  position: absolute;
-  top: 38%;
-  left: 0;
+  // position: absolute;
+  // top: 38%;
+  // left: 0;
+
+  margin-bottom: 20px;
 
   li {
     list-style: none;
@@ -31,8 +33,6 @@
     height: 55px;
     padding: 0 35px;
     margin-top: 15px;
-
-    // background-image: url("../../../assets/img/pallet-blot.svg");
     background-repeat: no-repeat;
     background-size: 100% 55px;
 
