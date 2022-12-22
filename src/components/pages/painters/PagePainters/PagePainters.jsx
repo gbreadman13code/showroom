@@ -136,15 +136,6 @@ const PagePainters = () => {
                         {item.nickname ? item.fio : null}
                       </p>
                     ) : null}
-                    {/* <p
-                      className={
-                        isMobile
-                          ? `${styles.painter_name} ${styles.painter_name__mobile}`
-                          : styles.painter_name
-                      }
-                    >
-                      {item.nickname ? item.fio : null}
-                    </p> */}
                   </Link>
 
                   {/* Список картин */}
