@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import Container from "../../templates/Container";
-import useMobileDetect from "use-mobile-detect-hook";
+import React, { useEffect, useState } from 'react';
+import Container from '../../templates/Container';
+import useMobileDetect from 'use-mobile-detect-hook';
 
-import styles from "./ColorWrapper.module.scss";
-import { useSelector } from "react-redux";
+import styles from './ColorWrapper.module.scss';
+import { useSelector } from 'react-redux';
 
 const ColorWrapper = ({ name, color, children, activeExhibition }) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState('');
   const exhibitions = useSelector(
     (state) => state.exhibitions.exhibitions[activeExhibition]
   );
@@ -28,7 +28,7 @@ const ColorWrapper = ({ name, color, children, activeExhibition }) => {
           ? `${styles.colorWrapper} ${styles.colorWrapper__mobile}`
           : styles.colorWrapper
       }
-      data-title={title}
+      // data-title={title}
     >
       <Container>{children}</Container>
     </div>
