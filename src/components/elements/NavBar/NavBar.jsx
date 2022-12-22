@@ -8,20 +8,13 @@ const NavBar = ({ categories, activeCategory, onClickCallback }) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
-  // console.log('categories: ' + categories);
-  // console.log('activeCategory: ' + activeCategory);
-
   let slider = useRef();
   let nav = useRef();
 
   useEffect(() => {
     let cats = categories.sort((first, second) => first.id - second.id);
 
-    let first_id = 0;
-    if (cats.length) {
-      first_id = cats[0].id;
-    }
-    if (slider.current) slider.current.slickGoTo(activeCategory - first_id - 1);
+    if (slider.current) slider.current.slickGoTo(cats.findIndex((elem) => elem.id === activeCategory));
   }, [activeCategory, categories]);
 
   let settings = {
@@ -51,16 +44,11 @@ const NavBar = ({ categories, activeCategory, onClickCallback }) => {
                 .sort((first, second) => first.id - second.id)
                 .map((category) => (
                   <div
-                    className={
-                      activeCategory === category.id
-                        ? `${styles.category} ${styles.active}`
-                        : styles.category
-                    }
+                    className={activeCategory === category.id ? `${styles.category} ${styles.active}` : styles.category}
                     key={category.id}
                     onClick={() => {
                       onClickCallback(category.id);
-                    }}
-                  >
+                    }}>
                     {category.title}
                   </div>
                 ))}
@@ -71,17 +59,12 @@ const NavBar = ({ categories, activeCategory, onClickCallback }) => {
             .sort((first, second) => first.id - second.id)
             .map((category) => (
               <div
-                className={
-                  activeCategory === category.id
-                    ? `${styles.category} ${styles.active}`
-                    : styles.category
-                }
+                className={activeCategory === category.id ? `${styles.category} ${styles.active}` : styles.category}
                 key={category.id}
                 onClick={() => {
                   onClickCallback(category.id);
                 }}
-                data-text={category.title}
-              >
+                data-text={category.title}>
                 {category.title}
               </div>
             ))}
