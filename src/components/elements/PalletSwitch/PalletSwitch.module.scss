@@ -16,6 +16,7 @@
     font-weight: 500;
     text-transform: uppercase;
     text-align: center;
+    width: 300px;
   }
 
   img {
@@ -38,6 +39,11 @@
     height: 60px;
 
     bottom: -120px;
+
+    p {
+      font-size: 13px;
+      transform: translate(-50%, -38%);
+    }
 
     button {
       &:first-of-type {
