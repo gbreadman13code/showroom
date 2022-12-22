@@ -31,7 +31,9 @@ const PartnersProfile = ({ partners }) => {
   const descriptionRef = useRef(null);
   const cardRef = useRef(null);
   let slider = useRef();
-
+  let slickGoTo = (id) => {
+    slider.current.slickGoTo(id);
+  };
   useEffect(() => {
     setActivePartner(partners[0]?.id);
   }, [partners]);
@@ -52,21 +54,13 @@ const PartnersProfile = ({ partners }) => {
     adaptiveHeight: false,
 
     afterChange: (oldIndex, newIndex) => {
-      document
-        .querySelector('.slick-active [class*="PartnersCard_image"]')
-        .click();
+      document.querySelector('.slick-active [class*="PartnersCard_image"]').click();
       setCurrentSlide(oldIndex);
     },
   };
 
   return (
-    <div
-      className={
-        isMobile
-          ? `${styles.profile} ${styles.profile__mobile}`
-          : styles.profile
-      }
-    >
+    <div className={isMobile ? `${styles.profile} ${styles.profile__mobile}` : styles.profile}>
       {isMobile ? (
         <SwitchTransition mode={mode}>
           <CSSTransition
@@ -74,13 +68,8 @@ const PartnersProfile = ({ partners }) => {
             key={partners[0]?.id}
             nodeRef={cardRef}
             timeout={{ enter: 250, exit: 250 }}
-            unmountOnExit
-          >
-            <div
-              id="partners_slider"
-              ref={cardRef}
-              className={`${styles.cards} ${styles.cards__mobile}`}
-            >
+            unmountOnExit>
+            <div id='partners_slider' ref={cardRef} className={`${styles.cards} ${styles.cards__mobile}`}>
               <Slider {...settings} ref={slider}>
                 {partners.map((item) => {
                   return (
@@ -94,7 +83,7 @@ const PartnersProfile = ({ partners }) => {
                       setActivePartner={setActivePartner}
                       id={item.id}
                       partners={partners}
-                      sliderGo={slider.current}
+                      sliderGo={slickGoTo}
                       activeSlide={currentSlide}
                       setCurrentSlide={setCurrentSlide}
                     />
@@ -111,8 +100,7 @@ const PartnersProfile = ({ partners }) => {
             key={partners[0]?.id}
             nodeRef={cardRef}
             timeout={{ enter: 250, exit: 250 }}
-            unmountOnExit
-          >
+            unmountOnExit>
             <div ref={cardRef}>
               {partners.map((item) => {
                 return (
@@ -134,37 +122,22 @@ const PartnersProfile = ({ partners }) => {
         </SwitchTransition>
       )}
 
-      <div
-        className={
-          isMobile ? `${styles.desc} ${styles.desc__mobile}` : styles.desc
-        }
-      >
+      <div className={isMobile ? `${styles.desc} ${styles.desc__mobile}` : styles.desc}>
         <div
           className={
-            partners.filter((par) => par.id === activePartner)[0]?.promotions
-              ? styles.have_actions
-              : styles.not_actions
-          }
-        >
-          <p
-            className={
-              isMobile
-                ? `${styles.actions} ${styles.actions__mobile}`
-                : styles.actions
-            }
-            type="button"
-          >
+            partners.filter((par) => par.id === activePartner)[0]?.promotions ? styles.have_actions : styles.not_actions
+          }>
+          <p className={isMobile ? `${styles.actions} ${styles.actions__mobile}` : styles.actions} type='button'>
             Акции
           </p>
         </div>
         <SwitchTransition mode={mode}>
           <CSSTransition
-            className="fade_swipe"
+            className='fade_swipe'
             key={state}
             nodeRef={descriptionRef}
             timeout={{ enter: 250, exit: 250 }}
-            unmountOnExit
-          >
+            unmountOnExit>
             <p className={styles.desc_text} ref={descriptionRef}>
               {state?.length === 0 ? 'Нет акций' : state}
             </p>

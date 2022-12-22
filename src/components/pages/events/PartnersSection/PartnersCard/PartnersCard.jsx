@@ -12,29 +12,20 @@ const PartnersCard = (props) => {
 
   return (
     <button
-      type="button"
+      type='button'
       className={
         isMobile
           ? `${styles.card} ${styles.card__mobile}`
           : props.active === props.id
           ? `${styles.card} ${styles.card__active}`
           : styles.card
-      }
-    >
-      <div
-        className={
-          isMobile
-            ? `${styles.inner_image} ${styles.inner_image__mobile}`
-            : styles.inner_image
-        }
-      >
+      }>
+      <div className={isMobile ? `${styles.inner_image} ${styles.inner_image__mobile}` : styles.inner_image}>
         <div className={styles.img_shadow}></div>
         <img
-          className={
-            isMobile ? `${styles.image} ${styles.image__mobile}` : styles.image
-          }
+          className={isMobile ? `${styles.image} ${styles.image__mobile}` : styles.image}
           src={props.image}
-          alt=""
+          alt=''
           width={isMobile ? '222' : '155'}
           height={isMobile ? '222' : '155'}
           onClick={() => {
@@ -54,11 +45,9 @@ const PartnersCard = (props) => {
                         : styles.dot_button
                     }
                     onClick={() => {
-                      // console.log(props.sliderGo);
-                      props.sliderGo.slickGoTo(index);
+                      props.sliderGo(index);
                       props.setCurrentSlide(index);
-                    }}
-                  ></span>
+                    }}></span>
                 );
               })}
             </div>
@@ -66,20 +55,8 @@ const PartnersCard = (props) => {
         ) : null}
       </div>
 
-      <h3
-        className={
-          isMobile ? `${styles.name} ${styles.name__mobile}` : styles.name
-        }
-      >
-        {props.title}
-      </h3>
-      <div
-        className={
-          isMobile
-            ? `${styles.social_list} ${styles.social_list__mobile}`
-            : styles.social_list
-        }
-      >
+      <h3 className={isMobile ? `${styles.name} ${styles.name__mobile}` : styles.name}>{props.title}</h3>
+      <div className={isMobile ? `${styles.social_list} ${styles.social_list__mobile}` : styles.social_list}>
         {props.vk ? (
           <a href={props.vk}>
             <Icon_vk />
