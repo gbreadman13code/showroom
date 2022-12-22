@@ -43,6 +43,7 @@ function changeProductQuantity(order, setOrder, product, quantity) {
 function App() {
   const dispatch = useDispatch();
   const { pathname, hash, key } = useLocation();
+  const [backLink, setBackLink] = useState('');
 
   const [galleryOrder, setGalleryOrder] = useState([]);
   const [showroomOrder, setShowroomOrder] = useState([]);
@@ -69,77 +70,50 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<PrimaryPage />} />
-        <Route
-          path="/gallery"
-          element={<MainPage orderDict={galleryOrder} />}
-        />
+        <Route path='/' element={<PrimaryPage />} />
+        <Route path='/gallery' element={<MainPage orderDict={galleryOrder} setBackLink={setBackLink} />} />
         {/* <Route path='/gallery/wishlist' element={<WishListPage />} /> */}
         <Route
-          path="gallery/order"
+          path='gallery/order'
           element={
             <OrderPage
-              url="exhibitions/payments/"
-              orderLink="/gallery/order"
+              url='exhibitions/payments/'
+              orderLink='/gallery/order'
               orderDict={galleryOrder}
               OrderItemComponent={OrderItem}
               onClose={(product) => {
                 removeProductFromOrder(galleryOrder, setGalleryOrder, product);
               }}
               onChange={(product, quantity) => {
-                changeProductQuantity(
-                  galleryOrder,
-                  setGalleryOrder,
-                  product,
-                  quantity
-                );
+                changeProductQuantity(galleryOrder, setGalleryOrder, product, quantity);
               }}
-              backLink="/gallery/"
+              backLink='/gallery/'
             />
           }
         />
         <Route
-          path="/gallery/confirm"
-          element={
-            <ConfirmPage
-              localStorageVariableName={'paymentsIndustry'}
-              url={'exhibitions/payments/'}
-            />
-          }
+          path='/gallery/confirm'
+          element={<ConfirmPage localStorageVariableName={'paymentsIndustry'} url={'exhibitions/payments/'} />}
         />
+        <Route path='/gallery/payment_and_delivery' element={<ContactsPage orderDict={galleryOrder} />} />
         <Route
-          path="/gallery/payment_and_delivery"
-          element={<ContactsPage orderDict={galleryOrder} />}
-        />
-        <Route
-          path="/gallery/profile/:id"
+          path='/gallery/profile/:id'
           element={
             <ProfilePage
               orderDict={galleryOrder}
               addProductToOrder={(product) => {
                 addProductToOrder(galleryOrder, setGalleryOrder, product);
               }}
+              backLink={backLink}
             />
           }
         />
+        <Route path='/showroom' element={<GridPage orderDict={showroomOrder} />} />
+        <Route path='/showroom/categories/:id' element={<CategoryPage orderDict={showroomOrder} />} />
+        <Route path='/showroom/categories' element={<CategoryPage orderDict={showroomOrder} />} />
+        <Route path='/showroom/shops/:id' element={<ShopPage orderDict={showroomOrder} />} />
         <Route
-          path="/showroom"
-          element={<GridPage orderDict={showroomOrder} />}
-        />
-        <Route
-          path="/showroom/categories/:id"
-          element={<CategoryPage orderDict={showroomOrder} />}
-        />
-        <Route
-          path="/showroom/categories"
-          element={<CategoryPage orderDict={showroomOrder} />}
-        />
-        <Route
-          path="/showroom/shops/:id"
-          element={<ShopPage orderDict={showroomOrder} />}
-        />
-        <Route
-          path="/showroom/products/:id"
+          path='/showroom/products/:id'
           element={
             <ProductPage
               addProductToOrder={(product) => {
@@ -150,39 +124,25 @@ function App() {
           }
         />
         <Route
-          path="/showroom/confirm"
-          element={
-            <ConfirmPage
-              localStorageVariableName={'paymentsShowroomIndustry'}
-              url={'shops/payments/'}
-            />
-          }
+          path='/showroom/confirm'
+          element={<ConfirmPage localStorageVariableName={'paymentsShowroomIndustry'} url={'shops/payments/'} />}
         />
         <Route
-          path="/showroom/order"
+          path='/showroom/order'
           element={
             <OrderPage
               isBlack={true}
-              url="shops/payments/"
-              orderLink="/showroom/order"
+              url='shops/payments/'
+              orderLink='/showroom/order'
               orderDict={showroomOrder}
               OrderItemComponent={ShowroomOrderItem}
               onClose={(product) => {
-                removeProductFromOrder(
-                  showroomOrder,
-                  setShowroomOrder,
-                  product
-                );
+                removeProductFromOrder(showroomOrder, setShowroomOrder, product);
               }}
               onChange={(product, quantity) => {
-                changeProductQuantity(
-                  showroomOrder,
-                  setShowroomOrder,
-                  product,
-                  quantity
-                );
+                changeProductQuantity(showroomOrder, setShowroomOrder, product, quantity);
               }}
-              backLink="/showroom/"
+              backLink='/showroom/'
             />
           }
         />

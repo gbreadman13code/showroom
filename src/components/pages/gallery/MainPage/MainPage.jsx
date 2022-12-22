@@ -12,7 +12,7 @@ import MobileMainPageContent from './MainPaigeComponents/MobileMainPageContent';
 import useMobileDetect from 'use-mobile-detect-hook';
 import background from '../../../../assets/img/promo_background.jpg';
 
-const MainPage = ({ orderDict }) => {
+const MainPage = ({ orderDict, setBackLink }) => {
   const orderActive = true;
 
   const [exhibitions, setExhibitions] = useState(false);
@@ -68,6 +68,9 @@ const MainPage = ({ orderDict }) => {
     if (data.length > 0) {
       setExhibitions(data);
     }
+    return () => {
+      setBackLink('/gallery/');
+    };
   }, [data]);
 
   return (
