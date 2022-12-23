@@ -18,6 +18,7 @@ import ProductPage from './components/pages/showroom/ProductPage/ProductPage';
 import ShowroomOrderItem from './components/pages/showroom/ShowroomOrderItem/ShowroomOrderItem';
 import OrderItem from './components/pages/OrderPage/OrderItem';
 import PagePainters from './components/pages/painters/PagePainters/PagePainters';
+import ProfilePainter from './components/pages/painters/ProfilePainter/ProfilePainter';
 
 function addProductToOrder(order, setOrder, product) {
   let old_order = { ...order };
@@ -188,6 +189,7 @@ function App() {
           }
         />
         <Route path="/painters/" element={<PagePainters />} />
+        <Route path="/painters/:id" element={<ProfilePainter />} />
       </Routes>
     </>
   );

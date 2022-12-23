@@ -32,8 +32,6 @@ const ProfilePage = ({ addProductToOrder, orderDict }) => {
   });
   const orderList = useSelector((state) => state.order.orderList);
 
-  console.log(addProductToOrder);
-
   useEffect(() => {
     if (!item) return;
 
