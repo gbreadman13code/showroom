@@ -23,7 +23,10 @@ const ProductPage = ({ addProductToOrder, orderDict }) => {
   useEffect(() => {
     getProduct(params.id).then((res) => {
       setProduct(res);
-      let images = [{ id: 0, image: res.image, cropped_image: res.cropped_image }, ...res.additional_photos];
+      let images = [
+        { id: 0, image: res.image, cropped_image: res.cropped_image },
+        ...res.additional_photos,
+      ];
       setImages(images);
     });
 
@@ -48,7 +51,12 @@ const ProductPage = ({ addProductToOrder, orderDict }) => {
           localStorageVariableName={'paymentsShowroomIndustry'}
         />
       )}
-      <PageTemplate header='absolute' orderLink='/showroom/order' order={true} orderDict={orderDict}>
+      <PageTemplate
+        header="absolute"
+        orderLink="/showroom/order"
+        order={true}
+        orderDict={orderDict}
+      >
         <Container>
           {product.shop && (
             <div className={styles.product}>
@@ -72,20 +80,31 @@ const ProductPage = ({ addProductToOrder, orderDict }) => {
               </div>
               <div className={styles.productDescription}>
                 <div className={styles.productDescriptionTitle}>Описание</div>
-                <div className={styles.productDescriptionText}>{product.description}</div>
+                <div className={styles.productDescriptionText}>
+                  {product.description}
+                </div>
               </div>
               <div className={styles.productCost}>
-                {String(product.price).replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, '$1 ')} ₽
+                {String(product.price).replace(
+                  /(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g,
+                  '$1 '
+                )}{' '}
+                ₽
               </div>
               <button
-                type='button'
+                type="button"
                 className={styles.productButton}
                 disabled={(product.quantity < 1) | !isButtonActive}
                 onClick={() => {
                   // openModal();
                   addProductToOrder(product);
-                }}>
-                {product.quantity > 0 ? (isButtonActive ? 'Купить' : 'В корзине') : 'Нет в наличии'}
+                }}
+              >
+                {product.quantity > 0
+                  ? isButtonActive
+                    ? 'Купить'
+                    : 'В корзине'
+                  : 'Нет в наличии'}
               </button>
             </div>
           )}

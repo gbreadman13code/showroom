@@ -68,15 +68,17 @@ const Footer = () => {
               <li className={styles.socials}>
                 <a
                   href="https://t.me/industry_art"
-                  _blank="target"
+                  target="_blank"
                   className={styles.social}
+                  rel="noreferrer"
                 >
                   <Icon_tlgrm />
                 </a>
                 <a
                   href="https://vk.com/industry_art"
-                  _blank="target"
+                  target="_blank"
                   className={styles.social}
+                  rel="noreferrer"
                 >
                   <Icon_vk />
                 </a>

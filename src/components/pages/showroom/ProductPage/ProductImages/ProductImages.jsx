@@ -60,8 +60,6 @@ const ProductImages = ({ images, title }) => {
     };
   }
 
-  console.log(activeImage);
-
   return (
     <div className={styles.productImages} id="productImages">
       <SwitchTransition mode={mode}>
