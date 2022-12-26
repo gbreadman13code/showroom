@@ -1,10 +1,16 @@
-import React from "react";
-import styles from "./Burger.module.scss";
+import React from 'react';
+import styles from './Burger.module.scss';
 // import className from
 
-const Burger = (props) => {
+const Burger = ({ modalActive, setModalActive }) => {
   return (
-    <button className={`${styles.burger} ${styles.pressed}`}>
+    <button
+      className={
+        modalActive ? `${styles.burger} ${styles.pressed}` : styles.burger
+      }
+      onClick={() => setModalActive(true)}
+    >
+      {/* ${styles.pressed} */}
       <span />
       <span />
       <span />
