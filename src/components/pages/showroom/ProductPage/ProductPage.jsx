@@ -58,23 +58,24 @@ const ProductPage = ({ addProductToOrder, orderDict }) => {
         orderDict={orderDict}
       >
         <Container>
+          <div className={styles.backArrow}>
+            {isMobile ? (
+              <Link to={`/showroom/shops/${product.shop.id}`}>
+                {' '}
+                <MobileGoBackArrow />
+              </Link>
+            ) : (
+              <Link to={`/showroom/shops/${product.shop.id}`}>
+                {' '}
+                <GoBackArrow /> Назад
+              </Link>
+            )}
+          </div>
           {product.shop && (
             <div className={styles.product}>
               <div className={styles.productTitle}>{product.title}</div>
               <div className={styles.shop}>{product.shop.title}</div>
-              <div className={styles.backArrow}>
-                {isMobile ? (
-                  <Link to={`/showroom/shops/${product.shop.id}`}>
-                    {' '}
-                    <MobileGoBackArrow />
-                  </Link>
-                ) : (
-                  <Link to={`/showroom/shops/${product.shop.id}`}>
-                    {' '}
-                    <GoBackArrow /> Назад
-                  </Link>
-                )}
-              </div>
+
               <div className={styles.productImages}>
                 <ProductImages images={images} title={product.title} />
               </div>

@@ -23,12 +23,36 @@ const ShopPage = ({ orderDict }) => {
 
   return (
     <div className={styles.wrapper}>
-      <PageTemplate header='absolute' orderLink='/showroom/order' order={true} orderDict={orderDict}>
+      <PageTemplate
+        header="absolute"
+        orderLink="/showroom/order"
+        order={true}
+        orderDict={orderDict}
+      >
         <Container>
+          {!isMobile && (
+            <div className={styles.backLink}>
+              <Link to={`/showroom/categories/${shop.category}`}>
+                <>
+                  <GoBackArrow /> Назад
+                </>
+              </Link>
+            </div>
+          )}
+          {isMobile && (
+            <Link
+              className={styles.backLink}
+              to={`/showroom/categories/${shop.category}`}
+            >
+              <>
+                <MobileGoBackArrow />
+              </>
+            </Link>
+          )}
           <div className={styles.shop}>
             <div className={styles.shopInfo}>
               <div className={styles.shopImage}>
-                <img src={shop.cropped_image} alt='' />
+                <img src={shop.cropped_image} alt="" />
               </div>
               <div className={styles.shopTitle}> {shop.title}</div>
               <div className={styles.shopDescription}>{shop.description}</div>
@@ -36,16 +60,34 @@ const ShopPage = ({ orderDict }) => {
             <div className={styles.products}>
               {shop.products &&
                 shop.products.map((product) => (
-                  <Link key={product.id} className={styles.productLink} to={`/showroom/products/${product.id}`}>
+                  <Link
+                    key={product.id}
+                    className={styles.productLink}
+                    to={`/showroom/products/${product.id}`}
+                  >
                     <div className={styles.productWrapper}>
-                      <div className={styles.product} style={{ backgroundImage: `url(${product.cropped_image})` }}>
+                      <div
+                        className={styles.product}
+                        style={{
+                          backgroundImage: `url(${product.cropped_image})`,
+                        }}
+                      >
                         <div className={styles.productReadMore}>Подробнее</div>
                         <div className={styles.productInfo}>
-                          <div className={styles.productTitle}>{product.title}</div>
-                          <div className={styles.productCost}>
-                            {String(product.price).replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, '$1 ')}р.
+                          <div className={styles.productTitle}>
+                            {product.title}
                           </div>
-                          <button type='button' className={styles.productButton}>
+                          <div className={styles.productCost}>
+                            {String(product.price).replace(
+                              /(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g,
+                              '$1 '
+                            )}
+                            р.
+                          </div>
+                          <button
+                            type="button"
+                            className={styles.productButton}
+                          >
                             Купить
                           </button>
                         </div>
@@ -53,23 +95,7 @@ const ShopPage = ({ orderDict }) => {
                     </div>
                   </Link>
                 ))}
-              {!isMobile && (
-                <div className={styles.backLink}>
-                  <Link to={`/showroom/categories/${shop.category}`}>
-                    <>
-                      <GoBackArrow /> Назад
-                    </>
-                  </Link>
-                </div>
-              )}
             </div>
-            {isMobile && (
-              <Link className={styles.backLink} to={`/showroom/categories/${shop.category}`}>
-                <>
-                  <MobileGoBackArrow />
-                </>
-              </Link>
-            )}
           </div>
         </Container>
       </PageTemplate>
