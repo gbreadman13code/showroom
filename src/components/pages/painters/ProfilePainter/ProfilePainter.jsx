@@ -14,7 +14,10 @@ import useMobileDetect from 'use-mobile-detect-hook';
 import { ReactComponent as Icon_vk } from '../../../../assets/img/icon_vk.svg';
 import { ReactComponent as Icon_tlgrm } from '../../../../assets/img/icon_telegram.svg';
 
-const ProfilePainter = () => {
+import { ReactComponent as GoBackArrow } from '../../../../assets/img/arrow-left.svg';
+import { ReactComponent as MobileGoBackArrow } from '../../../../assets/img/showroom/goBackMobile.svg';
+
+const ProfilePainter = ({ setBackLink }) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
@@ -26,12 +29,29 @@ const ProfilePainter = () => {
     getPainterProfile(painterId.id).then((res) => {
       setPainter(res);
     });
+
+    return () => {
+      setBackLink('/painters/' + painterId?.id);
+    };
   }, [location]);
 
   return (
     <>
       <PageTemplate>
         <Container>
+          <div className={styles.backArrow}>
+            {isMobile ? (
+              <Link to={`/painters/`}>
+                {' '}
+                <MobileGoBackArrow />
+              </Link>
+            ) : (
+              <Link to={`/painters/`}>
+                {' '}
+                <GoBackArrow /> Назад
+              </Link>
+            )}
+          </div>
           <section
             className={
               isMobile
@@ -76,6 +96,7 @@ const ProfilePainter = () => {
               >
                 {painter.short_description}
               </p>
+
               <h2
                 className={
                   isMobile
@@ -96,33 +117,33 @@ const ProfilePainter = () => {
                   {painter.biography && HTMLReactParser(painter.biography)}
                 </div>
               </div>
-            </div>
-            <div
-              className={
-                isMobile
-                  ? `${styles.social} ${styles.social__mobile}`
-                  : styles.social
-              }
-            >
-              {painter.tg_link ? (
-                <a
-                  href={'//' + painter.tg_link}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Icon_tlgrm />
-                </a>
-              ) : null}
+              <div
+                className={
+                  isMobile
+                    ? `${styles.social} ${styles.social__mobile}`
+                    : styles.social
+                }
+              >
+                {painter.tg_link ? (
+                  <a
+                    href={'//' + painter.tg_link}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Icon_tlgrm />
+                  </a>
+                ) : null}
 
-              {painter.vk_link ? (
-                <a
-                  href={'//' + painter.vk_link}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Icon_vk />
-                </a>
-              ) : null}
+                {painter.vk_link ? (
+                  <a
+                    href={'//' + painter.vk_link}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Icon_vk />
+                  </a>
+                ) : null}
+              </div>
             </div>
           </section>
 

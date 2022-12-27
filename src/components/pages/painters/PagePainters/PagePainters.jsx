@@ -16,7 +16,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import stylesSlider from './PaintersSlider.scss';
 
-const PagePainters = () => {
+const PagePainters = ({ setBackLink }) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
@@ -26,6 +26,10 @@ const PagePainters = () => {
     getPainters().then((res) => {
       setCategories(res.results);
     });
+
+    return () => {
+      setBackLink('/painters/');
+    };
   }, []);
 
   let settings = {
