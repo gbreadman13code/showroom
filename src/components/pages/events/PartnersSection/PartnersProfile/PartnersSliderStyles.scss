@@ -1,0 +1,16 @@
+#partners_slider {
+  .slick-slide {
+    pointer-events: none;
+    // outline: 3px solid red;
+
+    &.slick-active {
+      button {
+        pointer-events: auto;
+      }
+    }
+  }
+}
+
+.fade {
+  white-space: pre-wrap;
+}

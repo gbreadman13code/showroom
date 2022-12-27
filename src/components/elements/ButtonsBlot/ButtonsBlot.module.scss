@@ -1,0 +1,43 @@
+.buttons {
+  display: flex;
+  align-items: center;
+  // justify-content: center;
+
+  // position: absolute;
+  // top: 38%;
+  // left: 0;
+
+  margin-bottom: 20px;
+
+  li {
+    list-style: none;
+
+    &:last-child {
+      button {
+        margin-right: 0;
+      }
+    }
+  }
+
+  // мобильная версия
+  &_mobile {
+    position: relative;
+    top: unset;
+    left: 50%;
+    bottom: 0;
+    z-index: 100;
+
+    transform: translateX(-50%);
+
+    width: min-content;
+    height: 55px;
+    padding: 0 35px;
+    margin-top: 15px;
+    background-repeat: no-repeat;
+    background-size: 100% 55px;
+
+    a {
+      margin: 0 7px;
+    }
+  }
+}

@@ -1,129 +1,185 @@
-import React, { useEffect, useState } from "react";
-import Container from "../../templates/Container";
-import PageTemplate from "../../templates/PageTemplate";
+import React, { useEffect, useState } from 'react';
+import Container from '../../templates/Container';
+import PageTemplate from '../../templates/PageTemplate';
 
-import styles from "./OrderPage.module.scss";
-import { useSelector } from "react-redux";
-import OrderItem from "./OrderItem";
+import styles from './OrderPage.module.scss';
+import { useSelector } from 'react-redux';
+import OrderItem from './OrderItem';
 import { Link, useNavigate } from 'react-router-dom';
-import { MEDIA_URL } from "../../../redux/API/BASE_URL";
+import { MEDIA_URL } from '../../../redux/API/BASE_URL';
 
-import { ReactComponent as GoBackArrow } from "../../../assets/img/arrow-left.svg";
-import { ReactComponent as MobileGoBackArrow } from "../../../assets/img/mobile-left-arrow.svg";
-import OrderModal from "../../elements/OrderModal/OrderModal";
+import { ReactComponent as GoBackArrow } from '../../../assets/img/arrow-left.svg';
+import { ReactComponent as MobileGoBackArrow } from '../../../assets/img/mobile-left-arrow.svg';
+import OrderModal from '../../elements/OrderModal/OrderModal';
 import MobileOrderItem from './MobileOrderItem';
 
 import useMobileDetect from 'use-mobile-detect-hook';
 
-
-const OrderPage = () => {
+const OrderPage = ({
+  isBlack = false,
+  orderLink,
+  orderDict,
+  OrderItemComponent,
+  onClose,
+  onChange,
+  url,
+  backLink,
+}) => {
   const detectMobile = useMobileDetect();
   const isMobile = detectMobile.isMobile();
 
   const [summury, setSummury] = useState(0);
   const [isShowModal, setIsShowModal] = useState(false);
-  const order = useSelector((state) => state.order.orderList);
-
+  const [order, setOrder] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (order) {
+    let orderToSet = [];
+    for (let key in orderDict) {
+      orderToSet.unshift(orderDict[key]);
+    }
+    setOrder(orderToSet);
+
+    if (orderToSet) {
       let summuryCounter = 0;
-      order.map(item => {
-        summuryCounter += item.price * item.count;
-      })
+      orderToSet.forEach((item) => {
+        summuryCounter += item.product.price * item.quantity;
+      });
       setSummury(summuryCounter);
     }
-  }, [order])
-
-  
+  }, [orderDict]);
 
   return (
-    <PageTemplate>
-      <Container>
-        {isShowModal && <OrderModal onClose={setIsShowModal} />}
-        {isMobile && (
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            marginTop: 30
-          }}>
-            <span style={{
-              fontSize: 30,
-              fontWeight: 500,
-            }}>Корзина</span>
-            <Link to={'/'}> <MobileGoBackArrow /></Link>
-          </div>
-        )}
-        {order && order.length > 0 ? (
-          <>
-            {isMobile ? (
-              order.map((item, index) => (
-                <MobileOrderItem
-                  key={index}
-                  id={item.id}
-                  url={MEDIA_URL + item.thumbnail}
-                  name={item.title}
-                  author={item.author}
-                  material={item.material}
-                  technichs={item.technique}
-                  size={item.size}
-                  price={item.price}
-                  value={item.count}
-                  quantity={item.quantity}
-                />
-              ))
-            ) : (
-              order.map((item, index) => (
-                <OrderItem
-                  key={index}
-                  id={item.id}
-                  url={MEDIA_URL + item.thumbnail}
-                  name={item.title}
-                  author={item.author}
-                  material={item.material}
-                  technichs={item.technique}
-                  size={item.size}
-                  price={item.price}
-                  value={item.count}
-                  quantity={item.quantity}
-                />
-              ))
-            )}
-            <div className={isMobile ? styles.mobile_order_page_footer : styles.order_page_footer}>
-              <div className={styles.summury}>
-                <p>Итого: {summury} ₽</p>
-              </div>
-              <div className={styles.button_group}>
-                {!isMobile && <Link to={'/'}> <GoBackArrow /> Назад</Link>}
-                <button onClick={() => setIsShowModal(true)}>Оформить заказ</button>
-                {isMobile && <button style={{backgroundColor: '#D4D8DA', color: '#50535A'}} onClick={() => navigate('/')}>Продолжить покупки</button>  }
-              </div>
-            </div>
-          </>
-        ) : (
-          <div
-            style={{
-              width: "100%",
-              height: 250,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <p
+    <div
+      className={isBlack ? `${styles.wrapper} ${styles.black}` : styles.wrapper}
+    >
+      <PageTemplate
+        orderLink={orderLink}
+        order={true}
+        orderDict={orderDict}
+        header={isBlack ? 'absolute' : ''}
+      >
+        <Container>
+          <div className={styles.innerWrapper}></div>
+          {isShowModal && (
+            <OrderModal
+              onClose={setIsShowModal}
+              url={url}
+              localStorageVariableName={'paymentsIndustry'}
+              orderDict={orderDict}
+            />
+          )}
+          {isMobile && (
+            <div
               style={{
-                fontSize: 40,
-                fontWeight: 500,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                marginTop: 30,
               }}
             >
-              В корзине пусто
-            </p>
-          </div>
-        )}
-      </Container>
-    </PageTemplate>
+              <span
+                style={{
+                  fontSize: 30,
+                  fontWeight: 500,
+                }}
+              >
+                Корзина
+              </span>
+              <Link to={backLink}>
+                {' '}
+                <MobileGoBackArrow />
+              </Link>
+            </div>
+          )}
+          {order && order.length > 0 ? (
+            <>
+              {isMobile
+                ? order.map((item, index) => (
+                    <MobileOrderItem
+                      key={index}
+                      product={item.product}
+                      value={item.quantity}
+                      onClose={onClose}
+                      onChange={onChange}
+                      text={
+                        item.product.material
+                          ? `${item.product.material}, ${item.product.technique}, ${item.product.size}`
+                          : item.product.shop.title
+                      }
+                    />
+                  ))
+                : order.map((item, index) => (
+                    <OrderItemComponent
+                      key={index}
+                      product={item.product}
+                      value={item.quantity}
+                      onClose={onClose}
+                      onChange={onChange}
+                    />
+                  ))}
+              <div
+                className={
+                  isMobile
+                    ? styles.mobile_order_page_footer
+                    : styles.order_page_footer
+                }
+              >
+                <div className={styles.summury}>
+                  <p>
+                    {/* Итого:{" "} */}
+                    {String(summury).replace(
+                      /(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g,
+                      '$1 '
+                    )}{' '}
+                    ₽
+                  </p>
+                </div>
+                <div className={styles.button_group}>
+                  {!isMobile && (
+                    <Link to={backLink}>
+                      {' '}
+                      <GoBackArrow /> Назад
+                    </Link>
+                  )}
+                  <button onClick={() => setIsShowModal(true)}>
+                    Оформить заказ
+                  </button>
+                  {isMobile && (
+                    <button
+                      style={{ backgroundColor: '#D4D8DA', color: '#50535A' }}
+                      onClick={() => navigate(backLink)}
+                    >
+                      Продолжить покупки
+                    </button>
+                  )}
+                </div>
+              </div>
+            </>
+          ) : (
+            <div
+              style={{
+                width: '100%',
+                height: 250,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <p
+                style={{
+                  fontSize: 40,
+                  fontWeight: 500,
+                }}
+                className={styles.emptyCard}
+              >
+                В корзине пусто
+              </p>
+            </div>
+          )}
+        </Container>
+      </PageTemplate>
+    </div>
   );
 };
 

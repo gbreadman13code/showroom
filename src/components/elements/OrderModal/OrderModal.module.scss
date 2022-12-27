@@ -1,165 +1,164 @@
 .modal_screen {
-    position: fixed;
+  position: fixed;
 
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 500;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #00000070;
+
+  .modal_wrapper {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    padding: 30px 26px 25px 31px;
 
-    background-color: #00000070;
+    background-color: #0c0c0c;
 
-    .modal_wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 30px 26px 25px 31px;
-
-        background-color: #0C0C0C;
-
-        h3 {
-            font-size: 25px;
-            font-weight: 500;
-            color: #ffffff;
-            margin-bottom: 30px;
-        }
-
-        input {
-            width: 500px;
-            margin-bottom: 25px;
-            padding: 13px 0 13px 25px;
-
-
-            font-size: 25px;
-            font-weight: 500;
-            color: #ffffff; 
-
-            background-color: #0C0C0C;
-
-            border: 1px solid #D6358C;
-
-            outline: none;
-
-            &::placeholder {
-                font-family: 'Geometria', sans-serif;
-                font-size: 25px;
-                font-weight: 500;
-                color: #ffffff;
-            }
-        }
-
-        .button_container {
-            align-self: end;
-
-            button {
-                padding: 7px 30px;
-
-                font-family: 'Geometria', sans-serif;
-                font-size: 25px;
-                font-weight: 500;
-
-                border: none;
-
-                cursor: pointer;
-
-                &:first-child {
-                    background-color: #FFFFFF;
-                    color: #50535A;
-                }
-                &:last-child {
-                    background-color: #4F4B98;
-                    color: #ffffff;
-                    margin-left: 28px;
-                }
-            }
-        }
+    h3 {
+      font-size: 25px;
+      font-weight: 500;
+      color: #ffffff;
+      margin-bottom: 30px;
     }
+
+    input {
+      width: 500px;
+      margin-bottom: 25px;
+      padding: 13px 0 13px 25px;
+
+      font-size: 25px;
+      font-weight: 500;
+      color: #ffffff;
+
+      background-color: #0c0c0c;
+
+      border: 1px solid #d6358c;
+
+      outline: none;
+
+      &::placeholder {
+        font-family: 'Geometria', sans-serif;
+        font-size: 25px;
+        font-weight: 500;
+        color: #ffffff;
+      }
+    }
+
+    .button_container {
+      align-self: end;
+
+      button {
+        padding: 7px 30px;
+
+        font-family: 'Geometria', sans-serif;
+        font-size: 25px;
+        font-weight: 500;
+
+        border: none;
+
+        cursor: pointer;
+
+        &:first-child {
+          background-color: #ffffff;
+          color: #50535a;
+        }
+        &:last-child {
+          background-color: #4f4b98;
+          color: #ffffff;
+          margin-left: 28px;
+        }
+      }
+    }
+  }
 }
 
 .mobile_modal_screen {
-    position: fixed;
+  position: fixed;
 
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #00000070;
+
+  z-index: 3;
+
+  .modal_wrapper {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    padding: 20px 25px 25px 19px;
 
-    background-color: #00000070;
+    background-color: #0c0c0c;
 
-    z-index: 3;
-
-    .modal_wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px 25px 25px 19px;
-
-        background-color: #0C0C0C;
-
-        h3 {
-            font-size: 22px;
-            font-weight: 500;
-            color: #ffffff;
-            margin-bottom: 20px;
-        }
-
-        input {
-            // width: 500px;
-            width: 100%;
-            margin-bottom: 13px;
-            padding: 7px 7px 7px 13px;
-            box-sizing: border-box;
-
-
-            font-size: 18px;
-            font-weight: 500;
-            color: #ffffff; 
-
-            background-color: #0C0C0C;
-
-            border: 1px solid #D6358C;
-
-            outline: none;
-
-            &::placeholder {
-                font-family: 'Geometria', sans-serif;
-                font-size: 18px;
-                font-weight: 500;
-                color: #ffffff;
-            }
-        }
-
-        .button_container {
-            align-self: end;
-
-            button {
-                padding: 7px 30px;
-
-                font-family: 'Geometria', sans-serif;
-                font-size: 14px;
-                font-weight: 500;
-
-                border: none;
-
-                cursor: pointer;
-
-                &:first-child {
-                    background-color: #D4D8DA;
-                    color: #50535A;
-                }
-                &:last-child {
-                    background-color: #4F4B98;
-                    color: #ffffff;
-                    margin-left: 28px;
-                }
-            }
-        }
+    h3 {
+      font-size: 22px;
+      font-weight: 500;
+      color: #ffffff;
+      margin-bottom: 20px;
     }
+
+    input {
+      // width: 500px;
+      width: 100%;
+      margin-bottom: 13px;
+      padding: 7px 7px 7px 13px;
+      box-sizing: border-box;
+
+      font-size: 18px;
+      font-weight: 500;
+      color: #ffffff;
+
+      background-color: #0c0c0c;
+
+      border: 1px solid #d6358c;
+
+      outline: none;
+
+      &::placeholder {
+        font-family: 'Geometria', sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+        color: #ffffff;
+      }
+    }
+
+    .button_container {
+      align-self: end;
+
+      button {
+        padding: 7px 30px;
+
+        font-family: 'Geometria', sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+
+        border: none;
+
+        cursor: pointer;
+
+        &:first-child {
+          background-color: #d4d8da;
+          color: #50535a;
+        }
+        &:last-child {
+          background-color: #4f4b98;
+          color: #ffffff;
+          margin-left: 28px;
+        }
+      }
+    }
+  }
 }

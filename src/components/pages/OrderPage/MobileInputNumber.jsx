@@ -19,15 +19,25 @@ const MobileInputNumber = ({ defaultValue, funcChange, quantity }) => {
   }, [value]);
 
   return (
-      <div className={styles.mobile_value_filed}>
-        <button className={styles.minus} onClick={decrement}>
-          -
-        </button>
-        {value}
-        <button className={styles.plus} onClick={increment}>
-          +
-        </button>
-      </div>
+    <div className={styles.mobile_value_filed}>
+      <button
+        onClick={decrement}
+        className={
+          value <= 1 ? `${styles.minus} ${styles.disabled}` : styles.minus
+        }
+      >
+        -
+      </button>
+      {value}
+      <button
+        onClick={increment}
+        className={
+          value >= quantity ? `${styles.plus} ${styles.disabled}` : styles.plus
+        }
+      >
+        +
+      </button>
+    </div>
   );
 };
 

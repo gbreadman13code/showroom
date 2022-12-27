@@ -1,0 +1,328 @@
+.main_info {
+  margin-bottom: 55px;
+
+  .profileTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    margin-bottom: 20px;
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+
+      .title {
+        font-size: 34px;
+        font-weight: 500;
+        color: #50535a;
+        margin-bottom: 8px;
+      }
+
+      .author {
+        font-size: 22px;
+        font-weight: 300;
+        color: #50535a;
+      }
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      font-size: 27px;
+      font-weight: 500;
+      color: #50535a;
+
+      text-decoration: none;
+
+      &:hover {
+        svg {
+          transform: translateX(-7px);
+        }
+      }
+
+      svg {
+        margin-right: 10px;
+        transition: transform 0.3s ease;
+      }
+    }
+  }
+
+  .grid_container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 50px;
+
+    .profileImg {
+      min-width: 0;
+      width: 100%;
+      height: 373px;
+      max-width: 536px;
+
+      .slide {
+        height: 373px;
+        max-width: 536px;
+        width: 100%;
+        box-sizing: border-box;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+
+        &:focus {
+          outline: none;
+        }
+
+        img {
+          max-width: 536px;
+          max-height: 358px;
+          object-fit: contain;
+          border: 8px solid #d4d8da;
+          box-sizing: border-box;
+        }
+      }
+    }
+    .profileInfo {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-left: 50px;
+
+      & > dl {
+        display: flex;
+        flex-direction: column;
+
+        .info_title {
+          font-size: 24px;
+          font-weight: 500;
+          color: #50535a;
+          margin-bottom: 5px;
+        }
+
+        .info_param {
+          font-size: 24px;
+          font-weight: 300;
+          color: #50535a;
+          margin-bottom: 20px;
+        }
+      }
+
+      .buy_block {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .price {
+          font-size: 36px;
+          font-weight: 500;
+          color: #50535a;
+        }
+
+        button {
+          position: relative;
+
+          width: 200px;
+          height: 61px;
+
+          font-family: 'Geometria', sans-serif;
+          font-size: 24px;
+          font-weight: 500;
+
+          padding: 15px 38px;
+          border: none;
+
+          color: #ffffff;
+          background-color: #d6358c;
+
+          cursor: pointer;
+
+          overflow: hidden;
+
+          // transition: left 0.3s ease;
+
+          &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            opacity: 1;
+
+            left: -30px;
+            top: 31%;
+
+            height: 20px;
+            width: 5px;
+            background-color: #f0e400;
+
+            transform: skew(-25deg);
+            transition: all 0.3s ease;
+          }
+
+          &.saled {
+            background-color: #d4d8da;
+            color: #50535a;
+          }
+
+          &:hover {
+            &::before {
+              left: 17px;
+            }
+          }
+
+          &:disabled {
+            outline: 1px solid #d6358c;
+            background-color: white;
+            color: #d6358c;
+
+            &::before {
+              opacity: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.description {
+  margin-bottom: 80px;
+
+  p {
+    font-size: 24px;
+    font-weight: 500;
+
+    margin-bottom: 23px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .description_text {
+    p {
+      font-size: 20px;
+      font-weight: 300;
+      color: #50535a;
+    }
+  }
+}
+
+.mobile_main_info {
+  margin-bottom: 55px;
+
+  .profileTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+
+      .title {
+        font-size: 18px;
+        font-weight: 500;
+        color: #50535a;
+        margin-bottom: 8px;
+      }
+
+      .author {
+        font-size: 14px;
+        font-weight: 300;
+        color: #50535a;
+      }
+    }
+  }
+
+  .grid_container {
+    .profileImg {
+      grid-area: 1 / 1 / 2 / 2;
+      display: block;
+
+      .slide {
+        max-width: 100%;
+        max-height: 100%;
+        display: flex;
+        justify-content: center;
+
+        img {
+          width: 100%;
+          border: 8px solid #d4d8da;
+          box-sizing: border-box;
+        }
+      }
+    }
+
+    .profileInfo {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      & > dl {
+        display: flex;
+        flex-direction: column;
+        padding-top: 50px;
+
+        .info_title {
+          font-size: 18px;
+          font-weight: 500;
+          color: #50535a;
+          margin-bottom: 8px;
+        }
+
+        .info_param {
+          font-size: 18px;
+          font-weight: 300;
+          color: #50535a;
+          margin-bottom: 20px;
+        }
+      }
+
+      .buy_block {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .price {
+          font-size: 22px;
+          font-weight: 500;
+          color: #50535a;
+        }
+
+        button {
+          font-family: 'Geometria', sans-serif;
+          font-size: 14px;
+          font-weight: 500;
+
+          padding: 7px 17px;
+          border: none;
+
+          color: #ffffff;
+          background-color: #d6358c;
+
+          cursor: pointer;
+
+          transition: all 0.3s ease;
+
+          @media (max-width: 900px) {
+            min-width: 105px;
+          }
+
+          &:disabled {
+            outline: 1px solid #d6358c;
+            background-color: white;
+            color: #d6358c;
+
+            &::before {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

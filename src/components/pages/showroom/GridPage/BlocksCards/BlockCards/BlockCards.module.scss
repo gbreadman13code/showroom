@@ -1,0 +1,21 @@
+.block {
+  position: absolute;
+  width: 1846px;
+  height: 1416px;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  pointer-events: none;
+  @media (max-width: 900px) {
+    width: 698px;
+    height: 539px;
+  }
+}
+
+.temp {
+  color: red;
+  font-size: 50px;
+  top: 45%;
+  left: 30%;
+  position: absolute;
+  z-index: 1;
+}

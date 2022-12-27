@@ -1,0 +1,47 @@
+.like {
+  // outline: 2px solid red;
+  background-color: transparent;
+  border: none;
+
+  svg {
+    width: 20px;
+
+    // обычное состояние
+    & .path {
+      &:nth-of-type(1) {
+        fill: transparent;
+      }
+
+      &:nth-of-type(2) {
+        fill: white;
+      }
+    }
+
+    &.active {
+      // обычное состояние
+      & .path {
+        &:nth-of-type(1) {
+          fill: transparent;
+        }
+
+        &:nth-of-type(2) {
+          fill: white;
+        }
+      }
+    }
+  }
+}
+
+// .path {
+//   // outline: 3px solid pink;
+
+//   &:nth-of-type(1) {
+//     // fill: transparent;
+//   }
+
+//   &:nth-of-type(2) {
+//     // fill: transparent;
+//     fill: white;
+//     // fill: #50535a;
+//   }
+// }

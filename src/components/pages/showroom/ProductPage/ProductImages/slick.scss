@@ -1,0 +1,28 @@
+#productImages {
+  .slick-list {
+    width: 104px;
+    @media (max-width: 900px) {
+      width: 100%;
+      height: min-content;
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
+
+  .slick-track {
+    @media (max-width: 900px) {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      width: min-content;
+      justify-content: space-between;
+    }
+  }
+
+  .slick-slide {
+    @media (max-width: 900px) {
+      padding: 0 3px;
+      // margin-right: 5px;
+    }
+  }
+}

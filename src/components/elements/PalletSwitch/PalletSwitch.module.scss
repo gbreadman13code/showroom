@@ -1,0 +1,122 @@
+.switch {
+  position: absolute;
+  bottom: -163px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  p {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    color: #50535a;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+    width: 300px;
+  }
+
+  img {
+    margin-right: 0;
+    width: 100%;
+
+    height: 100%;
+    // object-fit: contain;
+    box-shadow: none;
+  }
+
+  &__mobile {
+    position: absolute;
+    z-index: 101;
+
+    transform: translateX(-50%);
+
+    width: 100%;
+    max-width: 550px;
+    height: 60px;
+
+    bottom: -120px;
+
+    p {
+      font-size: 13px;
+      transform: translate(-50%, -38%);
+    }
+
+    button {
+      &:first-of-type {
+        left: 17%;
+      }
+      &:last-of-type {
+        right: 17%;
+      }
+    }
+
+    img {
+      display: block;
+      position: absolute;
+      left: -10%;
+      right: -10%;
+      width: 120%;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 35%;
+  z-index: 20;
+
+  height: 25px;
+  width: 25px;
+
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='19' viewBox='0 0 16 19' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14.3779 16.7168L2.3046 9.2411L14.3779 1.76625' stroke='%23D6338A' stroke-width='2.92751' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+
+    display: block;
+
+    height: 20px;
+    width: 20px;
+
+    transition: all 0.3s ease;
+  }
+
+  &__left {
+    left: 20%;
+
+    &:hover {
+      span {
+        transform: translateX(-10px) scale(0.85);
+      }
+    }
+  }
+
+  &__right {
+    right: 20%;
+    top: 32.5%;
+
+    span {
+      transform: translateX(0) rotate(180deg);
+    }
+
+    &:hover {
+      span {
+        transform: translateX(10px) rotate(180deg) scale(0.85);
+      }
+    }
+
+    // transform: translate(-50%, -50%) rotate(180deg);
+  }
+}

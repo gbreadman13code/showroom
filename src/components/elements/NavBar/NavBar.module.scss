@@ -1,0 +1,128 @@
+.nav {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  position: relative;
+
+  margin-bottom: 56px;
+  padding-top: 150px;
+
+  overflow: hidden;
+
+  @media (max-width: 900px) {
+    overflow: hidden;
+    display: block;
+    padding-top: 100px;
+  }
+
+  @media (max-width: 1100px) {
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      z-index: 100;
+      width: 25px;
+      height: 80%;
+      background: -moz-linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0) 100%
+      );
+      background: -webkit-linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0) 100%
+      );
+      background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0) 100%
+      );
+      pointer-events: none;
+    }
+
+    &::after {
+      content: '';
+      display: block !important;
+      position: absolute;
+      left: unset !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      z-index: 100 !important;
+      width: 25px !important;
+      height: 80% !important;
+      background: -moz-linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.7) 100%
+      ) !important;
+      background: -webkit-linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.7) 100%
+      ) !important;
+      background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.7) 100%
+      ) !important;
+
+      pointer-events: none;
+    }
+  }
+
+  &.left {
+  }
+}
+.category {
+  margin-right: 14px;
+  margin-bottom: 10px;
+
+  font-family: 'Geometria';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 100.3%;
+  white-space: nowrap;
+  text-align: center;
+
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+
+  &::after {
+    content: attr(data-text);
+    visibility: hidden;
+    overflow: hidden;
+    font-weight: 700;
+    height: 0;
+    display: block;
+  }
+
+  &:hover {
+    // font-weight: 700;
+    background: linear-gradient(180deg, #d6358c 32.54%, #4f4b98 96.36%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    // font-weight: 500;
+  }
+
+  &.active {
+    font-family: 'Geometria';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100.3%;
+    /* identical to box height, or 20px */
+
+    background: linear-gradient(180deg, #d6358c 32.54%, #4f4b98 96.36%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+}

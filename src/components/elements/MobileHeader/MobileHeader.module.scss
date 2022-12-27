@@ -1,47 +1,87 @@
 .header {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
 
-    .footer_of_header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        margin-top: 10px;
-        padding-top: 20px;
-        border-top: 1px solid #000;
+  .footer_of_header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    // margin-top: 10px;
+    padding-top: 20px;
+    // border-top: 1px solid #000;
+
+    & > a {
+      margin-right: calc(10vw - 30px);
     }
+  }
+
+  .navLinks {
+    display: flex;
+    align-items: center;
+
+    a {
+      margin: 0 10px;
+
+      font-size: 16px;
+      font-weight: 400;
+
+      color: #50535a;
+      text-decoration: none;
+
+      position: relative;
+      z-index: 5;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        left: -2px;
+        top: 3px;
+        z-index: -1;
+        display: block;
+        width: 7px;
+        height: 7px;
+        background-color: #d6338a;
+
+        transition: all 0.4s ease;
+      }
+
+      &.pressed {
+        &::before {
+          top: 0;
+          width: 2px;
+          height: 20px;
+          left: -10px;
+        }
+        &::after {
+          top: 0;
+          width: 2px;
+          height: 20px;
+          left: calc(100% + 8px);
+        }
+      }
+    }
+  }
+
+  &__primary {
+    position: absolute;
+    width: 100%;
+    z-index: 500;
 
     .navLinks {
-        display: flex;
-        align-items: center;
-
-        a {
-            padding: 0 17px;
-
-            font-size: 25px;
-            font-weight: 400;
-
-            color: #50535A;
-            text-decoration: none;
-
-            // border-bottom: 1px solid #50535A;
-            // border-left: 1px solid #D6338A;
-            position: relative;
-
-            &::before {
-                content: '';
-                position: absolute;
-                left: 0;
-                top: 0;
-                display: block;
-                width: 1px;
-                height: 25px;
-                background-color: #D6338A;
-            }
-        }
+      a {
+        color: white;
+      }
     }
+
+    svg {
+      path {
+        fill: white;
+      }
+    }
+  }
 }
